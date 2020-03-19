@@ -10,9 +10,7 @@ import org.yelong.commons.util.HexStrConvert;
 
 /**
  * sm4工具
- * @author 彭飞
- * @date 2019年9月11日下午2:54:33
- * @version 1.2
+ * @author PengFei
  */
 public class SM4Utils {
 
@@ -20,8 +18,6 @@ public class SM4Utils {
 
 	/**
 	 * 加密
-	 * @author 彭飞 
-	 * @date 2019年4月16日上午11:09:08
 	 * @param input 需要加密的字符串 
 	 * @param key 加密的密钥
 	 * @return 加密后的字符串。这个字符串是base64格式的
@@ -33,9 +29,6 @@ public class SM4Utils {
 
 	/**
 	 * 加密
-	 * @author 彭飞
-	 * @date 2019年9月11日下午3:11:32
-	 * @version 1.2
 	 * @param input 需要加密的字符串
 	 * @param key 秘钥
 	 * @return 这个字符串是base64格式的
@@ -45,11 +38,8 @@ public class SM4Utils {
 		return new sun.misc.BASE64Encoder().encode(encode(input.getBytes(ENCODING), key));
 	}
 
-
 	/**
 	 * 解密
-	 * @author 彭飞
-	 * @date 2019年4月16日上午11:09:29
 	 * @param input 加密的字符串。这个字符串是base64格式的
 	 * @param key 密钥
 	 * @return 解密后的字符串
@@ -61,8 +51,6 @@ public class SM4Utils {
 
 	/**
 	 * 解密
-	 * @author 彭飞
-	 * @date 2019年4月16日上午11:09:46
 	 * @param input 加密的字符串。这个字符串是base64格式的
 	 * @param key 密钥
 	 * @return 解密后的字符串
@@ -74,8 +62,6 @@ public class SM4Utils {
 
 	/**
 	 * 加密
-	 * @author 彭飞 
-	 * @date 2019年4月16日上午11:09:08
 	 * @param input 需要加密的字符串 
 	 * @param key 加密的密钥
 	 * @return 加密后的字符串。这个字符串是16进制格式的
@@ -87,9 +73,6 @@ public class SM4Utils {
 
 	/**
 	 * 加密
-	 * @author 彭飞
-	 * @date 2019年9月11日下午3:11:32
-	 * @version 1.2
 	 * @param input 需要加密的字符串
 	 * @param key 秘钥
 	 * @return 这个字符串是16进制格式的
@@ -99,11 +82,8 @@ public class SM4Utils {
 		return 	HexStrConvert.bytesToHexString(encode(input.getBytes(ENCODING), key));
 	}
 
-
 	/**
 	 * 解密
-	 * @author 彭飞
-	 * @date 2019年4月16日上午11:09:29
 	 * @param input 加密的字符串。这个字符串是16进制格式的
 	 * @param key 密钥
 	 * @return 解密后的字符串
@@ -115,8 +95,6 @@ public class SM4Utils {
 
 	/**
 	 * 解密
-	 * @author 彭飞
-	 * @date 2019年4月16日上午11:09:46
 	 * @param input 加密的字符串。这个字符串是16进制格式的
 	 * @param key 密钥
 	 * @return 
@@ -126,12 +104,8 @@ public class SM4Utils {
 		return new String(decode(HexStrConvert.hexStringToBytes(input), key),ENCODING).trim();
 	}
 
-
 	/**
 	 * 加密
-	 * @author 彭飞
-	 * @date 2019年9月11日下午3:02:20
-	 * @version 1.2
 	 * @param input 需要加密的数据
 	 * @param key 秘钥
 	 * @return 加密后的数据
@@ -143,9 +117,6 @@ public class SM4Utils {
 
 	/**
 	 * 解密
-	 * @author 彭飞
-	 * @date 2019年9月11日下午3:03:07
-	 * @version 1.2
 	 * @param input 加密的数据
 	 * @param key 秘钥
 	 * @return 解析后的数据

@@ -8,12 +8,10 @@ import org.yelong.core.model.Model;
 import org.yelong.core.model.ModelConfiguration;
 
 /**
- * @author 彭飞
- * @date 2019年9月29日下午3:02:55
- * @version 1.2
+ * 可以拓展的modelService
+ * @author PengFei
  */
 public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisModelService{
-
 
 	public AbstractExtendMyBatisModelService(ModelConfiguration modelConfiguration) {
 		super(modelConfiguration);
@@ -39,9 +37,6 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 
 	/**
 	 * 在保存之前
-	 * @author 彭飞
-	 * @date 2019年9月12日下午5:50:00
-	 * @version 1.2
 	 * @param <M>
 	 * @param model 
 	 * @return 
@@ -53,9 +48,6 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 
 	/**
 	 * 保存之后
-	 * @author 彭飞
-	 * @date 2019年9月12日下午5:50:14
-	 * @version 1.2
 	 * @param <M>
 	 * @param model 
 	 * @param result 保存结果
@@ -67,9 +59,6 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 
 	/**
 	 * 修改之前
-	 * @author 彭飞
-	 * @date 2019年10月25日上午9:35:44
-	 * @version 1.2
 	 * @param <M>
 	 * @param <C>
 	 * @param model
@@ -84,9 +73,6 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 
 	/**
 	 * 修改之后
-	 * @author 彭飞
-	 * @date 2019年10月25日上午9:36:15
-	 * @version 1.2
 	 * @param <M>
 	 * @param <C>
 	 * @param model
@@ -99,7 +85,5 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 			boolean selective , ModelColumnValidateWay modelColumnValidateWay, C conditionFragment) {
 
 	}
-
-
 
 }

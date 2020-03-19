@@ -16,19 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author 彭飞
- * @date 2019年9月17日下午1:51:29
- * @version 1.2
+ * @author PengFei
  */
 public class HttpServletUtils {
 
 	/**
 	 * 读取请求消息体
-	 * @author 彭飞
-	 * @date 2019年9月17日下午2:23:57
-	 * @version 1.2
 	 * @param request
-	 * @return
+	 * @return request body
 	 */
 	public static String readerBodyStr(HttpServletRequest request) {
 		StringBuilder sb = new StringBuilder(); 
@@ -46,11 +41,8 @@ public class HttpServletUtils {
 
 	/**
 	 * 读取请求消息体
-	 * @author 彭飞
-	 * @date 2019年9月23日下午5:22:38
-	 * @version 1.2
 	 * @param request
-	 * @return
+	 * @return request body
 	 * @throws IOException
 	 */
 	public static byte [] readerBody(HttpServletRequest request) throws IOException {
@@ -64,15 +56,11 @@ public class HttpServletUtils {
         return os.toByteArray();
 	}
 	
-	
 	/**
 	 * 获取request的请求参数。
-	 * 格式：
-	 * @author 彭飞
-	 * @date 2019年9月23日下午4:43:18
-	 * @version 1.2
+	 * 格式：key=value&key=value
 	 * @param request
-	 * @return
+	 * @return request的请求参数。
 	 */
 	public static String getRequestParamsStr(HttpServletRequest request) {
 		Map<String,String []> requestParams = request.getParameterMap();
@@ -96,8 +84,6 @@ public class HttpServletUtils {
 		return requestParamStr.toString();
 	}
 
-
-
 	/**
 	 * 获取请求ip<br/>
 	 * 这个请求应该是被Nginx反向代理的<br/>
@@ -109,9 +95,6 @@ public class HttpServletUtils {
 	 * (！注意不要加X-Real-IP配置)
 	 * 配置好后重启Nginx即可
 	 * 这样java中获取的ip就是真实的ip了（不考虑用户使用代理或者VPN），即使用户伪造请求头，我们获取到的仍然是真实ip。如果Nginx不想配置X-Real-IP，那么也要删除掉java中对应的获取X-Real-IP代码
-	 * @author 彭飞
-	 * @date 2019年8月18日下午3:19:40
-	 * @version 1.0
 	 * @param request
 	 * @return 请求的ip
 	 */
@@ -138,7 +121,5 @@ public class HttpServletUtils {
 		}
 		return ipAddress;
 	}
-
-	
 
 }

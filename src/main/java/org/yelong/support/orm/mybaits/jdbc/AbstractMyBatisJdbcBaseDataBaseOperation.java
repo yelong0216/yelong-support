@@ -14,9 +14,7 @@ import org.yelong.core.jdbc.DataBaseOperationType;
  * 抽象mybatis基础数据库操作
  * 通过mybatis获取原生Connection来进行操作
  * 这个不会经过mybatis的框架
- * @author 彭飞
- * @date 2019年8月14日上午11:15:55
- * @version 1.0
+ * @author PengFei
  */
 public abstract class AbstractMyBatisJdbcBaseDataBaseOperation extends AbstractBaseDataBaseOperation{
 	
@@ -28,7 +26,6 @@ public abstract class AbstractMyBatisJdbcBaseDataBaseOperation extends AbstractB
 			throw new RuntimeException(e);
 		}
 	}
-	
 	
 	@Override
 	public void afterExecute(Connection conn, Object result, DataBaseOperationType operationType) throws SQLException {
@@ -43,6 +40,5 @@ public abstract class AbstractMyBatisJdbcBaseDataBaseOperation extends AbstractB
 	 * @return
 	 */
 	public abstract SqlSession getSqlSession();
-	
 	
 }

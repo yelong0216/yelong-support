@@ -7,15 +7,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.bouncycastle.util.encoders.Hex;
 
 /**
- * @author 彭飞
- * @date 2019年4月11日上午10:01:52
+ * @author PengFei
  */
 public class SM3Utils {
 
 	/**
 	 * 通过sm3加密数据
-	 * @author 彭飞
-	 * @date 2019年4月11日上午8:46:34
 	 * @param str 需要加密的字符串
 	 * @return 加密生成的字符串
 	 */
@@ -31,8 +28,6 @@ public class SM3Utils {
 
 	/**
 	 * 验证该两者是否是同一个数据
-	 * @author 彭飞
-	 * @date 2019年4月11日上午10:04:03
 	 * @param str 原数据
 	 * @param sm3HexStr 通过sm3加密后的数据
 	 * @return 是否相同;true:相同

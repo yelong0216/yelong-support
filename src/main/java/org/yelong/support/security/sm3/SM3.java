@@ -4,8 +4,7 @@
 package org.yelong.support.security.sm3;
 
 /**
- * @author 彭飞
- * @date 2019年4月10日下午5:37:22
+ * @author PengFei
  */
 public class SM3 {
 

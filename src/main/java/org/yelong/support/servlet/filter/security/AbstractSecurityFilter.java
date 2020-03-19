@@ -21,9 +21,7 @@ import org.yelong.support.servlet.wrapper.HttpServletResponseReuseWrapper;
 /**
  * 抽象安全过滤器
  * 实现对请求参数、消息体、响应消息体进行加解密及数据完整性验证功能。
- * @author 彭飞
- * @date 2019年9月17日下午12:29:07
- * @version 1.2
+ * @author PengFei
  */
 public abstract class AbstractSecurityFilter implements Filter{
 
@@ -87,9 +85,6 @@ public abstract class AbstractSecurityFilter implements Filter{
 
 	/**
 	 * 是否进行参数解密
-	 * @author 彭飞
-	 * @date 2019年9月17日下午12:34:48
-	 * @version 1.2
 	 * @param request 
 	 * @return <tt>true</tt> 进行解密
 	 */
@@ -97,9 +92,6 @@ public abstract class AbstractSecurityFilter implements Filter{
 
 	/**
 	 * 是否进行请求消息体解密
-	 * @author 彭飞
-	 * @date 2019年9月17日下午12:35:14
-	 * @version 1.2
 	 * @param request
 	 * @return <tt>true</tt> 进行解密
 	 */
@@ -107,9 +99,6 @@ public abstract class AbstractSecurityFilter implements Filter{
 
 	/**
 	 * 是否进行完整性验证
-	 * @author 彭飞
-	 * @date 2019年9月17日下午12:35:49
-	 * @version 1.2
 	 * @param request
 	 * @return <tt>true</tt> 进行验证
 	 */
@@ -117,9 +106,6 @@ public abstract class AbstractSecurityFilter implements Filter{
 
 	/**
 	 * 解密参数
-	 * @author 彭飞
-	 * @date 2019年9月17日下午3:24:15
-	 * @version 1.2
 	 * @param parameterMap 原参数
 	 * @return 解密后的参数
 	 */
@@ -127,9 +113,6 @@ public abstract class AbstractSecurityFilter implements Filter{
 
 	/**
 	 * 解密消息体
-	 * @author 彭飞
-	 * @date 2019年9月17日下午3:24:32
-	 * @version 1.2
 	 * @param body 源消息体
 	 * @return 解密后的消息体
 	 */
@@ -139,9 +122,6 @@ public abstract class AbstractSecurityFilter implements Filter{
 	 * 完整性效验<br/>
 	 * 完整性验证在解密之后执行<br/>
 	 * 如果完整性效验失败则进入@see #integrityValidationExceptionProcessor()进行后置处理。之后将不进入以下过滤器
-	 * @author 彭飞
-	 * @date 2019年9月17日下午3:24:53
-	 * @version 1.2
 	 * @param request 
 	 * @return <tt>true</tt> 完整性效验通过
 	 * @throws IntegrityValidationException 完整性效验异常
@@ -150,9 +130,6 @@ public abstract class AbstractSecurityFilter implements Filter{
 
 	/**
 	 * 完整性效验失败后处理
-	 * @author 彭飞
-	 * @date 2019年9月17日下午3:28:17
-	 * @version 1.2
 	 * @param e 异常信息
 	 * @param response 
 	 */
@@ -160,40 +137,25 @@ public abstract class AbstractSecurityFilter implements Filter{
 
 	/**
 	 * 解密异常处理
-	 * @author 彭飞
-	 * @date 2019年9月17日下午4:10:15
-	 * @version 1.2
 	 * @param e
 	 * @param response
 	 */
 	public abstract void decryptExceptionProcessor(SecurityException e , HttpServletResponse response) throws IOException ;
 
-
-
 	/**
 	 * 是否需要进行响应加密
-	 * @author 彭飞
-	 * @date 2019年9月23日上午9:40:27
-	 * @version 1.2
 	 * @param request
 	 * @return <tt>true</tt>需要进行响应加密
 	 */
 	public abstract boolean isResponseEncrypt(HttpServletRequest request);
 
-
-
-
 	/**
 	 * 加密响应结果
-	 * @author 彭飞
-	 * @date 2019年9月23日上午9:42:26
-	 * @version 1.2
 	 * @param content 响应的结果上下文
 	 * @return 加密后的响应结果
 	 * @throws IOException
 	 */
 	public abstract byte [] responseEncrypt(byte [] content) throws IOException;
-
 
 	@Override
 	public void destroy() {
@@ -204,7 +166,5 @@ public abstract class AbstractSecurityFilter implements Filter{
 	public void init(FilterConfig filterConfig) throws ServletException {
 		
 	}
-	
-	
 	
 }

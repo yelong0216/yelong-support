@@ -12,9 +12,7 @@ import org.yelong.core.annotation.Nullable;
  * 
  * yaml配置map装换为properties
  * 
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月14日上午10:45:17
- * @version 1.2
+ * @author PengFei
  */
 public class YamlMapToProperties {
 
@@ -42,6 +40,5 @@ public class YamlMapToProperties {
 			}
 		});
 	}
-	
 	
 }

@@ -12,12 +12,9 @@ import java.net.URLEncoder;
 import javax.servlet.ServletOutputStream;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月11日上午10:36:33
- * @version 1.2
+ * @author PengFei
  */
 public abstract class AbstractController implements Controller{
-	
 	
 	@Override
 	public void responseText(String text) throws IOException {
@@ -42,13 +39,8 @@ public abstract class AbstractController implements Controller{
 		String fileName = URLEncoder.encode(filename, "UTF-8");
 		byte [] b = new byte[fis.available()];
 		fis.read(b);
-		getResponse().setCharacterEncoding("UTF-8");
-		getResponse().setHeader("Content-Disposition", "attachment;fileName="+fileName+"");
-		ServletOutputStream out = getResponse().getOutputStream();
-		out.write(b);
-		out.flush();
-		out.close();
 		fis.close();
+		responseFile(fileName, b);
 	}
 	
 	@Override
@@ -60,7 +52,6 @@ public abstract class AbstractController implements Controller{
 		out.flush();
 		out.close();
 	}
-	
 	
 	@Override
 	public void responseContent(byte[] content) throws IOException {

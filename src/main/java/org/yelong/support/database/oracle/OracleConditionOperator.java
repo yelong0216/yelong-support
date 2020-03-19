@@ -7,14 +7,13 @@ import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Oracle条件运算符
- * @author 彭飞
- * @date 2019年7月19日下午3:07:30
+ * @author PengFei
  */
 public enum OracleConditionOperator {
 	
-	/***/
+	/**包含*/
 	LIKE(" like "),
-	/***/
+	/**不包含*/
 	NOT_LIKE(" not like "),
 	/**等于*/
 	EQUAL(" = "),
@@ -58,7 +57,6 @@ public enum OracleConditionOperator {
 			IN,NOT_IN
 	};
 	
-	
 	private String operator;
 	
 	OracleConditionOperator(String operator){
@@ -77,8 +75,6 @@ public enum OracleConditionOperator {
 	
 	/**
 	 * 该条件需要的值数量
-	 * @author 彭飞
-	 * @date 2019年7月19日下午4:01:28
 	 * @return 该条件需要的值数量。如果条件需要不定量的值则返回-1
 	 */
 	public Integer getNeedValueNum() {
@@ -94,8 +90,4 @@ public enum OracleConditionOperator {
 		return null ;
 	}
 	
-	
-	
-	
-
 }

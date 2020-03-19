@@ -17,8 +17,7 @@ import com.google.gson.stream.JsonWriter;
 
 /**
  * 如果Date类型属性为空则返回""。否则返回 yyyy-MM-dd HH:mm:ss 格式字符
- * @author 彭飞
- * @date 2019年7月26日上午11:11:32
+ * @author PengFei
  */
 public class DateAdapter extends TypeAdapter<Date>{
 
@@ -53,12 +52,6 @@ public class DateAdapter extends TypeAdapter<Date>{
 		} catch (ParseException e) {
 			return null;
 		}
-	}
-
-	public static void main(String[] args) throws ParseException {
-		Date date = DateUtils.parseDateStrictly("2019-10-10", "yyyy-MM-dd HH:mm:ss","yyyy-MM-dd");
-		String string = DateFormatUtils.format(date, "yyyy-MM-dd HH:mm:ss");
-		System.out.println(string);
 	}
 
 }

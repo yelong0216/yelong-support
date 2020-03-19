@@ -12,9 +12,7 @@ import org.yelong.core.annotation.Nullable;
 import org.yelong.support.orm.mybaits.sql.MyBatisParamMap;
 
 /**
- * @author 彭飞
- * @date 2019年9月30日上午11:30:23
- * @version 1.2
+ * @author PengFei
  */
 public class MyBatisMapperParamUtils {
 
@@ -22,9 +20,6 @@ public class MyBatisMapperParamUtils {
 	 * 将原生sql(select * from USER where username like ?)转换为mybatis使用的sql(select * from USER where username like #{username})
 	 * 并将参数一并封装到map中。
 	 * Mapper映射器中的参数仅传入一个Map。且sql语句为${sql}进行声明即可
-	 * @author 彭飞
-	 * @date 2019年7月26日下午6:30:22
-	 * @version 1.0
 	 * @param sql
 	 * @param params
 	 * @return
@@ -53,12 +48,8 @@ public class MyBatisMapperParamUtils {
 		return UUID.randomUUID().toString().replace("-", "").toLowerCase();
 	}
 	
-	
 	/**
 	 * 
-	 * @author 彭飞
-	 * @date 2019年9月11日下午5:45:37
-	 * @version 1.2
 	 * @param sql
 	 * @param mybatisParamMap
 	 * @return
@@ -71,10 +62,5 @@ public class MyBatisMapperParamUtils {
 		}
 		return params;
 	}
-	
-	
-	
-	
-	
 	
 }

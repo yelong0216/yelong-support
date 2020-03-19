@@ -12,9 +12,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.yelong.support.servlet.mvc.AbstractController;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月11日上午10:51:53
- * @version 1.2
+ * @author PengFei
  */
 public abstract class AbstractSpringMvcController extends AbstractController{
 
@@ -26,11 +24,9 @@ public abstract class AbstractSpringMvcController extends AbstractController{
 		return ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest(); 
 	}
 	
-	
 	@Override
 	public HttpServletResponse getResponse() {
 		return response;
 	}
-	
 	
 }

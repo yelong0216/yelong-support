@@ -5,8 +5,7 @@ package org.yelong.support.security.sm3;
 
 
 /**
- * @author 彭飞
- * @date 2019年4月10日下午5:38:02
+ * @author PengFei
  */
 public class SM3Digest {
 	 /** SM3值的长度 */
@@ -136,7 +135,5 @@ public class SM3Digest {
     {
         return BYTE_LENGTH;
     }
-
-    
     
 }

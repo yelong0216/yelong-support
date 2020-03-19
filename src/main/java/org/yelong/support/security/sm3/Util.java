@@ -6,10 +6,10 @@ package org.yelong.support.security.sm3;
 import java.math.BigInteger;
 
 /**
- * @author 彭飞
- * @date 2019年4月10日下午5:38:34
+ * @author PengFei
  */
 public class Util {
+	
 	 /**
      * 整形转换成网络传输的字节流（字节数组）型数据
      *

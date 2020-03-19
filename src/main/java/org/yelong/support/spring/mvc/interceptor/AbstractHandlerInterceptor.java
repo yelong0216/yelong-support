@@ -13,21 +13,15 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 /**
  * 抽象mvc拦截器。
  * 提供一些拦截器常用的方法
- * @author 彭飞
- * @date 2019年8月7日上午11:46:17
- * @version 1.0
+ * @author PengFei
  */
 public abstract class AbstractHandlerInterceptor extends HandlerInterceptorAdapter{
 
 	protected static final String DEFAULT_RESPONSE_CONTENT_TYPE = "text/html;charset=UTF-8";
-
 	
 	/**
 	 * 使用默认的contentType响应信息<br/>
 	 * {@link #DEFAULT_RESPONSE_CONTENT_TYPE}
-	 * @author 彭飞
-	 * @date 2019年8月7日上午11:51:12
-	 * @version 1.0
 	 * @param response http响应对象
 	 * @param message 响应消息
 	 * @throws IOException
@@ -39,9 +33,6 @@ public abstract class AbstractHandlerInterceptor extends HandlerInterceptorAdapt
 
 	/**
 	 * 使用指定的contentType响应数据<br/>
-	 * @author 彭飞
-	 * @date 2019年8月7日上午11:51:42
-	 * @version 1.0
 	 * @param response http响应对象
 	 * @param message 响应消息
 	 * @param contentType 文本类型

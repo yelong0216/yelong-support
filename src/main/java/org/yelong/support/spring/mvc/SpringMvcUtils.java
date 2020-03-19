@@ -11,17 +11,12 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.yelong.support.spring.ApplicationContextDecorator;
 
 /**
- * @author 彭飞
- * @date 2019年9月19日下午5:47:06
- * @version 1.2
+ * @author PengFei
  */
 public class SpringMvcUtils {
 
 	/**
 	 * 获取请求映射的处理器方法
-	 * @author 彭飞
-	 * @date 2019年9月19日下午5:50:12
-	 * @version 1.2
 	 * @param request
 	 * @return 处理器方法
 	 * @throws Exception
@@ -31,7 +26,5 @@ public class SpringMvcUtils {
 		HandlerExecutionChain handler = requestMapping.getHandler(request);
 		return (HandlerMethod) handler.getHandler();
 	}
-	
-	
 	
 }

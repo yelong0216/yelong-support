@@ -11,19 +11,13 @@ import org.yelong.core.annotation.Nullable;
 
 /**
  * 构建属性装配执行器
- * @author 彭飞
- * @date 2019年9月11日下午3:27:43
- * @version 1.2
+ * @author PengFei
  */
 public class PropertiesWiredProcessorBuilder {
-
 	
 	/**
 	 * 构建属性装配执行器
 	 * objClass必须被{@link PropertiesWired}进行标注
-	 * @author 彭飞
-	 * @date 2019年9月11日下午3:34:27
-	 * @version 1.2
 	 * @param <T>
 	 * @param objClass 被装配的属性类
 	 * @return 属性装配执行器
@@ -70,13 +64,9 @@ public class PropertiesWiredProcessorBuilder {
 		return builder(objClass.newInstance(),properties,propertiesPrefix);
 	}
 	
-	
 	/**
 	 * 构建属性装配执行器
 	 * objClass必须被{@link PropertiesWired}进行标注
-	 * @author 彭飞
-	 * @date 2019年9月11日下午3:34:27
-	 * @version 1.2
 	 * @param <T>
 	 * @param obj 被装配的对象
 	 * @return 属性装配执行器
@@ -101,9 +91,6 @@ public class PropertiesWiredProcessorBuilder {
 	
 	/**
 	 * 构建属性装配执行器
-	 * @author 彭飞
-	 * @date 2019年9月11日下午3:34:27
-	 * @version 1.2
 	 * @param <T>
 	 * @param obj 被装配的对象
 	 * @param properties 属性对象
@@ -120,9 +107,6 @@ public class PropertiesWiredProcessorBuilder {
 	
 	/**
 	 * 构建属性装配执行器
-	 * @author 彭飞
-	 * @date 2019年9月11日下午3:34:27
-	 * @version 1.2
 	 * @param <T>
 	 * @param obj 被装配的对象
 	 * @param properties 属性对象
@@ -132,6 +116,5 @@ public class PropertiesWiredProcessorBuilder {
 	public static <T> PropertiesWiredProcessor<T> builder(T obj , Properties properties ,@Nullable String propertiesPrefix){
 		return new PropertiesWiredProcessor<T>(obj,properties,propertiesPrefix);
 	}
-	
 	
 }

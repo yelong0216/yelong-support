@@ -13,9 +13,8 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月23日下午4:06:01
- * @version 1.3
+ * Gson 排除策略
+ * @author PengFei
  */
 public class ClassExclusionStrategy implements ExclusionStrategy{
 
@@ -29,10 +28,8 @@ public class ClassExclusionStrategy implements ExclusionStrategy{
 	
 	/**
 	 * 添加忽略的类
-	 * @date 2019年11月23日下午4:01:40
-	 * @version 1.3
-	 * @param classes
-	 * @return
+	 * @param classes 忽略的类
+	 * @return this
 	 */
 	public ClassExclusionStrategy addIgnoreClasss(Class<?> ... classes) {
 		this.ignoreClasss.addAll(Arrays.asList(classes));
@@ -42,10 +39,9 @@ public class ClassExclusionStrategy implements ExclusionStrategy{
 	/**
 	 * 添加忽略的类的属性。
 	 * 如果这个类已经被忽略({@link #addIgnoreClass(Class...)}，那么将不起作用
-	 * @date 2019年11月23日下午4:01:40
-	 * @version 1.3
-	 * @param classes
-	 * @return
+	 * @param classes 忽略的类
+	 * @param fieldNames 忽略类中的属性
+	 * @return this
 	 */
 	public ClassExclusionStrategy addIgnoreClassFields(Class<?> c , String ... fieldNames) {
 		this.ignoreClassFields.put(c, Arrays.asList(fieldNames));
@@ -55,25 +51,21 @@ public class ClassExclusionStrategy implements ExclusionStrategy{
 	/**
 	 * 设置只操作的类型
 	 * 设置之后忽略的类将不起作用，已只操作的类型为准
-	 * @date 2019年11月29日下午2:08:47
-	 * @version 1.3
-	 * @param classes
-	 * @return
+	 * @param classes 只操作的类
+	 * @return this
 	 */
 	public ClassExclusionStrategy addOnlyOperationClasss(Class<?> ...classes) {
 		onlyOperationClasss.addAll(Arrays.asList(classes));
 		return this;
 	}
 	
-	
 	/**
 	 * 添加只操作的类型属性。
 	 * 如果这个类型不存在只操作的类型中将不起作用。
 	 * 如果这个类已经被忽略({@link #addIgnoreClass(Class...)}，那么将不起作用
-	 * @date 2019年11月23日下午4:01:40
-	 * @version 1.3
-	 * @param classes
-	 * @return
+	 * @param classes 只操作的类
+	 * @param fieldNames 只操作类的属性
+	 * @return this
 	 */
 	public ClassExclusionStrategy addOnlyOperationClassFields(Class<?> c , String ... fieldNames) {
 		this.onlyOperationClassFields.put(c, Arrays.asList(fieldNames));

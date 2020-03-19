@@ -5,9 +5,7 @@ package org.yelong.support.servlet.filter.security;
 
 /**
  * 完整性效验异常
- * @author 彭飞
- * @date 2019年9月17日下午3:26:50
- * @version 1.2
+ * @author PengFei
  */
 public class IntegrityValidationException extends RuntimeException{
 

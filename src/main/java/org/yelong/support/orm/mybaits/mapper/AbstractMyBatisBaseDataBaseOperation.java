@@ -16,12 +16,9 @@ import org.yelong.support.orm.mybaits.util.MyBatisMapperParamUtils;
 /**
  * 基于mybatis的基础数据操作实现。
  * 这里的操作将通过mybatis来执行
- * @author 彭飞
- * @date 2019年8月14日上午11:40:32
- * @version 1.0
+ * @author PengFei
  */
 public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBaseDataBaseOperation{
-
 
 	public AbstractMyBatisBaseDataBaseOperation() {
 		
@@ -40,7 +37,6 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 		}
 		return list.get(0);
 	}
-
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -83,9 +79,6 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 
 	/**
 	 * 转换为mybatis的参数
-	 * @author 彭飞
-	 * @date 2019年7月26日下午6:30:22
-	 * @version 1.0
 	 * @param sql
 	 * @param params
 	 * @return
@@ -96,9 +89,6 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 
 	/**
 	 * 获取sqlSession
-	 * @author 彭飞
-	 * @date 2019年8月14日上午11:41:28
-	 * @version 1.0
 	 * @return
 	 */
 	public abstract SqlSession getSqlSession();
@@ -155,7 +145,6 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 	public Integer insert(String sql, MyBatisParamMap mybatisParamMap) {
 		return getMyBatisDBOperationMapper().update(getParams(sql, mybatisParamMap));
 	}
-
 	
 	protected MyBatisDBOperationMapper getMyBatisDBOperationMapper() {
 		return addMyBatisDBOperationMapper();
@@ -170,12 +159,8 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 		}
 	}
 	
-	
 	/**
 	 * 
-	 * @author 彭飞
-	 * @date 2019年9月11日下午5:45:37
-	 * @version 1.2
 	 * @param sql
 	 * @param mybatisParamMap
 	 * @return
@@ -192,4 +177,5 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 			throw new RuntimeException(e);
 		}
 	}
+	
 }

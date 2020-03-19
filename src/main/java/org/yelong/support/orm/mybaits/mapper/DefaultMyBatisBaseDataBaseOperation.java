@@ -6,9 +6,8 @@ package org.yelong.support.orm.mybaits.mapper;
 import org.apache.ibatis.session.SqlSession;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月5日下午2:52:53
- * @version 1.2
+ * 默认的mybatis 基础数据操作
+ * @author PengFei
  */
 public class DefaultMyBatisBaseDataBaseOperation extends AbstractMyBatisBaseDataBaseOperation{
 

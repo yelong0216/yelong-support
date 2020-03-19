@@ -12,9 +12,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月29日下午1:53:10
- * @version 1.3
+ * @author PengFei
  */
 public class StringNullPaddingSerializer implements JsonSerializer<String> {
 
@@ -39,4 +37,5 @@ public class StringNullPaddingSerializer implements JsonSerializer<String> {
 		}
 		return new JsonPrimitive(src);
 	}
+	
 }

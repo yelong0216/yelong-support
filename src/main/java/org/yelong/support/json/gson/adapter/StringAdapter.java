@@ -11,8 +11,8 @@ import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * @author 彭飞
- * @date 2019年7月18日上午11:50:57
+ * String 类型适配器
+ * @author PengFei
  */
 public class StringAdapter extends TypeAdapter<String>{
 

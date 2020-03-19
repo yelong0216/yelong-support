@@ -56,9 +56,9 @@ public class MyBatisCombinationConditionFragment extends DefaultCombinationCondi
 	}
 
 	@Override
-	protected void afterAddCondition(ConditionFragmentWrapper conditionFragmentWrapper) {
-		super.afterAddCondition(conditionFragmentWrapper);
-		ConditionSqlFragment conditionFragment = conditionFragmentWrapper.getConditionFragment();
+	protected void afterAddCondition(ConditionSqlFragmentWrapper conditionSqlFragmentWrapper) {
+		super.afterAddCondition(conditionSqlFragmentWrapper);
+		ConditionSqlFragment conditionFragment = conditionSqlFragmentWrapper.getConditionSqlFragment();
 		//如果为mybatissql则添加其参数映射
 		if( conditionFragment instanceof CombinationConditionSqlFragment ) {
 			if( conditionFragment instanceof MyBatisCombinationConditionFragment ) {
@@ -128,6 +128,5 @@ public class MyBatisCombinationConditionFragment extends DefaultCombinationCondi
 	public MyBatisBoundSql getMyBatisBoundSql() {
 		return new MyBatisBoundSql(getMyBatisSqlFragment(), getMyBatisParamMap());
 	}
-
 
 }

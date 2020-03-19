@@ -38,9 +38,7 @@ import org.yelong.support.orm.mybaits.model.ModelSelectMapper;
  * model结果集映射的默认实现。
  * 如果model没有映射结果集，则默认配置结果集进行映射
  * 
- * @author 彭飞
- * @date 2019年9月29日下午3:24:54
- * @version 1.2
+ * @author PengFei
  */
 @Intercepts({
 	@Signature(type = ResultSetHandler.class, method = "handleResultSets", args = {Statement.class})
@@ -80,11 +78,8 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 
 	/**
 	 * 判断查询是否是PageHelper的分页count查询
-	 * @author 彭飞
-	 * @date 2019年10月22日下午1:27:17
-	 * @version 1.2
 	 * @param statement
-	 * @return
+	 * @return <tt>true</tt> 是
 	 */
 	protected boolean isPageHelperCountSelect(MappedStatement statement) {
 		if( statement.getId().endsWith("select_COUNT") ) {
@@ -99,9 +94,6 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 
 	/**
 	 * 获取结果映射
-	 * @author 彭飞
-	 * @date 2019年10月21日下午2:19:50
-	 * @version 1.2
 	 * @param modelClass
 	 * @param handler
 	 * @return
@@ -118,9 +110,6 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 
 	/**
 	 * 构建结果映射
-	 * @author 彭飞
-	 * @date 2019年10月21日下午2:19:57
-	 * @version 1.2
 	 * @param modelClass
 	 * @param handler
 	 * @return
@@ -153,9 +142,6 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 	
 	/**
 	 * 
-	 * @author 彭飞
-	 * @date 2019年9月30日上午9:59:27
-	 * @version 1.2
 	 * @param <M>
 	 * @param model
 	 * @return
@@ -167,8 +153,6 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 	}
 	
 	/**
-	 * @date 2019年11月6日上午10:53:05
-	 * @version 1.2
 	 * @param <M>
 	 * @param handler
 	 * @return modelTable
@@ -230,9 +214,6 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 
 	/**
 	 * 解析类型处理器
-	 * @author 彭飞
-	 * @date 2019年9月30日上午10:49:52
-	 * @version 1.2
 	 * @return
 	 */
 	protected TypeHandler<?> resolveTypeHandler(Class<?> javaType,Class<? extends TypeHandler<?>> typeHandlerType,MapperBuilderAssistant builderAssistant){
@@ -249,9 +230,6 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 
 	/**
 	 * 自定义标识符
-	 * @author 彭飞
-	 * @date 2019年9月30日上午10:34:29
-	 * @version 1.2
 	 * @param type
 	 * @return
 	 */
@@ -266,9 +244,6 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 
 	/**
 	 * 设置结果集
-	 * @author 彭飞
-	 * @date 2019年9月30日上午10:58:12
-	 * @version 1.2
 	 * @param statement
 	 * @param resultMaps
 	 * @throws IllegalAccessException 

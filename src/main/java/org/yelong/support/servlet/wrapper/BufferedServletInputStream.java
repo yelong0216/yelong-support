@@ -10,9 +10,7 @@ import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;
 
 /**
- * @author 彭飞
- * @date 2019年9月20日下午3:16:48
- * @version 1.2
+ * @author PengFei
  */
 public class BufferedServletInputStream extends ServletInputStream{
 
@@ -46,7 +44,5 @@ public class BufferedServletInputStream extends ServletInputStream{
 	public int read() throws IOException {
 		return inputStream.read();
 	}
-	
-	
 
 }

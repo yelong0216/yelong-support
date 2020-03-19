@@ -17,9 +17,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月29日下午1:55:43
- * @version 1.3
+ * @author PengFei
  */
 public class ModelDateJsonDeserializer implements JsonDeserializer<Date>{
 
@@ -29,7 +27,6 @@ public class ModelDateJsonDeserializer implements JsonDeserializer<Date>{
 		if( null == json || StringUtils.isBlank(json.getAsString())) {
 			return ModelNullProperty.DATE_NULL;
 		}
-		//return context.deserialize(json, typeOfT);
 		try {
 			return DateUtils.parseDate(json.getAsString(), "yyyy-MM-dd");
 		} catch (ParseException e) {

@@ -7,9 +7,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * @author 彭飞
- * @date 2019年9月19日下午3:24:35
- * @version 1.2
+ * @author PengFei
  */
 public class HttpServletLogInfo {
 
@@ -49,10 +47,7 @@ public class HttpServletLogInfo {
 	
 	/**
 	 * 操作时间
-	 * @author 彭飞
-	 * @date 2019年9月23日下午4:33:06
-	 * @version 1.2
-	 * @return
+	 * @return 操作时间 ms
 	 */
 	public long getOperationTime() {
 		return endTime.getTime() - startTime.getTime();
@@ -60,10 +55,7 @@ public class HttpServletLogInfo {
 
 	/**
 	 * 请求消息体
-	 * @author 彭飞
-	 * @date 2019年9月23日下午5:18:55
-	 * @version 1.2
-	 * @return
+	 * @return request body
 	 */
 	public byte[] getRequestBody() {
 		return requestBody;
@@ -75,10 +67,7 @@ public class HttpServletLogInfo {
 
 	/**
 	 * 请求参数
-	 * @author 彭飞
-	 * @date 2019年9月23日下午5:18:47
-	 * @version 1.2
-	 * @return
+	 * @return request params
 	 */
 	public Map<String, String[]> getRequestParams() {
 		return requestParams;
@@ -87,7 +76,5 @@ public class HttpServletLogInfo {
 	public void setRequestParams(Map<String, String[]> requestParams) {
 		this.requestParams = requestParams;
 	}
-	
-	
 	
 }

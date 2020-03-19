@@ -16,9 +16,7 @@ import org.yelong.support.servlet.wrapper.HttpServletRequestReuseWrapper;
 
 /**
  * 解密的request包装器
- * @author 彭飞
- * @date 2019年9月17日下午12:15:26
- * @version 1.2
+ * @author PengFei
  */
 public class SecurityHttpServletRequestWrapper extends HttpServletRequestReuseWrapper implements HttpServletRequestSecurity{
 
@@ -45,9 +43,6 @@ public class SecurityHttpServletRequestWrapper extends HttpServletRequestReuseWr
 
 	/**
 	 * 设置解密后的参数映射
-	 * @author 彭飞
-	 * @date 2019年9月17日下午3:46:55
-	 * @version 1.2
 	 * @param parameterMap
 	 */
 	public void setAfterDecryptParameterMap(Map<String, String[]> parameterMap) {
@@ -57,16 +52,12 @@ public class SecurityHttpServletRequestWrapper extends HttpServletRequestReuseWr
 	
 	/**
 	 * 设置解密后的请求消息体
-	 * @author 彭飞
-	 * @date 2019年9月17日下午3:44:42
-	 * @version 1.2
 	 * @param body 解密后的请求消息体
 	 */
 	public void setAfterDecryptBody(byte [] body) {
 		this.body = body;
 		this.bodyDecrypt = true;
 	}
-	
 	
 	public byte[] getBody() {
 		if( !bodyDecrypt ) {
@@ -137,4 +128,5 @@ public class SecurityHttpServletRequestWrapper extends HttpServletRequestReuseWr
 		}
 		return new BufferedServletInputStream(body);
 	}
+	
 }

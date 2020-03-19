@@ -16,9 +16,7 @@ import ognl.OgnlException;
 
 /**
  * 属性装配处理器
- * @author 彭飞
- * @date 2019年9月11日上午11:16:12
- * @version 1.2
+ * @author PengFei
  */
 public final class PropertiesWiredProcessor<T>{
 
@@ -46,9 +44,6 @@ public final class PropertiesWiredProcessor<T>{
 
 	/**
 	 * 获取装配之后的对象
-	 * @author 彭飞
-	 * @date 2019年9月11日上午11:23:04
-	 * @version 1.2
 	 * @return
 	 */
 	public T wiredObj() {
@@ -123,11 +118,6 @@ public final class PropertiesWiredProcessor<T>{
 			return propertyName;
 		}
 
-
-
 	}
-
-
-
 
 }

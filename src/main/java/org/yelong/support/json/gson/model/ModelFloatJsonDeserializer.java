@@ -14,12 +14,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月29日下午2:01:43
- * @version 1.3
+ * @author PengFei
  */
 public class ModelFloatJsonDeserializer implements JsonDeserializer<Float>{
-	
 	
 	@Override
 	public Float deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)

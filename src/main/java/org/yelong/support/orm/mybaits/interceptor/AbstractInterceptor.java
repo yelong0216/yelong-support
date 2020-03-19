@@ -13,23 +13,18 @@ import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Plugin;
 
 /**
- * @author 彭飞
- * @date 2019年9月17日上午8:50:56
- * @version 1.2
+ * 抽象的拦截器实现
+ * @author PengFei
  */
 public abstract class AbstractInterceptor implements Interceptor{
 	
 	/**
 	 * 获取MappedStatement对应的接口中的方法，且这个方法不应被重载，如果对应的方法出现重载，则会抛出异常
-	 * @author 彭飞
-	 * @date 2019年9月17日上午10:16:30
-	 * @version 1.2
 	 * @param mappedStatement
-	 * @param param 参数
-	 * @return 对应的几口方法。如果没有此方法则返回null
+	 * @return 对应的接口方法。如果没有此方法则返回null
 	 * @throws Exception 如果这个方法被重载了
 	 */
-	public Method getMapperMethod(MappedStatement mappedStatement , Object param) throws Exception {
+	public Method getMapperMethod(MappedStatement mappedStatement) throws Exception {
 		//当前执行的完全命名空间
 		String namespace = mappedStatement.getId();
 		//映射的接口
@@ -62,8 +57,5 @@ public abstract class AbstractInterceptor implements Interceptor{
 	public void setProperties(Properties properties) {
 
 	}
-
-	
-	
 
 }

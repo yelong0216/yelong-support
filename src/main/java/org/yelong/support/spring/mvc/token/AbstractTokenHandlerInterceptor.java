@@ -18,9 +18,7 @@ import org.yelong.support.spring.mvc.token.TokenValidate.TokenLocation;
 
 /**
  * 抽象token拦截器实现
- * @author 彭飞
- * @date 2019年8月30日下午3:07:28
- * @version 1.2
+ * @author PengFei
  */
 public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInterceptor{
 
@@ -81,9 +79,6 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	
 	/**
 	 * 验证token<br/>
-	 * @author 彭飞
-	 * @date 2019年8月30日下午3:19:12
-	 * @version 1.2
 	 * @param token 请求中的token
 	 * @return <tt>true</tt> 这是一个有效的token
 	 * @throws InvalidTokenException 无效的token
@@ -94,9 +89,6 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	 * 有效的token处理<br/>
 	 * 只有当token是有效且 saveRequesteUserInfo = true 时才会被调用<br/>
 	 * 初始化该请求用户的信息<br/>
-	 * @author 彭飞
-	 * @date 2019年8月30日下午3:34:25
-	 * @version 1.2
 	 * @param request 请求
 	 * @param response 响应
 	 * @param handler 处理器
@@ -110,9 +102,6 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	/**
 	 * 只有当token是无效时才会被调用<br/>
 	 * 处理无效token的响应结果
-	 * @author 彭飞
-	 * @date 2019年8月30日下午3:33:38
-	 * @version 1.2
 	 * @param request 请求
 	 * @param response 响应
 	 * @param invalidTokenException 无效token异常信息
@@ -121,13 +110,9 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 		
 	}
 	
-	
 	/**
 	 * 根据处理器方法、处理器方法类、处理器方法类的父类直至Object.class中获取TokenValidate<br/>
 	 * 如果没有TokenValidate则返回null
-	 * @author 彭飞
-	 * @date 2019年8月30日下午3:42:31
-	 * @version 1.2
 	 * @param handlerMethod 处理器方法
 	 * @return 
 	 */
@@ -155,9 +140,6 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	
 	/**
 	 * 获取请求中的token
-	 * @author 彭飞
-	 * @date 2019年8月30日下午4:14:46
-	 * @version 1.2
 	 * @param request
 	 * @param tokenValidate
 	 * @return
@@ -168,9 +150,6 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	
 	/**
 	 * 获取token
-	 * @author 彭飞
-	 * @date 2019年8月30日下午3:13:56
-	 * @version 1.2
 	 * @param request
 	 * @param tokenLocation
 	 * @param tokenParamName

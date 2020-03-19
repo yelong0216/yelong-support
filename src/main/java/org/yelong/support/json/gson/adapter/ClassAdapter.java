@@ -14,8 +14,8 @@ import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
 /**
+ * 类适配器
  * @author PengFei
- * @date 2019年12月31日下午5:36:20
  */
 public class ClassAdapter extends TypeAdapter<Class<?>>{
 

@@ -4,9 +4,7 @@
 package org.yelong.support.orm.mybaits.sql;
 
 /**
- * @author 彭飞
- * @date 2019年11月1日上午10:00:31
- * @version 1.2
+ * @author PengFei
  */
 public class MyBatisSqlFragmentException extends RuntimeException{
 
@@ -23,8 +21,5 @@ public class MyBatisSqlFragmentException extends RuntimeException{
 	public MyBatisSqlFragmentException(Throwable t) {
 		super(t);
 	}
-
-
-
 
 }

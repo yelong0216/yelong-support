@@ -16,9 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.yelong.support.servlet.HttpServletUtils;
 
 /**
- * @author 彭飞
- * @date 2019年9月20日下午2:58:27
- * @version 1.2
+ * @author PengFei
  */
 public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
@@ -51,10 +49,7 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 获取请求消息体
-	 * @author 彭飞
-	 * @date 2019年9月20日下午3:28:10
-	 * @version 1.2
-	 * @return
+	 * @return request body
 	 */
 	public byte[] getBody() {
 		return body;
@@ -62,10 +57,7 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 获取请求消息体的字符串
-	 * @author 彭飞
-	 * @date 2019年12月6日上午11:00:12
-	 * @version 1.0
-	 * @return
+	 * @return request body str
 	 * @throws UnsupportedEncodingException
 	 */
 	public String getBodyStr() throws UnsupportedEncodingException {
@@ -78,9 +70,6 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 读取消息体
-	 * @author 彭飞
-	 * @date 2019年12月6日上午11:01:49
-	 * @version 1.0
 	 * @param request
 	 * @return
 	 * @throws IOException
@@ -91,9 +80,6 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 读取消息体
-	 * @author 彭飞
-	 * @date 2019年12月6日上午11:01:56
-	 * @version 1.0
 	 * @param request
 	 * @param charset request.setCharacterEncoding(charset);
 	 * @return
@@ -112,9 +98,6 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 读取请求消息体字符
-	 * @author 彭飞
-	 * @date 2019年12月6日上午11:03:11
-	 * @version 1.0
 	 * @param request
 	 * @return
 	 * @throws IOException
@@ -125,9 +108,6 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 读取请求消息体字符
-	 * @author 彭飞
-	 * @date 2019年12月6日上午11:03:40
-	 * @version 1.0
 	 * @param request
 	 * @param charset
 	 * @return
@@ -145,9 +125,6 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 判断request是否被HttpServletRequestReuseWrapper包装
-	 * @author 彭飞
-	 * @date 2019年12月6日上午11:09:55
-	 * @version 1.0
 	 * @param request
 	 * @return
 	 */
@@ -162,9 +139,6 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 	
 	/**
 	 * 如果request被HttpServletRequestReuseWrapper包装。或者反复包装的HttpServletRequestReuseWrapper对象。
-	 * @author 彭飞
-	 * @date 2019年12月6日上午11:08:28
-	 * @version 1.0
 	 * @param request
 	 * @return
 	 * @throws GetHttpServletRequestReuseWrapperException 如果request没有被HttpServletRequestReuseWrapper对象进行包装
@@ -182,6 +156,5 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 		}
 		throw new GetHttpServletRequestReuseWrapperException(request);
 	}
-	
 	
 }

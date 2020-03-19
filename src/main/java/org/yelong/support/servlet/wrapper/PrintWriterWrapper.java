@@ -9,9 +9,7 @@ import java.io.PrintWriter;
 /**
  * PrintWriter包装器
  * 内部使用 {@link StringBuilder}来存储数据
- * @author 彭飞
- * @date 2019年9月19日下午3:47:40
- * @version 1.2
+ * @author PengFei
  */
 public class PrintWriterWrapper extends PrintWriter{
 
@@ -56,9 +54,6 @@ public class PrintWriterWrapper extends PrintWriter{
 
 	/**
 	 * 重置打印的内容
-	 * @author 彭飞
-	 * @date 2019年11月4日上午11:11:15
-	 * @version 1.2
 	 */
 	public void reset() {
 		stringBuilder.setLength(0);

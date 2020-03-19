@@ -8,44 +8,40 @@ import ognl.OgnlContext;
 import ognl.OgnlException;
 
 /**
- * @author 彭飞
- * @date 2019年9月10日下午5:47:24
- * @version 1.2
+ * Ognl包装器
+ * @author PengFei
  */
 public class OgnlWrapper {
 
 	private OgnlContext ognlContext = new OgnlContext();
-	
+
+	public OgnlWrapper() {}
+
+	public OgnlWrapper(Object root) {
+		setRoot(root);
+	}
+
 	/**
 	 * 添加对象
-	 * @author 彭飞
-	 * @date 2019年9月10日下午5:49:51
-	 * @version 1.2
-	 * @param key
-	 * @param value
+	 * @param key 对象对应的key
+	 * @param value 对象
 	 */
 	public void put(String key,Object value) {
 		ognlContext.put(key, value);
 	}
-	
+
 	/**
 	 * 获取表达式的值
-	 * @author 彭飞
-	 * @date 2019年9月10日下午5:49:45
-	 * @version 1.2
-	 * @param expression
-	 * @return
+	 * @param expression 表达式
+	 * @return value
 	 * @throws OgnlException
 	 */
 	public Object getValue(String expression) throws OgnlException {
 		return Ognl.getValue(expression, ognlContext, ognlContext.getRoot());
 	}
-	
+
 	/**
 	 * 设置表达式的属性值
-	 * @author 彭飞
-	 * @date 2019年9月10日下午5:50:40
-	 * @version 1.2
 	 * @param expression 表达式
 	 * @param value 值
 	 * @throws OgnlException
@@ -53,25 +49,19 @@ public class OgnlWrapper {
 	public void setValue(String expression,Object value) throws OgnlException {
 		Ognl.setValue(expression, ognlContext, ognlContext.getRoot(), value);
 	}
-	
+
 	/**
-	 * @author 彭飞
-	 * @date 2019年9月11日上午10:01:31
-	 * @version 1.2
-	 * @param root
+	 * @param root 根对象
 	 */
 	public void setRoot(Object root) {
 		ognlContext.setRoot(root);
 	}
-	
+
 	/**
-	 * @date 2019年11月14日上午11:28:18
-	 * @version 1.2
-	 * @return
+	 * @return 根对象
 	 */
 	public Object getRoot() {
 		return ognlContext.getRoot();
 	}
-	
-	
+
 }

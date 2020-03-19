@@ -13,9 +13,7 @@ import org.yelong.support.servlet.wrapper.HttpServletRequestReuseWrapper;
 
 /**
  * Xss request包装器
- * @author 彭飞
- * @date 2019年9月17日下午12:06:59
- * @version 1.2
+ * @author PengFei
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestReuseWrapper{
 
@@ -53,10 +51,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestReuseWrapper
 		return value;
 	}
 	/**
-	 * 
-	 * @author 彭飞
-	 * @date 2019年9月17日下午12:09:54
-	 * @version 1.2
 	 * @param ss
 	 * @return
 	 */
@@ -70,10 +64,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestReuseWrapper
 	}
 
 	/**
-	 * 
-	 * @author 彭飞
-	 * @date 2019年9月17日下午12:09:24
-	 * @version 1.2
 	 * @param s
 	 * @return
 	 */

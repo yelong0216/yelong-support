@@ -11,9 +11,7 @@ import java.io.InputStream;
 import org.yaml.snakeyaml.Yaml;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月14日上午9:31:49
- * @version 1.2
+ * @author PengFei
  */
 public class YamlWrapper {
 
@@ -26,7 +24,6 @@ public class YamlWrapper {
 	public YamlWrapper(Yaml yaml) {
 		this.yaml = yaml;
 	}
-
 
 	public YamlProperties load(String yaml) throws FileNotFoundException {
 		return load(new File(yaml));
@@ -43,9 +40,5 @@ public class YamlWrapper {
 	public Yaml getYaml() {
 		return yaml;
 	}
-
-
-
-
-
+	
 }

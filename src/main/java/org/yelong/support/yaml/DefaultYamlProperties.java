@@ -13,9 +13,7 @@ import org.yelong.support.ognl.OgnlWrapper;
 import ognl.OgnlException;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月14日上午10:25:30
- * @version 1.2
+ * @author PengFei
  */
 public class DefaultYamlProperties implements YamlProperties{
 
@@ -94,6 +92,5 @@ public class DefaultYamlProperties implements YamlProperties{
 	public String getName() {
 		return this.name;
 	}
-	
 
 }

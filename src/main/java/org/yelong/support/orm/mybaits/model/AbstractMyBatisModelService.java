@@ -20,10 +20,8 @@ import org.yelong.support.orm.mybaits.interceptor.ModelResultSetHandlerIntecepto
 import org.yelong.support.orm.mybaits.util.MyBatisMapperParamUtils;
 
 /**
- * mybatis model service 实现
- * @author 彭飞
- * @date 2019年9月16日下午4:37:12
- * @version 1.2
+ * MyBatis model service 实现
+ * @author PengFei
  */
 public abstract class AbstractMyBatisModelService extends AbstractSqlModelService implements MyBatisModelService{
 
@@ -57,9 +55,6 @@ public abstract class AbstractMyBatisModelService extends AbstractSqlModelServic
 	}
 
 	/**
-	 * @author 彭飞
-	 * @date 2019年9月30日上午11:25:07
-	 * @version 1.2
 	 * @return
 	 */
 	protected ModelSelectMapper getModelSelectMapper() {
@@ -73,9 +68,6 @@ public abstract class AbstractMyBatisModelService extends AbstractSqlModelServic
 	}
 
 	/**
-	 * @author 彭飞
-	 * @date 2019年9月30日上午11:25:07
-	 * @version 1.2
 	 * @return
 	 */
 	protected synchronized ModelSelectMapper addModelSelectMapper() {

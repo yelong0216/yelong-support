@@ -16,9 +16,7 @@ import org.yelong.support.orm.mybaits.util.MyBatisParamTypeUtils;
  * 该对象用来存储mybatis映射的参数<br/>
  * 它应该用在成员变量中<br/>
  * 让其ognl表达式来获取参数值
- * @author 彭飞
- * @date 2019年8月28日上午10:12:29
- * @version 1.2
+ * @author PengFei
  */
 public class MyBatisParamMap extends LinkedHashMap<String, Object> implements MyBatisParamAliasable{
 
@@ -47,9 +45,6 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	/**
 	 * 添加一个参数映射<br/>
 	 * 返回该参数值的mybatis占位符<br/>
-	 * @author 彭飞
-	 * @date 2019年8月23日下午3:49:08
-	 * @version 1.2
 	 * @param value 参数值
 	 * @param jdbcType jdbc类型
 	 * @return #{ paramPlaceholder,jdbcType = mybatisParamTypeMap }
@@ -78,13 +73,9 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 		return paramPlaceholder.toString();
 	}
 	
-	
 	/**
 	 * 添加一个参数映射<br/>
 	 * 返回该参数值的mybatis占位符<br/>
-	 * @author 彭飞
-	 * @date 2019年8月23日下午3:49:08
-	 * @version 1.2
 	 * @param value 参数值 根据该值类型获取 jdbcType
 	 * @return #{ paramPlaceholder,jdbcType = mybatisParamTypeMap }
 	 */
@@ -95,9 +86,6 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	/**
 	 * 设置参数别名<br/>
 	 * 这应该是{@link Param 的value值}
-	 * @author 彭飞
-	 * @date 2019年8月23日下午3:45:35
-	 * @version 1.2
 	 * @param paramAlias
 	 */
 	public void setParamAlias(String paramAlias) {
@@ -136,9 +124,6 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	
 	/**
 	 * 是否存在参数别名
-	 * @author 彭飞
-	 * @date 2019年8月23日下午3:52:06
-	 * @version 1.2
 	 * @return <tt>true</tt> 存在别名
 	 */
 	public boolean existParamAlias() {
@@ -153,9 +138,6 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	
 	/**
 	 * 获取占位符参数映射
-	 * @author 彭飞
-	 * @date 2019年8月28日上午10:59:51
-	 * @version 1.2
 	 * @return
 	 */
 	public Map<String,Object> getPlaceholderParamMap(){
@@ -165,9 +147,6 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	/**
 	 * 添加参数映射<br/>
 	 * 这不会添加占位符映射
-	 * @author 彭飞
-	 * @date 2019年8月28日下午2:44:30
-	 * @version 1.2
 	 * @param mybatisParamMap
 	 */
 	public void putMyBatisParamMap(MyBatisParamMap mybatisParamMap){
@@ -176,9 +155,6 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	
 	/**
 	 * 生成参数占位符
-	 * @author 彭飞
-	 * @date 2019年8月28日下午4:52:55
-	 * @version 1.2
 	 * @return
 	 */
 	private synchronized String generateParamPlaceholder() {
@@ -189,6 +165,5 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 		paramNameFlag++;
 		return paramPlaceholder;
 	}
-	
 	
 }

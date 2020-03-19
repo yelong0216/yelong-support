@@ -15,9 +15,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
 /**
  * 可以获取响应结果
  * 用此对象替换response后，必须在doFilter之后调用{@link #anewWriteContent(byte[])}进行重新输入响应结果
- * @author 彭飞
- * @date 2019年9月20日下午2:59:09
- * @version 1.2
+ * @author PengFei
  */
 public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 
@@ -99,9 +97,6 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	 * 是否响应内容。
 	 * 用 HttpServletResponseReuseWrapper 包装response后，所有的write、OutputStream均会缓存起来
 	 * 需要调用 {@link #responseContent()}方法后才会真正将响应内容写入响应中
-	 * @author 彭飞
-	 * @date 2019年12月6日上午11:29:59
-	 * @version 1.0
 	 * @return
 	 */
 	public boolean isResponseContent() {
@@ -114,9 +109,6 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	/**
 	 * 将响应内容真正写入响应体中。
 	 * 注意：此方法仅能调用一次
-	 * @author 彭飞
-	 * @date 2019年12月6日上午11:36:28
-	 * @version 1.0
 	 * @throws IOException
 	 */
 	public void responseContent() throws IOException {
@@ -148,9 +140,6 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	/**
 	 * 获取响应内容
 	 * 根据out或者writer中获取存储的响应内容
-	 * @author 彭飞
-	 * @date 2019年9月24日上午10:04:06
-	 * @version 1.2
 	 * @return 响应内容
 	 * @throws IOException
 	 */
@@ -181,9 +170,6 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	
 	/**
 	 * 获取此response包装器的原response（此response包装器可能包装了一个response包装器）
-	 * @author 彭飞
-	 * @date 2019年9月23日上午11:37:39
-	 * @version 1.2
 	 * @return 获取此包装器包装的response对象
 	 */
 	public HttpServletResponse getSourceResponse() {
@@ -192,9 +178,6 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	
 	/**
 	 * 是否调用了 {@link #getOutputStream()}
-	 * @author 彭飞
-	 * @date 2019年11月4日上午10:48:28
-	 * @version 1.2
 	 * @return <tt>true</tt> 已调用
 	 */
 	public boolean isOut() {
@@ -206,9 +189,6 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	
 	/**
 	 * 是否调用了 {@link #getWriter()}
-	 * @author 彭飞
-	 * @date 2019年11月4日上午10:48:00
-	 * @version 1.2
 	 * @return <tt>true</tt> 已调用
 	 */
 	public boolean isWriter() {
@@ -220,9 +200,6 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	
 	/**
 	 * 获取包装的自己
-	 * @author 彭飞
-	 * @date 2019年12月6日下午1:01:34
-	 * @version 1.0
 	 * @return
 	 */
 	private HttpServletResponseReuseWrapper getResponseReuseWrapper() {
@@ -233,12 +210,6 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 		}
 	}
 	
-	/**
-	 * 
-	 * @author 彭飞
-	 * @date 2019年9月20日下午5:26:12
-	 * @version 1.2
-	 */
 	public class WrapperOutputStream extends ServletOutputStream {
 
 		private ByteArrayOutputStream bos;
@@ -268,4 +239,5 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 		}
 		
 	}
+	
 }

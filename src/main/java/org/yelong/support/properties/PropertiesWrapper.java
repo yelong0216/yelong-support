@@ -13,9 +13,7 @@ import java.util.Properties;
 import org.yelong.commons.util.PropertiesUtils;
 
 /**
- * @author 彭飞
- * @date 2019年9月11日上午11:05:42
- * @version 1.2
+ * @author PengFei
  */
 public class PropertiesWrapper {
 
@@ -31,12 +29,8 @@ public class PropertiesWrapper {
 		this(load(properties));
 	}
 	
-	
 	/**
 	 * 加载properties
-	 * @author 彭飞
-	 * @date 2019年9月10日下午5:57:14
-	 * @version 1.2
 	 * @param properties
 	 * @return
 	 */
@@ -46,9 +40,6 @@ public class PropertiesWrapper {
 	
 	/**
 	 * 加载properties
-	 * @author 彭飞
-	 * @date 2019年9月10日下午5:57:14
-	 * @version 1.2
 	 * @param props
 	 * @param properties
 	 * @return
@@ -82,9 +73,6 @@ public class PropertiesWrapper {
 	}
 	
 	/**
-	 * @author 彭飞
-	 * @date 2019年9月11日下午2:24:36
-	 * @version 1.2
 	 * @return 属性
 	 */
 	public Properties getProperties() {
@@ -92,9 +80,6 @@ public class PropertiesWrapper {
 	}
 	
 	/**
-	 * @author 彭飞
-	 * @date 2019年9月11日下午2:25:41
-	 * @version 1.2
 	 * @param key
 	 * @return Properties.getProperty(String key)
 	 */
@@ -104,9 +89,6 @@ public class PropertiesWrapper {
 	
 	/**
 	 * 获取值并根据指定格式进行转换
-	 * @author 彭飞
-	 * @date 2019年9月11日下午2:24:21
-	 * @version 1.2
 	 * @param key
 	 * @param charsetName
 	 * @return
@@ -122,9 +104,6 @@ public class PropertiesWrapper {
 	
 	/**
 	 * 获取值并转换为utf-8格式
-	 * @author 彭飞
-	 * @date 2019年9月11日下午2:24:04
-	 * @version 1.2
 	 * @param key
 	 * @return
 	 */
@@ -138,9 +117,6 @@ public class PropertiesWrapper {
 	
 	/**
 	 * 获取值并转换为gbk格式
-	 * @author 彭飞
-	 * @date 2019年9月11日下午2:23:48
-	 * @version 1.2
 	 * @param key
 	 * @return
 	 */
@@ -151,6 +127,5 @@ public class PropertiesWrapper {
 			return null;
 		}
 	}
-	
 	
 }

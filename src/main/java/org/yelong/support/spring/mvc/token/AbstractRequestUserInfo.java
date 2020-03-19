@@ -11,9 +11,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.beanutils.BeanUtils;
 
 /**
- * @author 彭飞
- * @date 2019年8月30日下午4:40:42
- * @version 1.2
+ * @author PengFei
  */
 public abstract class AbstractRequestUserInfo implements RequestUserInfo{
 
@@ -53,7 +51,5 @@ public abstract class AbstractRequestUserInfo implements RequestUserInfo{
 		fieldNameList.add("token");
 		return fieldNameList.toArray(new String[] {});
 	}
-
-
 
 }

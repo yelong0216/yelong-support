@@ -17,14 +17,10 @@ import org.yelong.support.spring.mvc.HandlerResponseWay;
 
 /**
  * 根据相应结果方式来响应异常信息<br/>
- * @author 彭飞
- * @date 2019年8月18日下午12:12:28
- * @version 1.0
+ * @author PengFei
  */
 public abstract class AbstractHandlerExceptionResolverByResponseWay extends AbstractHandlerExceptionResolver{
 
-	//protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractHandlerExceptionResolverByResponseWay.class);
-	
 	@Override
 	protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
 			Exception ex) {
@@ -56,9 +52,6 @@ public abstract class AbstractHandlerExceptionResolverByResponseWay extends Abst
 
 	/**
 	 * 异常信息响应返回json格式的信息
-	 * @author 彭飞
-	 * @date 2019年8月18日下午12:28:13
-	 * @version 1.0
 	 * @return
 	 */
 	protected abstract String handlerExceptionResponseJson(HttpServletRequest request, HttpServletResponse response, Object handler,
@@ -66,13 +59,9 @@ public abstract class AbstractHandlerExceptionResolverByResponseWay extends Abst
 	
 	/**
 	 * 异常信息响应返回视图
-	 * @author 彭飞
-	 * @date 2019年8月18日下午12:28:33
-	 * @version 1.0
 	 * @return
 	 */
 	protected abstract ModelAndView handlerExceptionResponseModelAndView(HttpServletRequest request, HttpServletResponse response, Object handler,
 			Exception ex);
-	
 	
 }

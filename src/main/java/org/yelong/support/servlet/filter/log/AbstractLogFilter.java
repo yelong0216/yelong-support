@@ -18,10 +18,7 @@ import org.yelong.support.servlet.wrapper.HttpServletRequestReuseWrapper;
 import org.yelong.support.servlet.wrapper.HttpServletResponseReuseWrapper;
 
 /**
- * 日志过滤器
- * @author 彭飞
- * @date 2019年9月19日下午3:23:05
- * @version 1.2
+ * @author PengFei
  */
 public abstract class AbstractLogFilter implements Filter{
 
@@ -48,9 +45,6 @@ public abstract class AbstractLogFilter implements Filter{
 
 	/**
 	 * 是否需要记录日志
-	 * @author 彭飞
-	 * @date 2019年9月19日下午3:25:29
-	 * @version 1.2
 	 * @param request
 	 * @return <tt>true</tt>表示当前请求会记录日志
 	 */
@@ -59,15 +53,10 @@ public abstract class AbstractLogFilter implements Filter{
 	/**
 	 * 记录日志
 	 * 只有当 {@link #isRecordLog(HttpServletRequest)}返回true时才会被调用
-	 * @author 彭飞
-	 * @date 2019年9月19日下午3:24:48
-	 * @version 1.2
 	 * @param logInfo 日志信息
 	 * @param request
 	 * @param response
 	 */
 	protected abstract void recordLog( HttpServletLogInfo logInfo, HttpServletRequest request, HttpServletResponse response);
-	
-	
 	
 }

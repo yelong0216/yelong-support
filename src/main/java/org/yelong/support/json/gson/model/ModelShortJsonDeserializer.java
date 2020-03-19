@@ -14,9 +14,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年11月29日下午2:00:35
- * @version 1.3
+ * @author PengFei
  */
 public class ModelShortJsonDeserializer implements JsonDeserializer<Short>{
 	

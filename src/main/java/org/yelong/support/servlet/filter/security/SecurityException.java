@@ -5,9 +5,7 @@ package org.yelong.support.servlet.filter.security;
 
 /**
  * 解密异常
- * @author 彭飞
- * @date 2019年9月17日下午4:08:38
- * @version 1.2
+ * @author PengFei
  */
 public class SecurityException extends Exception{
 
@@ -24,8 +22,5 @@ public class SecurityException extends Exception{
 	public SecurityException() {
 		
 	}
-	
-	
-	
 
 }

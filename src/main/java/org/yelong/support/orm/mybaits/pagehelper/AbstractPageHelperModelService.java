@@ -17,9 +17,7 @@ import org.yelong.support.orm.mybaits.util.MyBatisMapperParamUtils;
 import com.github.pagehelper.PageHelper;
 
 /**
- * @author 彭飞
- * @date 2019年9月30日下午4:42:10
- * @version 1.2
+ * @author PengFei
  */
 public abstract class AbstractPageHelperModelService extends AbstractExtendMyBatisModelService{
 

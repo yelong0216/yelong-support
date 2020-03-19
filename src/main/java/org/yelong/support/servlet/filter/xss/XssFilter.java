@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * xss攻击过滤
- * @author 彭飞
- * @date 2019年9月17日下午12:02:57
- * @version 1.2
+ * @author PengFei
  */
 public class XssFilter implements Filter{
 

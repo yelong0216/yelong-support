@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author pengfei<yl1430834495@163.com>
- * @date 2019年12月12日下午1:19:18
+ * @author PengFei
  */
 public final class CookieUtils {
 
@@ -17,10 +16,9 @@ public final class CookieUtils {
 	
 	/**
 	 * 获取cookie
-	 * @date 2019年12月12日下午1:21:04
 	 * @param request 请求
 	 * @param name cookie name
-	 * @return
+	 * @return cookie value
 	 */
 	public static final String getCookie(HttpServletRequest request,String name) {
 		Cookie[] cookies = request.getCookies();
@@ -36,7 +34,6 @@ public final class CookieUtils {
 	
 	/**
 	 * 添加cookie
-	 * @date 2019年12月12日下午1:22:24
 	 * @param response
 	 * @param name cookie name
 	 * @param value cookie value
@@ -47,7 +44,6 @@ public final class CookieUtils {
 	
 	/**
 	 * 移除 cookie
-	 * @date 2019年12月12日下午1:22:59
 	 * @param response 响应
 	 * @param name cookie name
 	 */
@@ -61,7 +57,6 @@ public final class CookieUtils {
 	/**
 	 * 清空cookie
 	 * 将request中的所有cookie清除
-	 * @date 2019年12月12日下午1:24:58
 	 * @param request
 	 * @param response
 	 */
@@ -71,6 +66,5 @@ public final class CookieUtils {
 			removeCookie(response, cookie.getName());
 		}
 	}
-	
 	
 }

@@ -27,9 +27,7 @@ import org.yelong.support.orm.mybaits.sql.MyBatisPlaceholderMap;
  * 如果需要使用到{@link Param}注解，则需要将该拦截器添加入mybatis中<br/>
  * 如果同pageHelper分页一起使用，则这个拦截器应该在分页拦截器之前执行（mybatis拦截器执行顺序：配置文件中越靠前执行顺序越靠后-如果存在多个拦截器，那么靠前的拦截器会被后面的拦截器进行代理，所以，越靠后的越先执行）<br/>
  * 
- * @author 彭飞
- * @date 2019年8月9日上午9:20:32
- * @version 1.0
+ * @author PengFei
  */
 @Intercepts({
 	@Signature(method = "query", type = Executor.class, args = {
@@ -47,7 +45,7 @@ public class MyBatisPlaceholderMapInterceptor extends AbstractInterceptor{
 		final Object [] args = invocation.getArgs();
 		final MappedStatement mappedStatement = (MappedStatement) args[0];
 		final Object parament = args[1];
-		Method method = getMapperMethod(mappedStatement, parament);
+		Method method = getMapperMethod(mappedStatement);
 		Parameter [] parameters = method.getParameters();
 		for (int i = 0; i < parameters.length; i++) {
 			//如果参数是mybatisDynamicSql且被Param注解标注则设置mybatisDynamicSql前缀
@@ -69,12 +67,5 @@ public class MyBatisPlaceholderMapInterceptor extends AbstractInterceptor{
 		}
 		return invocation.proceed();
 	}
-
-
-
-
-
-
-
 
 }
