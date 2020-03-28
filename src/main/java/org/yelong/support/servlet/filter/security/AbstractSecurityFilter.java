@@ -80,7 +80,10 @@ public abstract class AbstractSecurityFilter implements Filter{
 		 * 调用真正的getOutputStream写入数据
 		 * 注意，此处即使不加密也要调用，否则没有为response写入数据。会导致无响应
 		 */
-		responseWrapper.responseContent();
+		//临时修改
+		if(!responseWrapper.isResponseContent()) {
+			responseWrapper.responseContent();
+		}
 	}
 
 	/**
@@ -159,12 +162,12 @@ public abstract class AbstractSecurityFilter implements Filter{
 
 	@Override
 	public void destroy() {
-		
+
 	}
-	
+
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		
+
 	}
-	
+
 }

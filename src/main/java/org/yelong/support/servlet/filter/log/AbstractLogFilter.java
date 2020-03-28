@@ -41,6 +41,10 @@ public abstract class AbstractLogFilter implements Filter{
 		logInfo.setResponseResult(responseWrapper.getContent());
 		logInfo.setRequestParams(request.getParameterMap());
 		recordLog(logInfo,(HttpServletRequest) request, (HttpServletResponse) response);
+		//临时修改
+		if(!responseWrapper.isResponseContent()) {
+			responseWrapper.responseContent();
+		}
 	}
 
 	/**
@@ -49,7 +53,7 @@ public abstract class AbstractLogFilter implements Filter{
 	 * @return <tt>true</tt>表示当前请求会记录日志
 	 */
 	protected abstract boolean isRecordLog(HttpServletRequest request);
-	
+
 	/**
 	 * 记录日志
 	 * 只有当 {@link #isRecordLog(HttpServletRequest)}返回true时才会被调用
@@ -58,5 +62,5 @@ public abstract class AbstractLogFilter implements Filter{
 	 * @param response
 	 */
 	protected abstract void recordLog( HttpServletLogInfo logInfo, HttpServletRequest request, HttpServletResponse response);
-	
+
 }
