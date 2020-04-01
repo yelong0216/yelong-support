@@ -8,12 +8,17 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
 import org.yelong.core.model.Model;
+import org.yelong.support.orm.mybaits.interceptor.ModelResultSetHandlerInteceptor;
 
 /**
  * model 查询映射。
  * 通过拦截器生成model的结果集
+ * @see 1.0.2
+ * @deprecated 此类与{@link ModelResultSetHandlerInteceptor}联合使用。因为其类的弃用，该类也没有任何作用了。
+ * @see ModelResultSetHandlerInteceptor
  * @author PengFei
  */
+@Deprecated
 public interface ModelSelectMapper {
 
 	/**

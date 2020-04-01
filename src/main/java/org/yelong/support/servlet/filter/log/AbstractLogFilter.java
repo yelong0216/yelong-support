@@ -14,6 +14,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.yelong.support.servlet.wrapper.HttpServletRequestReuseWrapper;
 import org.yelong.support.servlet.wrapper.HttpServletResponseReuseWrapper;
 
@@ -27,6 +28,11 @@ public abstract class AbstractLogFilter implements Filter{
 			throws IOException, ServletException {
 		//不进行验证
 		if(!isRecordLog((HttpServletRequest) request)) {
+			chain.doFilter(request, response);
+			return;
+		}
+		String contentType = request.getContentType();
+		if( StringUtils.isNotBlank(contentType) && contentType.contains("multipart/form-data")) {
 			chain.doFilter(request, response);
 			return;
 		}

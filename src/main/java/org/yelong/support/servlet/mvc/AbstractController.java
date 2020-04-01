@@ -36,17 +36,17 @@ public abstract class AbstractController implements Controller{
 			throw new FileNotFoundException(file.getAbsolutePath()+"文件不存在！");
 		}
 		FileInputStream fis = new FileInputStream(file);
-		String fileName = URLEncoder.encode(filename, "UTF-8");
 		byte [] b = new byte[fis.available()];
 		fis.read(b);
 		fis.close();
-		responseFile(fileName, b);
+		responseFile(filename, b);
 	}
 	
 	@Override
-	public void responseFile( String fileName , byte [] fileBytsArray) throws IOException {
+	public void responseFile( String filename , byte [] fileBytsArray) throws IOException {
 		getResponse().setCharacterEncoding("UTF-8");
-		getResponse().setHeader("Content-Disposition", "attachment;fileName="+fileName+"");
+		filename = URLEncoder.encode(filename, "UTF-8");
+		getResponse().setHeader("Content-Disposition", "attachment;fileName="+filename+"");
 		ServletOutputStream out = getResponse().getOutputStream();
 		out.write(fileBytsArray);
 		out.flush();

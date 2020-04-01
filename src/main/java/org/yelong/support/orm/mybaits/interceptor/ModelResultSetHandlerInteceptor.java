@@ -32,17 +32,24 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.apache.ibatis.type.UnknownTypeHandler;
 import org.yelong.core.model.Model;
 import org.yelong.core.model.resolve.ModelAndTable;
+import org.yelong.support.orm.mybaits.model.AbstractMyBatisModelService;
 import org.yelong.support.orm.mybaits.model.ModelSelectMapper;
+import org.yelong.support.orm.mybaits.model.mapping.MappedStatementBuilder;
 
 /**
  * model结果集映射的默认实现。
  * 如果model没有映射结果集，则默认配置结果集进行映射
- * 
+ * @since 1.0.2
+ * @deprecated 该类在1.0.2版本中被弃用。其在多线程查询中会出现映射结果错乱的问题。其问题一般为类型转换错误（因为映射的类型错了。但是其查询的数据是对的。）
+ * 				该功能由{@link MappedStatementBuilder}所替换。由service在查询时动态的构建{@link MappedStatement}来完成动态的结果映射。
+ * @see MappedStatementBuilder
+ * @see AbstractMyBatisModelService
  * @author PengFei
  */
 @Intercepts({
 	@Signature(type = ResultSetHandler.class, method = "handleResultSets", args = {Statement.class})
 })
+@Deprecated
 public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 
 	private static final Map<String,List<ResultMap>> MODEL_MAPPED_RESULTMAP = new HashMap<>();
@@ -53,6 +60,10 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 
 	@Override
 	public Object intercept(Invocation invocation) throws Throwable {
+		boolean flag = true;
+		if(flag) {
+			return invocation.proceed();
+		}
 		DefaultResultSetHandler handler = (DefaultResultSetHandler)invocation.getTarget();
 		MappedStatement statement = (MappedStatement) FieldUtils.readDeclaredField(handler, "mappedStatement",true);
 		String nameSpace = statement.getId().substring(0,statement.getId().lastIndexOf("."));
@@ -73,7 +84,8 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 		ModelAndTable modelAndTable = getModelAndTable(handler);
 		List<ResultMap> resultMapList = getResultMap(modelAndTable, handler);
 		replaceResultMapValue(statement, resultMapList);
-		return invocation.proceed();
+		Object proceed = invocation.proceed();
+		return proceed;
 	}
 
 	/**
@@ -105,7 +117,8 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 		if( null != resultMapList) {
 			return resultMapList;
 		}
-		return builderResultMap(modelAndTable, handler);
+		resultMapList = builderResultMap(modelAndTable, handler);
+		return resultMapList;
 	}
 
 	/**
@@ -242,6 +255,15 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 		return idBuilder.toString();
 	}
 
+	
+	/*
+	 * 大致推理：
+	 * 映射的model不对。查询的数据都是对的（测试了model对象里面的值。其值不是该model该有的值，而是原来model对应表的值）
+	 * 可能是下面方法。在多线成中设置结果集出现了错误
+	 * 
+	 * 也可能是MappedStatement的问题。尝试通过Configuration添加MappedStatement
+	 */
+	
 	/**
 	 * 设置结果集
 	 * @param statement
@@ -250,7 +272,7 @@ public class ModelResultSetHandlerInteceptor extends AbstractInterceptor{
 	 * @throws IllegalArgumentException 
 	 * @throws NoSuchFieldException 
 	 */
-	protected void replaceResultMapValue(MappedStatement statement,List<ResultMap> resultMaps) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+	protected synchronized void replaceResultMapValue(MappedStatement statement,List<ResultMap> resultMaps) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
 		//ObjectUtils.setObjectPropertyValue(statement, "resultMaps", resultMaps);
 		FieldUtils.writeDeclaredField(statement, "resultMaps", resultMaps,true);
 	}
