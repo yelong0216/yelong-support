@@ -15,6 +15,7 @@ import com.google.gson.FieldAttributes;
 /**
  * Gson 排除策略
  * @author PengFei
+ * @since 1.0.0
  */
 public class ClassExclusionStrategy implements ExclusionStrategy{
 

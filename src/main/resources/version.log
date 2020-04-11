@@ -6,3 +6,9 @@
 2020-03-30 v->1.0.2
 	1、弃用了org.yelong.support.orm.mybaits.interceptor.ModelResultSetHandlerInteceptor 
 	2、修复了多线程myBatis查询出现类转换的异常
+	
+2020-04-11 v->1.0.3
+	1、新增了org.yelong.support.tools包
+	2、新增了对压缩操作的类ZipUtils
+	3、新增SqlModelExclusionStrategy类，对SqlModel字段的排除策略
+	

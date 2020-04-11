@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.yelong0216</groupId>
 	<artifactId>yelong-support</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<packaging>jar</packaging>
 	<name>yelong-support</name>
 	<url>https://github.com/yelong0216/yelong-support.git</url>
@@ -30,7 +30,7 @@
 	<properties>
 		<yelong.version>1.0.0</yelong.version>
 		<yelong-commons.version>${yelong.version}</yelong-commons.version>
-		<yelong-core.version>1.0.4</yelong-core.version>
+		<yelong-core.version>1.0.5</yelong-core.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<freemarker.version>2.3.28</freemarker.version>
 		<ognl.version>3.1.10</ognl.version>
@@ -42,6 +42,7 @@
 		<spring.version>5.1.5.RELEASE</spring.version>
 		<spring-webmvc.version>${spring.version}</spring-webmvc.version>
 		<snakeyaml.version>1.23</snakeyaml.version>
+		<ant.version>1.8.4</ant.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -122,6 +123,13 @@
 			<groupId>org.yaml</groupId>
 			<artifactId>snakeyaml</artifactId>
 			<version>${snakeyaml.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.ant/ant -->
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>${ant.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
