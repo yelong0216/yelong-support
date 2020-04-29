@@ -12,3 +12,5 @@
 	2、新增了对压缩操作的类ZipUtils
 	3、新增SqlModelExclusionStrategy类，对SqlModel字段的排除策略
 	
+2020-04-29 v->1.0.4
+	1、新增org.yelong.support.orm.DataSourcePropertiesFactory类
