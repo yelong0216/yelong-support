@@ -34,6 +34,7 @@ public class SM4Utils {
 	 * @return 这个字符串是base64格式的
 	 * @throws UnsupportedEncodingException
 	 */
+	@SuppressWarnings("restriction")
 	public static String encodeByBase64(String input,byte [] key) throws UnsupportedEncodingException {
 		return new sun.misc.BASE64Encoder().encode(encode(input.getBytes(ENCODING), key));
 	}
@@ -56,6 +57,7 @@ public class SM4Utils {
 	 * @return 解密后的字符串
 	 * @throws IOException 
 	 */
+	@SuppressWarnings("restriction")
 	public static String decodeByBase64(String input,byte [] key) throws IOException {
 		return new String(decode(new sun.misc.BASE64Decoder().decodeBuffer(input), key),ENCODING).trim();
 	}

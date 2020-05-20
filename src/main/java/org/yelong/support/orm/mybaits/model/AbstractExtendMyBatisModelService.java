@@ -4,7 +4,7 @@
 package org.yelong.support.orm.mybaits.model;
 
 import org.yelong.core.jdbc.sql.condition.ConditionSqlFragment;
-import org.yelong.core.model.Model;
+import org.yelong.core.model.Modelable;
 import org.yelong.core.model.ModelConfiguration;
 
 /**
@@ -18,7 +18,7 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 	}
 
 	@Override
-	public <M extends Model> Integer save(M model,boolean selective , 
+	public <M extends Modelable> Integer save(M model,boolean selective , 
 			ModelColumnValidateWay modelColumnValidateWay) {
 		beforeSave(model,selective,modelColumnValidateWay);
 		Integer result = super.save(model,selective, modelColumnValidateWay);
@@ -27,7 +27,7 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 	}
 
 	@Override
-	public <M extends Model, C extends ConditionSqlFragment> Integer modify(M model,
+	public <M extends Modelable, C extends ConditionSqlFragment> Integer modify(M model,
 			boolean selective , ModelColumnValidateWay modelColumnValidateWay, C conditionFragment) {
 		beforeModify(model, selective , modelColumnValidateWay, conditionFragment);
 		Integer result =  super.modify(model, selective,modelColumnValidateWay, conditionFragment);
@@ -41,7 +41,7 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 	 * @param model 
 	 * @return 
 	 */
-	protected <M extends Model> void beforeSave(M model, boolean selective , 
+	protected <M extends Modelable> void beforeSave(M model, boolean selective , 
 			ModelColumnValidateWay modelColumnValidateWay) {
 
 	}
@@ -52,7 +52,7 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 	 * @param model 
 	 * @param result 保存结果
 	 */
-	protected <M extends Model> void afterSave(M model, Integer result, boolean selective , 
+	protected <M extends Modelable> void afterSave(M model, Integer result, boolean selective , 
 			ModelColumnValidateWay modelColumnValidateWay) {
 
 	}
@@ -66,7 +66,7 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 	 * @param modelColumnValidateWay
 	 * @param conditionFragment
 	 */
-	protected <M extends Model, C extends ConditionSqlFragment> void beforeModify(M model,boolean selective , 
+	protected <M extends Modelable, C extends ConditionSqlFragment> void beforeModify(M model,boolean selective , 
 			ModelColumnValidateWay modelColumnValidateWay, C conditionFragment) {
 
 	}
@@ -81,7 +81,7 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 	 * @param modelColumnValidateWay
 	 * @param conditionFragment
 	 */
-	protected <M extends Model,C extends ConditionSqlFragment>  void afterModify(M model, Integer result,
+	protected <M extends Modelable,C extends ConditionSqlFragment>  void afterModify(M model, Integer result,
 			boolean selective , ModelColumnValidateWay modelColumnValidateWay, C conditionFragment) {
 
 	}

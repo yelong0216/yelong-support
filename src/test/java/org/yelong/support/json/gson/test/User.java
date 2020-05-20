@@ -5,6 +5,8 @@ import org.yelong.core.model.sql.SqlModel;
 
 public class User extends SqlModel{
 
+	private static final long serialVersionUID = 1982504135145414804L;
+
 	private String id = "123";
 	
 	private String username = "123";

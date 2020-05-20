@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 如果Date类型属性为空则返回""。否则返回 yyyy-MM-dd HH:mm:ss 格式字符
  * @author PengFei
+ * @deprecated 使用 {@link DateTypeAdapter}更好的控制Date与json的转换
  */
 public class DateAdapter extends TypeAdapter<Date>{
 

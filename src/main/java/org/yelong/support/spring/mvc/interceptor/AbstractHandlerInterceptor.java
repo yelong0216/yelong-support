@@ -5,14 +5,21 @@ package org.yelong.support.spring.mvc.interceptor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.yelong.commons.annotation.AnnotationUtils;
 
 /**
  * 抽象mvc拦截器。
  * 提供一些拦截器常用的方法
+ * 
+ * 可以在拦截器中抛出异常，由异常处理器来处理这些异常
+ * 
  * @author PengFei
  */
 public abstract class AbstractHandlerInterceptor extends HandlerInterceptorAdapter{
@@ -43,6 +50,39 @@ public abstract class AbstractHandlerInterceptor extends HandlerInterceptorAdapt
 		response.setContentType(contentType);
 		PrintWriter out = response.getWriter();
 		out.write(message);
+	}
+	
+	/**
+	 * 获取handler方法上面的的注解。如果方法上面没有到，则根据该方法所属的类层级递归查找
+	 * @param <A>
+	 * @param handler 处理器
+	 * @param annotation 注解
+	 * @return annotation
+	 * @since 1.0.5
+	 */
+	protected <A extends Annotation> A getHandlerMethodAnnotation(HandlerMethod handler, Class<A> annotation) {
+		return getHandlerMethodAnnotation(handler, annotation, true);
+	}
+	
+	/**
+	 * 获取handler方法上面的的注解。
+	 * @param <A>
+	 * @param handler 处理器
+	 * @param annotation 注解
+	 * @param classRecursive 类递归。<tt>true</tt> 如果方法上面没有到，则根据该方法所属的类层级递归查找
+	 * @return annotation
+	 * @since 1.0.5
+	 */
+	protected <A extends Annotation> A getHandlerMethodAnnotation(HandlerMethod handler, Class<A> annotation , boolean classRecursive) {
+		Method method = handler.getMethod();
+		if( method.isAnnotationPresent(annotation)) {
+			return method.getAnnotation(annotation);
+		}
+		if(!classRecursive) {
+			return null ;
+		}
+		Class<?> c = handler.getBeanType();
+		return AnnotationUtils.getAnnotation(c, annotation, true);
 	}
 
 }

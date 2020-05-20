@@ -16,8 +16,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.yelong.core.jdbc.BaseDataBaseOperation;
 import org.yelong.core.jdbc.sql.BoundSql;
 import org.yelong.core.jdbc.sql.executable.SelectSqlFragment;
-import org.yelong.core.model.Model;
 import org.yelong.core.model.ModelConfiguration;
+import org.yelong.core.model.Modelable;
 import org.yelong.core.model.exception.ModelServiceException;
 import org.yelong.core.model.resolve.ModelAndTable;
 import org.yelong.core.model.service.AbstractSqlModelService;
@@ -51,7 +51,7 @@ public abstract class AbstractMyBatisModelService extends AbstractSqlModelServic
 	}
 
 	@Override
-	public <M extends Model> List<M> execute(Class<M> modelClass,SelectSqlFragment selectSqlFragment) {
+	public <M extends Modelable> List<M> execute(Class<M> modelClass,SelectSqlFragment selectSqlFragment) {
 		if( selectSqlFragment.isPage() ) {
 			throw new ModelServiceException("警告：目前不支持分页查询");
 		}
@@ -124,7 +124,7 @@ public abstract class AbstractMyBatisModelService extends AbstractSqlModelServic
 	 * @param modelClass
 	 * @return 
 	 */
-	public String getStatementId(Class<? extends Model> modelClass) {
+	public String getStatementId(Class<? extends Modelable> modelClass) {
 		return modelClass.getName()+".Select";
 	}
 	

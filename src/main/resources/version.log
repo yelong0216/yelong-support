@@ -14,3 +14,7 @@
 	
 2020-04-29 v->1.0.4
 	1、新增org.yelong.support.orm.DataSourcePropertiesFactory类
+	
+20200520 -> 1.1.0
+	1、org.yelong.support.spring.mvc.interceptor.AbstractHandlerInterceptor 新增方法
+	2、兼容yelong-core 1.1.0

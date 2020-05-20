@@ -13,6 +13,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * String 类型适配器
  * @author PengFei
+ * @deprecated 使用{@link StringTypeAdapter}更好的操作String与json的转换
  */
 public class StringAdapter extends TypeAdapter<String>{
 

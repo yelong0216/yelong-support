@@ -12,8 +12,8 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.yelong.core.jdbc.sql.BoundSql;
 import org.yelong.core.jdbc.sql.executable.SelectSqlFragment;
-import org.yelong.core.model.Model;
 import org.yelong.core.model.ModelConfiguration;
+import org.yelong.core.model.Modelable;
 import org.yelong.core.model.resolve.ModelAndTable;
 import org.yelong.support.orm.mybaits.model.AbstractExtendMyBatisModelService;
 import org.yelong.support.orm.mybaits.util.MyBatisMapperParamUtils;
@@ -31,7 +31,7 @@ public abstract class AbstractPageHelperModelService extends AbstractExtendMyBat
 	}
 	
 	@Override
-	public <M extends Model> List<M> execute(Class<M> modelClass, SelectSqlFragment selectSqlFragment) {
+	public <M extends Modelable> List<M> execute(Class<M> modelClass, SelectSqlFragment selectSqlFragment) {
 		if( selectSqlFragment.isPage() ) {
 			PageHelper.startPage(selectSqlFragment.getPageNum(), selectSqlFragment.getPageSize());
 		}

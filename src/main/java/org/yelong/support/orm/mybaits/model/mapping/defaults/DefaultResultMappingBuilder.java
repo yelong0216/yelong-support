@@ -14,6 +14,7 @@ import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.apache.ibatis.type.UnknownTypeHandler;
+import org.yelong.core.model.resolve.FieldAndColumn;
 import org.yelong.core.model.resolve.ModelAndTable;
 import org.yelong.support.orm.mybaits.model.mapping.ResultMappingBuilder;
 
@@ -27,7 +28,7 @@ public class DefaultResultMappingBuilder implements ResultMappingBuilder{
 	public List<ResultMapping> build(ModelAndTable modelAndTable, Configuration configuration) {
 		List<ResultMapping> resultMappings = new ArrayList<>();
 		//modelAndTable.getFieldAndColumns().stream().filter(x->!x.isExtend())//过滤拓展字段-->我当初为啥要过滤我都忘了
-		modelAndTable.getFieldAndColumns()
+		modelAndTable.getFieldAndColumns().stream().filter(FieldAndColumn::isSelectMapping)
 		.forEach(x->{
 			List<ResultFlag> flags = new ArrayList<>();
 			//String columnName = x.getColumn();

@@ -15,6 +15,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * Gson中Integer类型适配器
  * @author PengFei
+ * @deprecated 使用{@link IntegerTypeAdapter}更好的操作Integer与json的转换
  */
 public class IntegerAdapter extends TypeAdapter<Integer>{
 
