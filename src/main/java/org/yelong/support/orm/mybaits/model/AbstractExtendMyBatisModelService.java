@@ -4,8 +4,8 @@
 package org.yelong.support.orm.mybaits.model;
 
 import org.yelong.core.jdbc.sql.condition.ConditionSqlFragment;
-import org.yelong.core.model.Modelable;
 import org.yelong.core.model.ModelConfiguration;
+import org.yelong.core.model.Modelable;
 
 /**
  * 可以拓展的modelService
