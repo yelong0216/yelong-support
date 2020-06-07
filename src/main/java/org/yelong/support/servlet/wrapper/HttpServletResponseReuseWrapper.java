@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
 /**
  * 可以获取响应结果
  * 用此对象替换response后，必须在doFilter之后调用{@link #anewWriteContent(byte[])}进行重新输入响应结果
+ * 
  * @author PengFei
  */
 public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
@@ -97,7 +98,8 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	 * 是否响应内容。
 	 * 用 HttpServletResponseReuseWrapper 包装response后，所有的write、OutputStream均会缓存起来
 	 * 需要调用 {@link #responseContent()}方法后才会真正将响应内容写入响应中
-	 * @return
+	 * 
+	 * @return <code>true</code> 是否已经响应内容
 	 */
 	public boolean isResponseContent() {
 		if( isWrapperThis ) {
@@ -109,7 +111,8 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	/**
 	 * 将响应内容真正写入响应体中。
 	 * 注意：此方法仅能调用一次
-	 * @throws IOException
+	 * 
+	 * @throws IOException 响应失败
 	 */
 	public void responseContent() throws IOException {
 		if(isWrapperThis) {
@@ -140,8 +143,9 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	/**
 	 * 获取响应内容
 	 * 根据out或者writer中获取存储的响应内容
+	 * 
 	 * @return 响应内容
-	 * @throws IOException
+	 * @throws IOException 流异常
 	 */
 	public byte[] getContent() throws IOException {
 		if( isWrapperThis ) {
@@ -170,6 +174,7 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	
 	/**
 	 * 获取此response包装器的原response（此response包装器可能包装了一个response包装器）
+	 * 
 	 * @return 获取此包装器包装的response对象
 	 */
 	public HttpServletResponse getSourceResponse() {
@@ -178,6 +183,7 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	
 	/**
 	 * 是否调用了 {@link #getOutputStream()}
+	 * 
 	 * @return <tt>true</tt> 已调用
 	 */
 	public boolean isOut() {
@@ -189,6 +195,7 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	
 	/**
 	 * 是否调用了 {@link #getWriter()}
+	 * 
 	 * @return <tt>true</tt> 已调用
 	 */
 	public boolean isWriter() {
@@ -200,7 +207,8 @@ public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper{
 	
 	/**
 	 * 获取包装的自己
-	 * @return
+	 * 
+	 * @return this
 	 */
 	private HttpServletResponseReuseWrapper getResponseReuseWrapper() {
 		if( isWrapperThis ) {

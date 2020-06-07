@@ -16,19 +16,20 @@ import java.lang.annotation.Target;
 @Target({ TYPE, METHOD })
 /**
  * 记录日志
+ * 
  * @author PengFei
  */
 public @interface RecordLog {
 
 	/**
 	 * 是否记录日志
+	 * 
 	 * @return <tt>true</tt> 记录日志
 	 */
 	boolean isRecordLog() default true;
 	
 	/**
-	 * 操作备注
-	 * @return
+	 * @return 操作备注
 	 */
 	String remark() default "";
 	

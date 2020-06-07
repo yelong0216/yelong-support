@@ -14,6 +14,7 @@ import com.google.gson.FieldAttributes;
 
 /**
  * Gson 排除策略
+ * 
  * @author PengFei
  * @since 1.0.0
  */
@@ -29,6 +30,7 @@ public class ClassExclusionStrategy implements ExclusionStrategy{
 	
 	/**
 	 * 添加忽略的类
+	 * 
 	 * @param classes 忽略的类
 	 * @return this
 	 */
@@ -40,6 +42,7 @@ public class ClassExclusionStrategy implements ExclusionStrategy{
 	/**
 	 * 添加忽略的类的属性。
 	 * 如果这个类已经被忽略({@link #addIgnoreClass(Class...)}，那么将不起作用
+	 * 
 	 * @param classes 忽略的类
 	 * @param fieldNames 忽略类中的属性
 	 * @return this
@@ -52,6 +55,7 @@ public class ClassExclusionStrategy implements ExclusionStrategy{
 	/**
 	 * 设置只操作的类型
 	 * 设置之后忽略的类将不起作用，已只操作的类型为准
+	 * 
 	 * @param classes 只操作的类
 	 * @return this
 	 */
@@ -64,6 +68,7 @@ public class ClassExclusionStrategy implements ExclusionStrategy{
 	 * 添加只操作的类型属性。
 	 * 如果这个类型不存在只操作的类型中将不起作用。
 	 * 如果这个类已经被忽略({@link #addIgnoreClass(Class...)}，那么将不起作用
+	 * 
 	 * @param classes 只操作的类
 	 * @param fieldNames 只操作类的属性
 	 * @return this

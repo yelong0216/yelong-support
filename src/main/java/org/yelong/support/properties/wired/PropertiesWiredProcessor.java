@@ -16,7 +16,9 @@ import ognl.OgnlException;
 
 /**
  * 属性装配处理器
+ * 
  * @author PengFei
+ * @param <T> bean type
  */
 public final class PropertiesWiredProcessor<T>{
 
@@ -44,7 +46,8 @@ public final class PropertiesWiredProcessor<T>{
 
 	/**
 	 * 获取装配之后的对象
-	 * @return
+	 * 
+	 * @return obj
 	 */
 	public T wiredObj() {
 		//配置文件中所有的属性名称
@@ -95,9 +98,7 @@ public final class PropertiesWiredProcessor<T>{
 	
 	/**
 	 * ognl表达式与属性名称映射
-	 * @author 彭飞
-	 * @date 2019年9月11日下午2:26:30
-	 * @version 1.2
+	 * 
 	 */
 	private static class OnglExpressionAndPropertyName{
 

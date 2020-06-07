@@ -11,6 +11,7 @@ import org.yelong.support.servlet.filter.log.HttpServletLogInfo;
 
 /**
  * spring mvc 日志过滤器
+ * 
  * @author PengFei
  */
 public abstract class AbstractSpringMvcLogFilter extends AbstractLogFilter{

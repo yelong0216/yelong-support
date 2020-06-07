@@ -18,7 +18,6 @@ import org.yelong.core.model.ModelConfiguration;
 import org.yelong.core.model.Modelable;
 import org.yelong.core.model.exception.ModelServiceException;
 import org.yelong.core.model.resolve.ModelAndTable;
-import org.yelong.core.model.service.AbstractSqlModelService;
 import org.yelong.support.orm.mybaits.model.mapping.MappedStatementBuilder;
 import org.yelong.support.orm.mybaits.model.mapping.ResultMapBuilder;
 import org.yelong.support.orm.mybaits.model.mapping.ResultMappingBuilder;
@@ -26,6 +25,7 @@ import org.yelong.support.orm.mybaits.model.mapping.defaults.DefaultMappedStatem
 import org.yelong.support.orm.mybaits.model.mapping.defaults.DefaultResultMapBuilder;
 import org.yelong.support.orm.mybaits.model.mapping.defaults.DefaultResultMappingBuilder;
 import org.yelong.support.orm.mybaits.util.MyBatisMapperParamUtils;
+import org.yelong.support.spring.jdbc.model.TransactionalModelService;
 
 /**
  * MyBatis model service 实现
@@ -33,7 +33,7 @@ import org.yelong.support.orm.mybaits.util.MyBatisMapperParamUtils;
  * @since 1.0.2 
  * @author PengFei
  */
-public abstract class AbstractMyBatisModelService extends AbstractSqlModelService implements MyBatisModelService{
+public abstract class AbstractMyBatisModelService extends TransactionalModelService implements MyBatisModelService{
 
 	private MappedStatementBuilder mappedStatementBuilder;
 
@@ -90,6 +90,7 @@ public abstract class AbstractMyBatisModelService extends AbstractSqlModelServic
 
 	/**
 	 * 默认的 sqlSource 这仅针对model的查询操作
+	 * 
 	 * @param configuration myBatis configuration 
 	 * @return default sqlSource
 	 */
@@ -99,11 +100,6 @@ public abstract class AbstractMyBatisModelService extends AbstractSqlModelServic
 		return sqlSource;
 	}
 
-	/**
-	 * Statement Id
-	 * @param modelClass
-	 * @return 
-	 */
 	public String getStatementId(Class<? extends Modelable> modelClass) {
 		return modelClass.getName()+".Select";
 	}

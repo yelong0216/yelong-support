@@ -24,9 +24,6 @@ import org.yelong.support.orm.mybaits.sql.MyBatisPlaceholderMap;
  * 	该对象作为mapper的参数。可以在mapper.xml中使用${condition}获取其条件片段 和${isCondition}来判断是否存在条件片段<br/>
  * 	如果需要使用{@link Param} 应该加入{@link MyBatisPlaceholderMapInterceptor} 拦截器，否则会出现无法获取参数问题
  * </p>
- * @author 彭飞
- * @date 2019年8月29日上午9:34:59
- * @version 1.2
  */
 public class MyBatisCombinationConditionFragment extends DefaultCombinationConditionSqlFragment implements MyBatisPlaceholderMap{
 
@@ -76,9 +73,7 @@ public class MyBatisCombinationConditionFragment extends DefaultCombinationCondi
 
 	/**
 	 * 用于mybatis mapper.xml中获取条件语句
-	 * @author 彭飞
-	 * @date 2019年8月23日下午3:35:35
-	 * @version 1.2
+	 * 
 	 * @return 条件sql语句
 	 */
 	public String getCondition() {
@@ -110,9 +105,7 @@ public class MyBatisCombinationConditionFragment extends DefaultCombinationCondi
 
 	/**
 	 * 用于mybatis mapper.xml中用来判断是否存在条件<br/>
-	 * @author 彭飞
-	 * @date 2019年8月23日下午3:34:58
-	 * @version 1.2
+	 * 
 	 * @return <tt>true</tt> 存在条件
 	 */
 	public boolean isIsCondition() {

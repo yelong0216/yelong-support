@@ -16,6 +16,7 @@ import org.yelong.support.orm.mybaits.util.MyBatisParamTypeUtils;
  * 该对象用来存储mybatis映射的参数<br/>
  * 它应该用在成员变量中<br/>
  * 让其ognl表达式来获取参数值
+ * 
  * @author PengFei
  */
 public class MyBatisParamMap extends LinkedHashMap<String, Object> implements MyBatisParamAliasable{
@@ -45,6 +46,7 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	/**
 	 * 添加一个参数映射<br/>
 	 * 返回该参数值的mybatis占位符<br/>
+	 * 
 	 * @param value 参数值
 	 * @param jdbcType jdbc类型
 	 * @return #{ paramPlaceholder,jdbcType = mybatisParamTypeMap }
@@ -76,6 +78,7 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	/**
 	 * 添加一个参数映射<br/>
 	 * 返回该参数值的mybatis占位符<br/>
+	 * 
 	 * @param value 参数值 根据该值类型获取 jdbcType
 	 * @return #{ paramPlaceholder,jdbcType = mybatisParamTypeMap }
 	 */
@@ -86,7 +89,8 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	/**
 	 * 设置参数别名<br/>
 	 * 这应该是{@link Param 的value值}
-	 * @param paramAlias
+	 * 
+	 * @param paramAlias 参数别名
 	 */
 	public void setParamAlias(String paramAlias) {
 		//如果设置同样的参数别名，则不进行处理
@@ -124,6 +128,7 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	
 	/**
 	 * 是否存在参数别名
+	 * 
 	 * @return <tt>true</tt> 存在别名
 	 */
 	public boolean existParamAlias() {
@@ -138,7 +143,8 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	
 	/**
 	 * 获取占位符参数映射
-	 * @return
+	 * 
+	 * @return 占位符参数映射
 	 */
 	public Map<String,Object> getPlaceholderParamMap(){
 		return Collections.unmodifiableMap(PLACEHOLDER_PARAM_MAP);
@@ -147,7 +153,8 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	/**
 	 * 添加参数映射<br/>
 	 * 这不会添加占位符映射
-	 * @param mybatisParamMap
+	 * 
+	 * @param mybatisParamMap 参数映射
 	 */
 	public void putMyBatisParamMap(MyBatisParamMap mybatisParamMap){
 		this.putAll(mybatisParamMap);
@@ -155,7 +162,8 @@ public class MyBatisParamMap extends LinkedHashMap<String, Object> implements My
 	
 	/**
 	 * 生成参数占位符
-	 * @return
+	 * 
+	 * @return 占位符
 	 */
 	private synchronized String generateParamPlaceholder() {
 		if(paramNameFlag == 1000) {

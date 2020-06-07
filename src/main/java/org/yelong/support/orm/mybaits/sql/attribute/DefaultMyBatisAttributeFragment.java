@@ -14,11 +14,6 @@ import org.yelong.support.orm.mybaits.sql.MyBatisBoundSql;
 import org.yelong.support.orm.mybaits.sql.MyBatisParamMap;
 import org.yelong.support.orm.mybaits.util.MyBatisParamTypeUtils;
 
-/**
- * @author 彭飞
- * @date 2019年9月11日下午6:55:03
- * @version 1.2
- */
 public class DefaultMyBatisAttributeFragment extends DefaultAttributeSqlFragment implements MyBatisAttributeFragment{
 
 	/**
@@ -120,16 +115,8 @@ public class DefaultMyBatisAttributeFragment extends DefaultAttributeSqlFragment
 		return new MyBatisBoundSql(sql, MYBATISPARAM);
 	}
 
-
-
-
-
-
 	/**
 	 * mybatis属性pojo类
-	 * @author 彭飞
-	 * @date 2019年10月21日下午2:29:51
-	 * @version 1.2
 	 */
 	protected static class MyBatisAttribute {
 
@@ -159,7 +146,4 @@ public class DefaultMyBatisAttributeFragment extends DefaultAttributeSqlFragment
 		}
 	}
 
-
-
 }
-

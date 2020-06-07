@@ -17,6 +17,7 @@ import ognl.OgnlException;
  * 实体映射。
  * 用于存储实体对象
  * 可以设置属性获取时的默认值，防止freemarker解析错误问题
+ * 
  * @author PengFei
  */
 public class EntityMap<T> extends HashMap<String,Object>{

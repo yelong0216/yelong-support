@@ -9,6 +9,7 @@ import ognl.OgnlException;
 
 /**
  * Ognl包装器
+ * 
  * @author PengFei
  */
 public class OgnlWrapper {
@@ -23,6 +24,7 @@ public class OgnlWrapper {
 
 	/**
 	 * 添加对象
+	 * 
 	 * @param key 对象对应的key
 	 * @param value 对象
 	 */
@@ -32,6 +34,7 @@ public class OgnlWrapper {
 
 	/**
 	 * 获取表达式的值
+	 * 
 	 * @param expression 表达式
 	 * @return value
 	 * @throws OgnlException
@@ -42,6 +45,7 @@ public class OgnlWrapper {
 
 	/**
 	 * 设置表达式的属性值
+	 * 
 	 * @param expression 表达式
 	 * @param value 值
 	 * @throws OgnlException

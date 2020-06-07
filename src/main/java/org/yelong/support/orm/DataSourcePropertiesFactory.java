@@ -9,6 +9,7 @@ import org.yelong.support.properties.wired.PropertiesWiredProcessorBuilder;
 
 /**
  * 读取自定义的配置创建DataSource
+ * 
  * @author PengFei
  */
 public final class DataSourcePropertiesFactory {
@@ -19,6 +20,7 @@ public final class DataSourcePropertiesFactory {
 	
 	/**
 	 * 根据配置创建数据库配置
+	 * 
 	 * @param configLocation 配置文件路径
 	 * @return 数据库配置属性
 	 * @see #createDataSourceBuilder(String, String)

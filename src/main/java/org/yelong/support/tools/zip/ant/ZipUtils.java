@@ -16,6 +16,8 @@ import org.apache.tools.ant.taskdefs.Zip;
 import org.apache.tools.ant.types.FileSet;
 
 /**
+ * 压缩、解压文件工具类
+ * 
  * @author PengFei
  * @since 1.0.3
  */
@@ -23,6 +25,7 @@ public class ZipUtils {
 	
 	/**
 	 * 压缩文件
+	 * 
 	 * @param filePathList 文件路径集合 。支持目录和文件
 	 * @param zipFilePath 压缩包文件路径
 	 */
@@ -33,6 +36,7 @@ public class ZipUtils {
 	
 	/**
 	 * 压缩文件
+	 * 
 	 * @param files 文件集合
 	 * @param zipFilePath 压缩文件路径
 	 */
@@ -62,8 +66,9 @@ public class ZipUtils {
 
 	/**
 	 * 解压zipFile文件。解压生成的文件在zipFile同级
-	 * @param zipFile
-	 * @throws FileNotFoundException
+	 * 
+	 * @param zipFile 压缩包文件
+	 * @throws FileNotFoundException 文件不存在异常
 	 */
 	public static void unZipFile(File zipFile) throws FileNotFoundException {
 		if( null == zipFile ) {
@@ -77,6 +82,7 @@ public class ZipUtils {
 
 	/**
 	 * 解.zip类型的压缩文件
+	 * 
 	 * @param zipFile zip文件路径
 	 * @param unFilePath 解压到的路径位置
 	 * @throws FileNotFoundException 如果zipFilePath文件不存在

@@ -4,12 +4,14 @@
 package org.yelong.support.orm.mybaits.mapper;
 
 import org.apache.ibatis.session.SqlSession;
+import org.yelong.support.spring.jdbc.mybatis.TransactionalMyBatisBaseDataBaseOperation;
 
 /**
  * 默认的mybatis 基础数据操作
+ * 
  * @author PengFei
  */
-public class DefaultMyBatisBaseDataBaseOperation extends AbstractMyBatisBaseDataBaseOperation{
+public class DefaultMyBatisBaseDataBaseOperation extends TransactionalMyBatisBaseDataBaseOperation{
 
 	private final SqlSession sqlSession;
 	

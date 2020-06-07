@@ -7,6 +7,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Oracle条件运算符
+ * 
  * @author PengFei
  */
 public enum OracleConditionOperator {
@@ -75,6 +76,7 @@ public enum OracleConditionOperator {
 	
 	/**
 	 * 该条件需要的值数量
+	 * 
 	 * @return 该条件需要的值数量。如果条件需要不定量的值则返回-1
 	 */
 	public Integer getNeedValueNum() {

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.yelong0216</groupId>
 	<artifactId>yelong-support</artifactId>
-	<version>1.1.0</version>
+	<version>1.2.0</version>
 	<packaging>jar</packaging>
 	<name>yelong-support</name>
 	<url>https://github.com/yelong0216/yelong-support.git</url>
@@ -28,8 +28,8 @@
 		<url>https://github.com/yelong0216/yelong-support</url>
 	</scm>
 	<properties>
-		<yelong-commons.version>1.1.0</yelong-commons.version>
-		<yelong-core.version>1.1.0</yelong-core.version>
+		<yelong-commons.version>1.2.0</yelong-commons.version>
+		<yelong-core.version>1.2.0</yelong-core.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<freemarker.version>2.3.28</freemarker.version>
 		<ognl.version>3.1.10</ognl.version>
@@ -40,6 +40,7 @@
 		<javax.servlet-api.version>4.0.1</javax.servlet-api.version>
 		<spring.version>5.1.5.RELEASE</spring.version>
 		<spring-webmvc.version>${spring.version}</spring-webmvc.version>
+		<spring-jdbc.version>${spring.version}</spring-jdbc.version>
 		<spring-context-support.version>${spring.version}</spring-context-support.version>
 		<snakeyaml.version>1.23</snakeyaml.version>
 		<ant.version>1.8.4</ant.version>
@@ -117,6 +118,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring-webmvc.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-jdbc.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

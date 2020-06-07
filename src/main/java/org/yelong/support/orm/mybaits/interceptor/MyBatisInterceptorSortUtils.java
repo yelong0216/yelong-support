@@ -13,12 +13,14 @@ import org.apache.ibatis.session.Configuration;
 
 /**
  * mybatis拦截器排序
+ * 
  * @author PengFei
  */
 public class MyBatisInterceptorSortUtils {
 	
 	/**
 	 * mybatis拦截器排序
+	 * 
 	 * @param configuration mybaits configuration
 	 * @param c 排序
 	 * @throws Exception

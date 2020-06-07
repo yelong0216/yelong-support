@@ -24,6 +24,7 @@ import org.springframework.core.io.Resource;
  * ApplicationContext装饰器
  * 如果这个类没有被Spring进行初始化则使用会出现空指针异常<br/>
  * 这个类不应该在属于Spring容器的对象中使用（导致该类未初始化的错误）
+ * 
  * @author PengFei
  */
 public class ApplicationContextDecorator implements ApplicationContextAware{

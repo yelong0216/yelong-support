@@ -9,6 +9,7 @@ import org.yelong.core.model.Modelable;
 
 /**
  * 可以拓展的modelService
+ * 
  * @author PengFei
  */
 public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisModelService{
@@ -35,52 +36,21 @@ public abstract class AbstractExtendMyBatisModelService extends AbstractMyBatisM
 		return result;
 	}
 
-	/**
-	 * 在保存之前
-	 * @param <M>
-	 * @param model 
-	 * @return 
-	 */
 	protected <M extends Modelable> void beforeSave(M model, boolean selective , 
 			ModelColumnValidateWay modelColumnValidateWay) {
 
 	}
 
-	/**
-	 * 保存之后
-	 * @param <M>
-	 * @param model 
-	 * @param result 保存结果
-	 */
 	protected <M extends Modelable> void afterSave(M model, Integer result, boolean selective , 
 			ModelColumnValidateWay modelColumnValidateWay) {
 
 	}
 
-	/**
-	 * 修改之前
-	 * @param <M>
-	 * @param <C>
-	 * @param model
-	 * @param selective
-	 * @param modelColumnValidateWay
-	 * @param conditionFragment
-	 */
 	protected <M extends Modelable, C extends ConditionSqlFragment> void beforeModify(M model,boolean selective , 
 			ModelColumnValidateWay modelColumnValidateWay, C conditionFragment) {
 
 	}
 
-	/**
-	 * 修改之后
-	 * @param <M>
-	 * @param <C>
-	 * @param model
-	 * @param result
-	 * @param selective
-	 * @param modelColumnValidateWay
-	 * @param conditionFragment
-	 */
 	protected <M extends Modelable,C extends ConditionSqlFragment>  void afterModify(M model, Integer result,
 			boolean selective , ModelColumnValidateWay modelColumnValidateWay, C conditionFragment) {
 

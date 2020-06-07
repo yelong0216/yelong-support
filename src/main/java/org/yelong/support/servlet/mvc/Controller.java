@@ -28,18 +28,21 @@ public interface Controller {
 	
 	/**
 	 * 响应一个文本
+	 * 
 	 * @param text 内容
 	 */
 	void responseText(String text)  throws IOException ;
 	
 	/**
 	 * 响应一个文件
+	 * 
 	 * @param file 文件
 	 */
 	void responseFile(File file)  throws IOException ;
 	
 	/**
 	 * 响应一个文件并指定文件的名称
+	 * 
 	 * @param file 文件
 	 * @param filename 响应的文件名称。默认为 {@link File#getName()}
 	 * @throws IOException
@@ -48,6 +51,7 @@ public interface Controller {
 	
 	/**
 	 * 响应文件
+	 * 
 	 * @param fileByteArray 文件流
 	 * @param fileName 文件名称
 	 * @throws IOException
@@ -56,6 +60,7 @@ public interface Controller {
 	
 	/**
 	 * 设置响应内容
+	 * 
 	 * @param content 内容字节数组
 	 */
 	void responseContent(byte [] content)  throws IOException ;

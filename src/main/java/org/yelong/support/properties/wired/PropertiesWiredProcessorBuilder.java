@@ -11,6 +11,7 @@ import org.yelong.core.annotation.Nullable;
 
 /**
  * 构建属性装配执行器
+ * 
  * @author PengFei
  */
 public class PropertiesWiredProcessorBuilder {
@@ -18,7 +19,8 @@ public class PropertiesWiredProcessorBuilder {
 	/**
 	 * 构建属性装配执行器
 	 * objClass必须被{@link PropertiesWired}进行标注
-	 * @param <T>
+	 * 
+	 * @param <T> bean type
 	 * @param objClass 被装配的属性类
 	 * @return 属性装配执行器
 	 * @throws InstantiationException objClass不支持实例化
@@ -31,10 +33,8 @@ public class PropertiesWiredProcessorBuilder {
 	/**
 	 * 构建属性装配执行器
 	 * objClass必须被{@link PropertiesWired}进行标注
-	 * @author 彭飞
-	 * @date 2019年9月11日下午3:34:27
-	 * @version 1.2
-	 * @param <T>
+	 * 
+	 * @param <T> bean type
 	 * @param objClass 被装配的属性类
 	 * @param properties 属性对象
 	 * @return 属性装配执行器
@@ -48,10 +48,8 @@ public class PropertiesWiredProcessorBuilder {
 	/**
 	 * 构建属性装配执行器
 	 * objClass必须被{@link PropertiesWired}进行标注
-	 * @author 彭飞
-	 * @date 2019年9月11日下午3:34:27
-	 * @version 1.2
-	 * @param <T>
+	 * 
+	 * @param <T> bean type
 	 * @param objClass 被装配的属性类
 	 * @param properties  属性对象
 	 * @param propertiesPrefix 属性前缀
@@ -67,7 +65,8 @@ public class PropertiesWiredProcessorBuilder {
 	/**
 	 * 构建属性装配执行器
 	 * objClass必须被{@link PropertiesWired}进行标注
-	 * @param <T>
+	 * 
+	 * @param <T> bean type
 	 * @param obj 被装配的对象
 	 * @return 属性装配执行器
 	 * @throws UnsupportedOperationException objClass没有被{@link PropertiesWired}进行标注
@@ -91,7 +90,8 @@ public class PropertiesWiredProcessorBuilder {
 	
 	/**
 	 * 构建属性装配执行器
-	 * @param <T>
+	 * 
+	 * @param <T> bean type
 	 * @param obj 被装配的对象
 	 * @param properties 属性对象
 	 * @return 属性装配执行器
@@ -107,7 +107,8 @@ public class PropertiesWiredProcessorBuilder {
 	
 	/**
 	 * 构建属性装配执行器
-	 * @param <T>
+	 * 
+	 * @param <T> bean type
 	 * @param obj 被装配的对象
 	 * @param properties 属性对象
 	 * @param propertiesPrefix 属性前缀

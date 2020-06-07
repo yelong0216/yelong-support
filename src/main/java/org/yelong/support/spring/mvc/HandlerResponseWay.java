@@ -12,6 +12,7 @@ import org.springframework.web.method.HandlerMethod;
 
 /**
  * 处理器响应方式
+ * 
  * @author PengFei
  */
 public enum HandlerResponseWay {
@@ -27,6 +28,7 @@ public enum HandlerResponseWay {
 	 * 1、处理器方法存在{@link ResponseBody}注解
 	 * 2、处理器方法类上存在{@link ResponseBody}注解
 	 * 3、响应结果为{@link ResponseEntity}
+	 * 
 	 * @param handlerMethod 处理器方法
 	 * @return 处理器方法的相应方式
 	 */

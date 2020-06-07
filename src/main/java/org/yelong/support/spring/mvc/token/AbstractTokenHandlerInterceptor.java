@@ -3,8 +3,6 @@
  */
 package org.yelong.support.spring.mvc.token;
 
-import java.lang.reflect.Method;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,6 +16,7 @@ import org.yelong.support.spring.mvc.token.TokenValidate.TokenLocation;
 
 /**
  * 抽象token拦截器实现
+ * 
  * @author PengFei
  */
 public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInterceptor{
@@ -65,8 +64,8 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	
 	/**
 	 * 是否验证token
-	 * @date 2019年12月12日上午10:47:46
-	 * @return
+	 * 
+	 * @return <code>true</code> 验证token
 	 */
 	protected boolean isValidateToken(HttpServletRequest request , HandlerMethod handlerMethod ,
 				@Nullable TokenValidate tokenValidate) {
@@ -79,6 +78,7 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	
 	/**
 	 * 验证token<br/>
+	 * 
 	 * @param token 请求中的token
 	 * @return <tt>true</tt> 这是一个有效的token
 	 * @throws InvalidTokenException 无效的token
@@ -89,6 +89,7 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	 * 有效的token处理<br/>
 	 * 只有当token是有效且 saveRequesteUserInfo = true 时才会被调用<br/>
 	 * 初始化该请求用户的信息<br/>
+	 * 
 	 * @param request 请求
 	 * @param response 响应
 	 * @param handler 处理器
@@ -102,6 +103,7 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	/**
 	 * 只有当token是无效时才会被调用<br/>
 	 * 处理无效token的响应结果
+	 * 
 	 * @param request 请求
 	 * @param response 响应
 	 * @param invalidTokenException 无效token异常信息
@@ -113,36 +115,21 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	/**
 	 * 根据处理器方法、处理器方法类、处理器方法类的父类直至Object.class中获取TokenValidate<br/>
 	 * 如果没有TokenValidate则返回null
+	 * 
 	 * @param handlerMethod 处理器方法
-	 * @return 
+	 * @return TokenValidate
 	 */
 	protected TokenValidate getTokenValidate(HandlerMethod hanlderMethod) {
-		Method method = hanlderMethod.getMethod();
-		if( method.isAnnotationPresent(TokenValidate.class)) {
-			return method.getAnnotation(TokenValidate.class);
-		}
-		Class<?> c = hanlderMethod.getBeanType();
-		if( c.isAnnotationPresent(TokenValidate.class) ) {
-			return c.getAnnotation(TokenValidate.class);
-		}
-		Class<?> superClass = c.getSuperclass();
-		while(true) {
-			if( superClass == Object.class ) {
-				return null;
-			}
-			if( superClass.isAnnotationPresent(TokenValidate.class) ) {
-				return superClass.getAnnotation(TokenValidate.class);
-			}
-			superClass = superClass.getSuperclass();
-		}
+		return getHandlerMethodAnnotation(hanlderMethod, TokenValidate.class);
 	}
 	
 	
 	/**
 	 * 获取请求中的token
-	 * @param request
-	 * @param tokenValidate
-	 * @return
+	 * 
+	 * @param request request
+	 * @param tokenValidate tokenValidate
+	 * @return token 值
 	 */
 	protected String getToken(HttpServletRequest request , TokenValidate tokenValidate) {
 		return getToken(request, tokenValidate.tokenLocation(), tokenValidate.tokenParamName());
@@ -150,9 +137,10 @@ public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInt
 	
 	/**
 	 * 获取token
-	 * @param request
-	 * @param tokenLocation
-	 * @param tokenParamName
+	 * 
+	 * @param request request
+	 * @param tokenLocation token 存放的未知
+	 * @param tokenParamName token的名称
 	 * @return token值
 	 */
 	protected String getToken(HttpServletRequest request , TokenLocation [] tokenLocations,String tokenParamName) {

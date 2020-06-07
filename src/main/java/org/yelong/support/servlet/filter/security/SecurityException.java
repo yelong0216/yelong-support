@@ -5,6 +5,7 @@ package org.yelong.support.servlet.filter.security;
 
 /**
  * 解密异常
+ * 
  * @author PengFei
  */
 public class SecurityException extends Exception{

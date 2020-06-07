@@ -22,7 +22,8 @@ public class HttpServletUtils {
 
 	/**
 	 * 读取请求消息体
-	 * @param request
+	 * 
+	 * @param request request
 	 * @return request body
 	 */
 	public static String readerBodyStr(HttpServletRequest request) {
@@ -41,9 +42,10 @@ public class HttpServletUtils {
 
 	/**
 	 * 读取请求消息体
-	 * @param request
+	 * 
+	 * @param request request
 	 * @return request body
-	 * @throws IOException
+	 * @throws IOException 流异常
 	 */
 	public static byte [] readerBody(HttpServletRequest request) throws IOException {
 		InputStream is = request.getInputStream();
@@ -59,7 +61,8 @@ public class HttpServletUtils {
 	/**
 	 * 获取request的请求参数。
 	 * 格式：key=value&key=value
-	 * @param request
+	 * 
+	 * @param request request
 	 * @return request的请求参数。
 	 */
 	public static String getRequestParamsStr(HttpServletRequest request) {
@@ -95,7 +98,8 @@ public class HttpServletUtils {
 	 * (！注意不要加X-Real-IP配置)
 	 * 配置好后重启Nginx即可
 	 * 这样java中获取的ip就是真实的ip了（不考虑用户使用代理或者VPN），即使用户伪造请求头，我们获取到的仍然是真实ip。如果Nginx不想配置X-Real-IP，那么也要删除掉java中对应的获取X-Real-IP代码
-	 * @param request
+	 * 
+	 * @param request request
 	 * @return 请求的ip
 	 */
 	public static String getIpAddrByNginxReverseProxy(HttpServletRequest request) throws UnknownHostException {

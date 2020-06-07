@@ -55,7 +55,8 @@ public abstract class AbstractLogFilter implements Filter{
 
 	/**
 	 * 是否需要记录日志
-	 * @param request
+	 * 
+	 * @param request request
 	 * @return <tt>true</tt>表示当前请求会记录日志
 	 */
 	protected abstract boolean isRecordLog(HttpServletRequest request);
@@ -63,9 +64,10 @@ public abstract class AbstractLogFilter implements Filter{
 	/**
 	 * 记录日志
 	 * 只有当 {@link #isRecordLog(HttpServletRequest)}返回true时才会被调用
+	 * 
 	 * @param logInfo 日志信息
-	 * @param request
-	 * @param response
+	 * @param request request 
+	 * @param response response
 	 */
 	protected abstract void recordLog( HttpServletLogInfo logInfo, HttpServletRequest request, HttpServletResponse response);
 

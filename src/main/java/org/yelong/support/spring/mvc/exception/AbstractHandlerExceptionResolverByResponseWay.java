@@ -17,6 +17,7 @@ import org.yelong.support.spring.mvc.HandlerResponseWay;
 
 /**
  * 根据相应结果方式来响应异常信息<br/>
+ * 
  * @author PengFei
  */
 public abstract class AbstractHandlerExceptionResolverByResponseWay extends AbstractHandlerExceptionResolver{
@@ -52,14 +53,16 @@ public abstract class AbstractHandlerExceptionResolverByResponseWay extends Abst
 
 	/**
 	 * 异常信息响应返回json格式的信息
-	 * @return
+	 * 
+	 * @return json
 	 */
 	protected abstract String handlerExceptionResponseJson(HttpServletRequest request, HttpServletResponse response, Object handler,
 			Exception ex);
 	
 	/**
 	 * 异常信息响应返回视图
-	 * @return
+	 * 
+	 * @return 视图
 	 */
 	protected abstract ModelAndView handlerExceptionResponseModelAndView(HttpServletRequest request, HttpServletResponse response, Object handler,
 			Exception ex);

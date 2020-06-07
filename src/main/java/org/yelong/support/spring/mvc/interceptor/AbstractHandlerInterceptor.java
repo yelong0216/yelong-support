@@ -29,9 +29,10 @@ public abstract class AbstractHandlerInterceptor extends HandlerInterceptorAdapt
 	/**
 	 * 使用默认的contentType响应信息<br/>
 	 * {@link #DEFAULT_RESPONSE_CONTENT_TYPE}
+	 * 
 	 * @param response http响应对象
 	 * @param message 响应消息
-	 * @throws IOException
+	 * @throws IOException 流异常
 	 */
 	@Deprecated
 	protected void writer(HttpServletResponse response , String message ) throws IOException {
@@ -40,10 +41,11 @@ public abstract class AbstractHandlerInterceptor extends HandlerInterceptorAdapt
 
 	/**
 	 * 使用指定的contentType响应数据<br/>
+	 * 
 	 * @param response http响应对象
 	 * @param message 响应消息
 	 * @param contentType 文本类型
-	 * @throws IOException
+	 * @throws IOException 流异常
 	 */
 	@Deprecated
 	protected void writer(HttpServletResponse response , String message ,String contentType) throws IOException {
@@ -54,7 +56,8 @@ public abstract class AbstractHandlerInterceptor extends HandlerInterceptorAdapt
 	
 	/**
 	 * 获取handler方法上面的的注解。如果方法上面没有到，则根据该方法所属的类层级递归查找
-	 * @param <A>
+	 * 
+	 * @param <A> annotation type
 	 * @param handler 处理器
 	 * @param annotation 注解
 	 * @return annotation
@@ -66,7 +69,8 @@ public abstract class AbstractHandlerInterceptor extends HandlerInterceptorAdapt
 	
 	/**
 	 * 获取handler方法上面的的注解。
-	 * @param <A>
+	 * 
+	 * @param <A> annotation type
 	 * @param handler 处理器
 	 * @param annotation 注解
 	 * @param classRecursive 类递归。<tt>true</tt> 如果方法上面没有到，则根据该方法所属的类层级递归查找

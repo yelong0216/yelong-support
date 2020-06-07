@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 /**
  * PrintWriter包装器
  * 内部使用 {@link StringBuilder}来存储数据
+ * 
  * @author PengFei
  */
 public class PrintWriterWrapper extends PrintWriter{

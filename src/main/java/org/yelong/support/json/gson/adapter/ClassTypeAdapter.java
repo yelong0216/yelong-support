@@ -15,9 +15,10 @@ import com.google.gson.stream.JsonWriter;
 
 /**
  * 类适配器
+ * 
  * @author PengFei
  */
-public class ClassAdapter extends TypeAdapter<Class<?>>{
+public class ClassTypeAdapter extends TypeAdapter<Class<?>>{
 
 	@Override
 	public void write(JsonWriter out, Class<?> value) throws IOException {

@@ -12,11 +12,6 @@ import org.yelong.support.orm.mybaits.sql.MyBatisBoundSql;
 import org.yelong.support.orm.mybaits.sql.MyBatisParamMap;
 import org.yelong.support.orm.mybaits.sql.MyBatisSqlFragment;
 
-/**
- * @author 彭飞
- * @date 2019年10月24日下午5:47:35
- * @version 1.2
- */
 public class MyBatisSimpleConditionFragment extends DefaultSimpleConditionSqlFragment implements MyBatisSqlFragment{
 
 	private final String myBatisConditionFragment;
@@ -61,7 +56,5 @@ public class MyBatisSimpleConditionFragment extends DefaultSimpleConditionSqlFra
 	public MyBatisParamMap getMyBatisParamMap() {
 		return MYBATISPARAM;
 	}
-
-
 
 }

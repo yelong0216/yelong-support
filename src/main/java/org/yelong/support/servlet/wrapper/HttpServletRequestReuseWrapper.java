@@ -16,6 +16,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.yelong.support.servlet.HttpServletUtils;
 
 /**
+ * 可以重复的请求包装器
+ * 重复使用包含：请求消息体
+ * 
  * @author PengFei
  */
 public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
@@ -49,6 +52,7 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 获取请求消息体
+	 * 
 	 * @return request body
 	 */
 	public byte[] getBody() {
@@ -57,6 +61,7 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 获取请求消息体的字符串
+	 * 
 	 * @return request body str
 	 * @throws UnsupportedEncodingException
 	 */
@@ -70,9 +75,10 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 读取消息体
-	 * @param request
-	 * @return
-	 * @throws IOException
+	 * 
+	 * @param request request
+	 * @return 消息体
+	 * @throws IOException 读取消息体异常
 	 */
 	public static final byte [] readerBody(HttpServletRequest request) throws IOException {
 		return readerBody(request, null);
@@ -80,10 +86,11 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 读取消息体
-	 * @param request
+	 * 
+	 * @param request request
 	 * @param charset request.setCharacterEncoding(charset);
-	 * @return
-	 * @throws IOException
+	 * @return 消息体且指定编码
+	 * @throws IOException 读取消息体异常
 	 */
 	public static final byte [] readerBody(HttpServletRequest request,String charset) throws IOException {
 		if(StringUtils.isNotBlank(charset)) {
@@ -98,9 +105,10 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 读取请求消息体字符
-	 * @param request
-	 * @return
-	 * @throws IOException
+	 * 
+	 * @param request request
+	 * @return 读取请求消息体字符串
+	 * @throws IOException 消息体读取异常
 	 */
 	public static final String readerBodyStr(HttpServletRequest request) throws IOException {
 		return readerBodyStr(request, null);
@@ -108,12 +116,12 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 读取请求消息体字符
-	 * @param request
-	 * @param charset
-	 * @return
-	 * @throws GetHttpServletRequestReuseWrapperException 
-	 * @throws  
-	 * @throws IOException
+	 * 
+	 * @param request request
+	 * @param charset 编码
+	 * @return 读取请求消息体字符串，并指定编码格式
+	 * 
+	 * @throws IOException 消息体读取异常
 	 */
 	public static final String readerBodyStr(HttpServletRequest request,String charset) throws IOException {
 		if( isHttpServletRequestReuseWrapper(request) ) {
@@ -125,8 +133,9 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 
 	/**
 	 * 判断request是否被HttpServletRequestReuseWrapper包装
-	 * @param request
-	 * @return
+	 * 
+	 * @param request request
+	 * @return <code>true</code> 是被 HttpServletRequestReuseWrapper 包装的
 	 */
 	public static boolean isHttpServletRequestReuseWrapper(HttpServletRequest request) {
 		try {
@@ -139,8 +148,9 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 	
 	/**
 	 * 如果request被HttpServletRequestReuseWrapper包装。或者反复包装的HttpServletRequestReuseWrapper对象。
-	 * @param request
-	 * @return
+	 * 
+	 * @param request request
+	 * @return HttpServletRequestReuseWrapper obj
 	 * @throws GetHttpServletRequestReuseWrapperException 如果request没有被HttpServletRequestReuseWrapper对象进行包装
 	 */
 	public static HttpServletRequestReuseWrapper getHttpServletRequestReuseWrapper(HttpServletRequest request) throws GetHttpServletRequestReuseWrapperException {

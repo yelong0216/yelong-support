@@ -14,12 +14,14 @@ import org.apache.ibatis.plugin.Plugin;
 
 /**
  * 抽象的拦截器实现
+ * 
  * @author PengFei
  */
 public abstract class AbstractInterceptor implements Interceptor{
 	
 	/**
 	 * 获取MappedStatement对应的接口中的方法，且这个方法不应被重载，如果对应的方法出现重载，则会抛出异常
+	 * 
 	 * @param mappedStatement
 	 * @return 对应的接口方法。如果没有此方法则返回null
 	 * @throws Exception 如果这个方法被重载了

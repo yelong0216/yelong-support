@@ -5,6 +5,8 @@ package org.yelong.support.json.gson.nullpadding;
 
 import java.lang.reflect.Type;
 
+import org.yelong.support.json.gson.adapter.IntegerTypeAdapter;
+
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonPrimitive;
@@ -13,6 +15,7 @@ import com.google.gson.JsonSerializer;
 
 /**
  * @author PengFei
+ * @see IntegerTypeAdapter
  */
 public class IntegerNullPaddingSerializer implements JsonSerializer<Integer>{
 

@@ -16,7 +16,8 @@ public final class CookieUtils {
 	
 	/**
 	 * 获取cookie
-	 * @param request 请求
+	 * 
+	 * @param request request
 	 * @param name cookie name
 	 * @return cookie value
 	 */
@@ -34,7 +35,8 @@ public final class CookieUtils {
 	
 	/**
 	 * 添加cookie
-	 * @param response
+	 * 
+	 * @param response response
 	 * @param name cookie name
 	 * @param value cookie value
 	 */
@@ -44,6 +46,7 @@ public final class CookieUtils {
 	
 	/**
 	 * 移除 cookie
+	 * 
 	 * @param response 响应
 	 * @param name cookie name
 	 */
@@ -57,8 +60,9 @@ public final class CookieUtils {
 	/**
 	 * 清空cookie
 	 * 将request中的所有cookie清除
-	 * @param request
-	 * @param response
+	 * 
+	 * @param request request
+	 * @param response response
 	 */
 	public static final void clearCookie(HttpServletRequest request ,HttpServletResponse response) {
 		Cookie[] cookies = request.getCookies();

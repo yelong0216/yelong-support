@@ -16,6 +16,7 @@ import org.yelong.support.orm.mybaits.util.MyBatisMapperParamUtils;
 /**
  * 基于mybatis的基础数据操作实现。
  * 这里的操作将通过mybatis来执行
+ * 
  * @author PengFei
  */
 public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBaseDataBaseOperation{
@@ -88,8 +89,7 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 	}
 
 	/**
-	 * 获取sqlSession
-	 * @return
+	 * @return sqlSession
 	 */
 	public abstract SqlSession getSqlSession();
 
@@ -159,12 +159,6 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 		}
 	}
 	
-	/**
-	 * 
-	 * @param sql
-	 * @param mybatisParamMap
-	 * @return
-	 */
 	private Map<String,Object> getParams(String sql , MyBatisParamMap mybatisParamMap){
 		return MyBatisMapperParamUtils.getMyBatisMapperParams(sql, mybatisParamMap);
 	}

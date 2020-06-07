@@ -7,9 +7,6 @@ import org.yelong.core.annotation.Nullable;
 
 /**
  * MyBatis类型的绑定的sql
- * @author 彭飞
- * @date 2019年10月21日下午2:55:57
- * @version 1.2
  */
 public class MyBatisBoundSql{
 

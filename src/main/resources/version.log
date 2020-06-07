@@ -15,6 +15,17 @@
 2020-04-29 v->1.0.4
 	1、新增org.yelong.support.orm.DataSourcePropertiesFactory类
 	
-20200520 -> 1.1.0
+2020-05-20 -> 1.1.0
 	1、org.yelong.support.spring.mvc.interceptor.AbstractHandlerInterceptor 新增方法
 	2、兼容yelong-core 1.1.0
+	
+2020-05-27 -> 1.1.1
+	1、新增org.yelong.support.spring.jdbc.model.TransactionalModelService 类，解决Mybatis没有把事务交给Spring的问题
+	2、修改org.yelong.support.orm.mybaits.model.AbstractMyBatisModelService 继承类为TransactionalModelService
+	3、新增org.yelong.support.spring.jdbc.mybatis.TransactionalMyBatisBaseDataBaseOperation 类，解决Mybatis没有把事务交给Spring的问题
+	4、修改org.yelong.support.orm.mybaits.mapper.DefaultMyBatisBaseDataBaseOperation 继承类为TransactionalMyBatisBaseDataBaseOperation
+	
+2020-06-07 -> 1.2.0
+	1、删除org.yelong.support.security包。该包的所有功能由 yelong-security 项目实现
+	2、修改所有注释的风格
+	

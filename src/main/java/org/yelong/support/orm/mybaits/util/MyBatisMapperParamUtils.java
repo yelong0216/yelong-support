@@ -20,9 +20,10 @@ public class MyBatisMapperParamUtils {
 	 * 将原生sql(select * from USER where username like ?)转换为mybatis使用的sql(select * from USER where username like #{username})
 	 * 并将参数一并封装到map中。
 	 * Mapper映射器中的参数仅传入一个Map。且sql语句为${sql}进行声明即可
-	 * @param sql
-	 * @param params
-	 * @return
+	 * 
+	 * @param sql sql
+	 * @param params 参数
+	 * @return sql、以及sql的参数映射
 	 */
 	public static Map<String,Object> getMyBatisMapperParams(String sql ,@Nullable Object [] params){
 		Map<String,Object> mybatisParams = new HashMap<String,Object>();
@@ -48,12 +49,6 @@ public class MyBatisMapperParamUtils {
 		return UUID.randomUUID().toString().replace("-", "").toLowerCase();
 	}
 	
-	/**
-	 * 
-	 * @param sql
-	 * @param mybatisParamMap
-	 * @return
-	 */
 	public static Map<String,Object> getMyBatisMapperParams(String sql ,@Nullable MyBatisParamMap mybatisParamMap){
 		Map<String,Object> params = new HashMap<String, Object>(2);
 		params.put("sql", sql);

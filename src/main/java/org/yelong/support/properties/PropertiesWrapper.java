@@ -3,10 +3,6 @@
  */
 package org.yelong.support.properties;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
@@ -30,46 +26,17 @@ public class PropertiesWrapper {
 	}
 	
 	/**
-	 * 加载properties
-	 * @param properties
-	 * @return
+	 * @see PropertiesUtils#load(String)
 	 */
 	public static Properties load(String properties){
-		return load(new Properties(), properties);
+		return PropertiesUtils.load(properties);
 	}
-	
+
 	/**
-	 * 加载properties
-	 * @param props
-	 * @param properties
-	 * @return
+	 * @see PropertiesUtils#load(Properties, String)
 	 */
 	public static Properties load(Properties props , String properties){
-		Class<?> c = PropertiesUtils.class;
-		try {
-			InputStream inStream = null;
-			if(properties.contains(":"))
-				inStream = new FileInputStream(new File(properties));
-			if(null == inStream)
-				inStream = c.getResourceAsStream(properties);
-			if(null == inStream)
-				inStream = ClassLoader.getSystemResourceAsStream(properties);
-			if(null == inStream)
-				inStream = c.getClassLoader().getResourceAsStream(properties);
-			if(null == inStream)
-				inStream = c.getClassLoader().getResourceAsStream("resources/"+properties);
-			if(null == inStream)
-				inStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(properties);
-			if(null != inStream){
-				props.load(inStream);
-				inStream.close();
-			}else{
-				System.out.println(properties+"文件没有找到！");
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return props;
+		return PropertiesUtils.load(props, properties);
 	}
 	
 	/**
@@ -80,7 +47,7 @@ public class PropertiesWrapper {
 	}
 	
 	/**
-	 * @param key
+	 * @param key key
 	 * @return Properties.getProperty(String key)
 	 */
 	public String get(String key) {
@@ -89,10 +56,10 @@ public class PropertiesWrapper {
 	
 	/**
 	 * 获取值并根据指定格式进行转换
-	 * @param key
-	 * @param charsetName
-	 * @return
-	 * @throws UnsupportedEncodingException
+	 * @param key key 
+	 * @param charsetName 字符串编码
+	 * @return 转换为指定编码的值
+	 * @throws UnsupportedEncodingException 编码异常
 	 */
 	public String get(String key , String charsetName) throws UnsupportedEncodingException {
 		String value = properties.getProperty(key);
@@ -104,8 +71,8 @@ public class PropertiesWrapper {
 	
 	/**
 	 * 获取值并转换为utf-8格式
-	 * @param key
-	 * @return
+	 * @param key key
+	 * @return UTF-8格式的值
 	 */
 	public String getUTF8(String key) {
 		try {
@@ -117,8 +84,8 @@ public class PropertiesWrapper {
 	
 	/**
 	 * 获取值并转换为gbk格式
-	 * @param key
-	 * @return
+	 * @param key key
+	 * @return GBK格式的值
 	 */
 	public String getGBK(String key) {
 		try {

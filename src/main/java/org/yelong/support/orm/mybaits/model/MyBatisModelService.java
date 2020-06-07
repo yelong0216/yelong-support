@@ -9,6 +9,7 @@ import org.yelong.support.orm.mybaits.mapper.MyBatisBaseDataBaseOperation;
 
 /**
  * mybatis model service
+ * 
  * @author PengFei
  */
 public interface MyBatisModelService extends ModelService{
