@@ -19,7 +19,7 @@ import org.yelong.support.orm.mybaits.sql.MyBatisParamMap;
  * @author PengFei
  */
 @Transactional
-public abstract class TransactionalMyBatisBaseDataBaseOperation extends AbstractMyBatisBaseDataBaseOperation  {
+public abstract class TransactionalMyBatisBaseDataBaseOperation extends AbstractMyBatisBaseDataBaseOperation {
 
 	@Override
 	public List<Map<String, Object>> select(String sql, Object... params) {

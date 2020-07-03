@@ -20,48 +20,45 @@ import org.yelong.support.orm.mybaits.model.mapping.ResultMappingBuilder;
 
 /**
  * @author PengFei
- *
  */
-public class DefaultResultMappingBuilder implements ResultMappingBuilder{
+public class DefaultResultMappingBuilder implements ResultMappingBuilder {
 
 	@Override
 	public List<ResultMapping> build(ModelAndTable modelAndTable, Configuration configuration) {
 		List<ResultMapping> resultMappings = new ArrayList<>();
-		//modelAndTable.getFieldAndColumns().stream().filter(x->!x.isExtend())//过滤拓展字段-->我当初为啥要过滤我都忘了
-		modelAndTable.getFieldAndColumns().stream().filter(FieldAndColumn::isSelectMapping)
-		.forEach(x->{
+		// modelAndTable.getFieldAndColumns().stream().filter(x->!x.isExtend())//过滤拓展字段-->我当初为啥要过滤我都忘了
+		modelAndTable.getFieldAndColumns().stream().filter(FieldAndColumn::isSelectMapping).forEach(x -> {
 			List<ResultFlag> flags = new ArrayList<>();
-			//String columnName = x.getColumn();
+			// String columnName = x.getColumn();
 			String selectColumnName = x.getSelectColumn();
 			String propertyName = x.getFieldName();
 			String nestedResultMapId = null;
-			if(x.isPrimaryKey()) {
+			if (x.isPrimaryKey()) {
 				flags.add(ResultFlag.ID);
 			}
-			TypeHandler<?> typeHandler = resolveTypeHandler(x.getFieldType(),null,configuration);
-			JdbcType jdbcType = StringUtils.isEmpty(x.getJdbcType())? null : JdbcType.valueOf(x.getJdbcType());
-			ResultMapping resultMapping = new ResultMapping.Builder(configuration, propertyName,selectColumnName,x.getFieldType())
-					.flags(flags)
-					.jdbcType(jdbcType)
-					.nestedResultMapId(nestedResultMapId)
-					.typeHandler(typeHandler)
-					.build();
+			TypeHandler<?> typeHandler = resolveTypeHandler(x.getFieldType(), null, configuration);
+			JdbcType jdbcType = StringUtils.isEmpty(x.getJdbcType()) ? null : JdbcType.valueOf(x.getJdbcType());
+			ResultMapping resultMapping = new ResultMapping.Builder(configuration, propertyName, selectColumnName,
+					x.getFieldType()).flags(flags).jdbcType(jdbcType).nestedResultMapId(nestedResultMapId)
+							.typeHandler(typeHandler).build();
 			resultMappings.add(resultMapping);
 		});
 		return resultMappings;
 	}
-	
+
 	/**
 	 * 解析类型处理器
+	 * 
 	 * @return
 	 */
-	public TypeHandler<?> resolveTypeHandler(Class<?> javaType,Class<? extends TypeHandler<?>> typeHandlerType,Configuration configuration){
-		if( null == typeHandlerType || typeHandlerType == UnknownTypeHandler.class) {
+	public TypeHandler<?> resolveTypeHandler(Class<?> javaType, Class<? extends TypeHandler<?>> typeHandlerType,
+			Configuration configuration) {
+		if (null == typeHandlerType || typeHandlerType == UnknownTypeHandler.class) {
 			return null;
 		}
 		TypeHandlerRegistry typeHandlerRegistry = configuration.getTypeHandlerRegistry();
 		TypeHandler<?> handler = typeHandlerRegistry.getMappingTypeHandler(typeHandlerType);
-		if( null == handler) {
+		if (null == handler) {
 			handler = typeHandlerRegistry.getInstance(javaType, typeHandlerType);
 		}
 		return handler;

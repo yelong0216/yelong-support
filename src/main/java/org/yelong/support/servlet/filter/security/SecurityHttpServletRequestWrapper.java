@@ -19,24 +19,25 @@ import org.yelong.support.servlet.wrapper.HttpServletRequestReuseWrapper;
  * 
  * @author PengFei
  */
-public class SecurityHttpServletRequestWrapper extends HttpServletRequestReuseWrapper implements HttpServletRequestSecurity{
+public class SecurityHttpServletRequestWrapper extends HttpServletRequestReuseWrapper
+		implements HttpServletRequestSecurity {
 
-	private Map<String,String []> parameterMap;
-	
+	private Map<String, String[]> parameterMap;
+
 	private boolean parameterMapDecrypt = false;
-	
-	private byte [] body;
-	
-	private boolean bodyDecrypt = false ;
-	
+
+	private byte[] body;
+
+	private boolean bodyDecrypt = false;
+
 	public SecurityHttpServletRequestWrapper(HttpServletRequest request) throws IOException {
 		super(request);
 		body = super.getBody();
 	}
-	
+
 	@Override
 	public Map<String, String[]> getParameterMap() {
-		if( !parameterMapDecrypt ) {
+		if (!parameterMapDecrypt) {
 			return getSourceParameterMap();
 		}
 		return this.parameterMap;
@@ -51,54 +52,54 @@ public class SecurityHttpServletRequestWrapper extends HttpServletRequestReuseWr
 		this.parameterMap = parameterMap;
 		this.parameterMapDecrypt = true;
 	}
-	
+
 	/**
 	 * 设置解密后的请求消息体
 	 * 
 	 * @param body 解密后的请求消息体
 	 */
-	public void setAfterDecryptBody(byte [] body) {
+	public void setAfterDecryptBody(byte[] body) {
 		this.body = body;
 		this.bodyDecrypt = true;
 	}
-	
+
 	public byte[] getBody() {
-		if( !bodyDecrypt ) {
+		if (!bodyDecrypt) {
 			return getSourceBody();
 		}
 		return body;
 	}
-	
+
 	@Override
 	public String getParameter(String name) {
-		if(!parameterMapDecrypt) {
+		if (!parameterMapDecrypt) {
 			return getSourceParameter(name);
 		}
-		String [] value = this.parameterMap.get(name);
-		if( null == value ) {
+		String[] value = this.parameterMap.get(name);
+		if (null == value) {
 			return null;
-		} else if( value.length == 0 ) {
+		} else if (value.length == 0) {
 			return null;
 		}
 		return value[0];
 	}
-	
+
 	@Override
 	public String[] getParameterValues(String name) {
-		if(!parameterMapDecrypt) {
+		if (!parameterMapDecrypt) {
 			return getSourceParameterValues(name);
 		}
 		return parameterMap.get(name);
 	}
-	
+
 	@Override
 	public Enumeration<String> getParameterNames() {
-		if(!parameterMapDecrypt) {
+		if (!parameterMapDecrypt) {
 			return getSourceParameterNames();
 		}
-		return new Vector<String>( parameterMap.keySet()).elements();
+		return new Vector<String>(parameterMap.keySet()).elements();
 	}
-	
+
 	@Override
 	public Map<String, String[]> getSourceParameterMap() {
 		return super.getParameterMap();
@@ -115,21 +116,21 @@ public class SecurityHttpServletRequestWrapper extends HttpServletRequestReuseWr
 	}
 
 	@Override
-	public byte [] getSourceBody() {
+	public byte[] getSourceBody() {
 		return super.getBody();
 	}
-	
+
 	@Override
 	public Enumeration<String> getSourceParameterNames() {
 		return super.getParameterNames();
 	}
-	
+
 	@Override
 	public ServletInputStream getInputStream() throws IOException {
-		if( !bodyDecrypt ) {
+		if (!bodyDecrypt) {
 			return super.getInputStream();
 		}
 		return new BufferedServletInputStream(body);
 	}
-	
+
 }

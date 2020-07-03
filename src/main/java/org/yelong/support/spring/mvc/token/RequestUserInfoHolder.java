@@ -10,11 +10,11 @@ package org.yelong.support.spring.mvc.token;
  * @see AbstractTokenHandlerInterceptor
  */
 public abstract class RequestUserInfoHolder {
-	
-	private RequestUserInfoHolder() {}
-	
-	private static final ThreadLocal<RequestUserInfo> REQUEST_USER_INFO_HOLDER = 
-			new ThreadLocal<>();
+
+	private RequestUserInfoHolder() {
+	}
+
+	private static final ThreadLocal<RequestUserInfo> REQUEST_USER_INFO_HOLDER = new ThreadLocal<>();
 
 	/**
 	 * 设置请求用户信息
@@ -34,5 +34,5 @@ public abstract class RequestUserInfoHolder {
 	public static RequestUserInfo currentRequestUserInfo() {
 		return REQUEST_USER_INFO_HOLDER.get();
 	}
-	
+
 }

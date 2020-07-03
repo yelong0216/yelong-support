@@ -18,7 +18,7 @@ import com.google.gson.stream.JsonWriter;
  * 
  * @author PengFei
  */
-public class ClassTypeAdapter extends TypeAdapter<Class<?>>{
+public class ClassTypeAdapter extends TypeAdapter<Class<?>> {
 
 	@Override
 	public void write(JsonWriter out, Class<?> value) throws IOException {
@@ -27,12 +27,12 @@ public class ClassTypeAdapter extends TypeAdapter<Class<?>>{
 
 	@Override
 	public Class<?> read(JsonReader in) throws IOException {
-		if( in.peek() == JsonToken.NULL) {
+		if (in.peek() == JsonToken.NULL) {
 			in.nextNull();
 			return null;
 		}
 		String str = in.nextString();
-		if(StringUtils.isBlank(str)) {
+		if (StringUtils.isBlank(str)) {
 			return null;
 		}
 		try {

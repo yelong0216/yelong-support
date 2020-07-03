@@ -16,12 +16,12 @@ import com.google.gson.JsonParseException;
 /**
  * @author PengFei
  */
-public class ModelLongJsonDeserializer implements JsonDeserializer<Long>{
-	
+public class ModelLongJsonDeserializer implements JsonDeserializer<Long> {
+
 	@Override
 	public Long deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 			throws JsonParseException {
-		if( null == json || StringUtils.isBlank(json.getAsString())) {
+		if (null == json || StringUtils.isBlank(json.getAsString())) {
 			return ModelNullProperty.LONG_NULL;
 		}
 		return json.getAsLong();

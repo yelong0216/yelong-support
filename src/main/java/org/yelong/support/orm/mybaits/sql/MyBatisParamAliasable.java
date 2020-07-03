@@ -6,9 +6,11 @@ package org.yelong.support.orm.mybaits.sql;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * 参数别名支持。
- * 实现此接口的可以通过拦截器设置其{@link Param}的别名。
- * 此别名会修改参数的key值，以适应ognl表达式
+ * 参数别名支持。<br/>
+ * 
+ * 实现此接口的可以通过拦截器设置其{@link Param}的别名。<br/>
+ * 
+ * 此别名会修改参数的key值，以适应ognl表达式<br/>
  * 
  * @author PengFei
  */

@@ -20,7 +20,7 @@ public class ModelStringJsonDeserializer implements JsonDeserializer<String> {
 	@Override
 	public String deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 			throws JsonParseException {
-		if( null == json ) {
+		if (null == json) {
 			return ModelNullProperty.STRING_NULL;
 		}
 		return json.getAsString();

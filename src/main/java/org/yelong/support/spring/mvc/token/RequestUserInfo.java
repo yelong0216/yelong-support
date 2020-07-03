@@ -16,7 +16,7 @@ public interface RequestUserInfo {
 	 * @return token
 	 */
 	String getToken();
-	
+
 	/**
 	 * 根据key获取用户信息
 	 * 
@@ -24,12 +24,12 @@ public interface RequestUserInfo {
 	 * @return value
 	 */
 	Object get(String key);
-	
+
 	/**
 	 * 获取所有的用户key
 	 * 
 	 * @return 所有的key
 	 */
-	String [] getKeys();
-	
+	String[] getKeys();
+
 }

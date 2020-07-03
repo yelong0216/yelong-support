@@ -21,24 +21,26 @@ import org.yelong.support.servlet.wrapper.HttpServletResponseReuseWrapper;
 /**
  * @author PengFei
  */
-public abstract class AbstractLogFilter implements Filter{
+public abstract class AbstractLogFilter implements Filter {
 
 	@Override
-	public final void  doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+	public final void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		//不进行验证
-		if(!isRecordLog((HttpServletRequest) request)) {
+		// 不进行验证
+		if (!isRecordLog((HttpServletRequest) request)) {
 			chain.doFilter(request, response);
 			return;
 		}
 		String contentType = request.getContentType();
-		if( StringUtils.isNotBlank(contentType) && contentType.contains("multipart/form-data")) {
+		if (StringUtils.isNotBlank(contentType) && contentType.contains("multipart/form-data")) {
 			chain.doFilter(request, response);
 			return;
 		}
-		HttpServletRequestReuseWrapper requestWrapper = new HttpServletRequestReuseWrapper((HttpServletRequest) request);
-		HttpServletResponseReuseWrapper responseWrapper = new HttpServletResponseReuseWrapper((HttpServletResponse)response);
-		//记录日志
+		HttpServletRequestReuseWrapper requestWrapper = new HttpServletRequestReuseWrapper(
+				(HttpServletRequest) request);
+		HttpServletResponseReuseWrapper responseWrapper = new HttpServletResponseReuseWrapper(
+				(HttpServletResponse) response);
+		// 记录日志
 		HttpServletLogInfo logInfo = new HttpServletLogInfo();
 		logInfo.setStartTime(new Date());
 		logInfo.setRequestBody(requestWrapper.getBody());
@@ -46,9 +48,9 @@ public abstract class AbstractLogFilter implements Filter{
 		logInfo.setEndTime(new Date());
 		logInfo.setResponseResult(responseWrapper.getContent());
 		logInfo.setRequestParams(request.getParameterMap());
-		recordLog(logInfo,(HttpServletRequest) request, (HttpServletResponse) response);
-		//临时修改
-		if(!responseWrapper.isResponseContent()) {
+		recordLog(logInfo, (HttpServletRequest) request, (HttpServletResponse) response);
+		// 临时修改
+		if (!responseWrapper.isResponseContent()) {
 			responseWrapper.responseContent();
 		}
 	}
@@ -62,13 +64,13 @@ public abstract class AbstractLogFilter implements Filter{
 	protected abstract boolean isRecordLog(HttpServletRequest request);
 
 	/**
-	 * 记录日志
-	 * 只有当 {@link #isRecordLog(HttpServletRequest)}返回true时才会被调用
+	 * 记录日志 只有当 {@link #isRecordLog(HttpServletRequest)}返回true时才会被调用
 	 * 
-	 * @param logInfo 日志信息
-	 * @param request request 
+	 * @param logInfo  日志信息
+	 * @param request  request
 	 * @param response response
 	 */
-	protected abstract void recordLog( HttpServletLogInfo logInfo, HttpServletRequest request, HttpServletResponse response);
+	protected abstract void recordLog(HttpServletLogInfo logInfo, HttpServletRequest request,
+			HttpServletResponse response);
 
 }

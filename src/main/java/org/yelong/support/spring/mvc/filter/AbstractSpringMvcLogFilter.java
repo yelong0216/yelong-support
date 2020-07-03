@@ -14,11 +14,11 @@ import org.yelong.support.servlet.filter.log.HttpServletLogInfo;
  * 
  * @author PengFei
  */
-public abstract class AbstractSpringMvcLogFilter extends AbstractLogFilter{
+public abstract class AbstractSpringMvcLogFilter extends AbstractLogFilter {
 
 	@Override
 	protected void recordLog(HttpServletLogInfo logInfo, HttpServletRequest request, HttpServletResponse response) {
-		
+
 	}
 
 }

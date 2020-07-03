@@ -16,12 +16,12 @@ import com.google.gson.JsonParseException;
 /**
  * @author PengFei
  */
-public class ModelByteJsonDeserializer implements JsonDeserializer<Byte>{
+public class ModelByteJsonDeserializer implements JsonDeserializer<Byte> {
 
 	@Override
 	public Byte deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 			throws JsonParseException {
-		if( null == json || StringUtils.isBlank(json.getAsString())) {
+		if (null == json || StringUtils.isBlank(json.getAsString())) {
 			return ModelNullProperty.BYTE_NULL;
 		}
 		return json.getAsByte();

@@ -9,11 +9,22 @@ import org.apache.ibatis.session.Configuration;
 import org.yelong.core.model.resolve.ModelAndTable;
 
 /**
+ * {@link MappedStatement} 建造者
+ * 
  * @author PengFei
- *
  */
 public interface MappedStatementBuilder {
 
-	MappedStatement buildSelect(String statementId , ModelAndTable modelAndTable, SqlSource sqlSource , Configuration configuration);
-	
+	/**
+	 * 构建一个查询的 {@link MappedStatement}
+	 * 
+	 * @param statementId   statementId
+	 * @param modelAndTable model and table
+	 * @param sqlSource     sqlSource
+	 * @param configuration configuration
+	 * @return {@link MappedStatement}
+	 */
+	MappedStatement buildSelect(String statementId, ModelAndTable modelAndTable, SqlSource sqlSource,
+			Configuration configuration);
+
 }

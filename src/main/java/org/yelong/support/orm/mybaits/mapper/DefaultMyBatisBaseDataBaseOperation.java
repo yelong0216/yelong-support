@@ -11,14 +11,14 @@ import org.yelong.support.spring.jdbc.mybatis.TransactionalMyBatisBaseDataBaseOp
  * 
  * @author PengFei
  */
-public class DefaultMyBatisBaseDataBaseOperation extends TransactionalMyBatisBaseDataBaseOperation{
+public class DefaultMyBatisBaseDataBaseOperation extends TransactionalMyBatisBaseDataBaseOperation {
 
 	private final SqlSession sqlSession;
-	
+
 	public DefaultMyBatisBaseDataBaseOperation(final SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	
+
 	@Override
 	public SqlSession getSqlSession() {
 		return sqlSession;

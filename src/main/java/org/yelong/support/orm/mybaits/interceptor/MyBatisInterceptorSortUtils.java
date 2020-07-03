@@ -17,22 +17,23 @@ import org.apache.ibatis.session.Configuration;
  * @author PengFei
  */
 public class MyBatisInterceptorSortUtils {
-	
+
 	/**
 	 * mybatis拦截器排序
 	 * 
 	 * @param configuration mybaits configuration
-	 * @param c 排序
+	 * @param c             排序
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	public static void sortInterceptor(Configuration configuration,Comparator<? super Interceptor> c) throws Exception{
-		//通过反射获取拦截器链
+	public static void sortInterceptor(Configuration configuration, Comparator<? super Interceptor> c)
+			throws Exception {
+		// 通过反射获取拦截器链
 		Class<?> configurationClass = configuration.getClass();
 		Field interceptorChainField = configurationClass.getDeclaredField("interceptorChain");
 		interceptorChainField.setAccessible(true);
 		InterceptorChain interceptorChain = (InterceptorChain) interceptorChainField.get(configuration);
-		//在通过反射在链中获取拦截器集合
+		// 在通过反射在链中获取拦截器集合
 		Class<?> interceptorChainClass = interceptorChain.getClass();
 		Field interceptorsField = interceptorChainClass.getDeclaredField("interceptors");
 		interceptorsField.setAccessible(true);

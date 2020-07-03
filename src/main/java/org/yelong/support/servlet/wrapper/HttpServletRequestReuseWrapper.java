@@ -16,31 +16,32 @@ import org.apache.commons.lang3.StringUtils;
 import org.yelong.support.servlet.HttpServletUtils;
 
 /**
- * 可以重复的请求包装器
+ * 可以重复的请求包装器 <br/>
+ * 
  * 重复使用包含：请求消息体
  * 
  * @author PengFei
  */
-public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
+public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper {
 
-	private final byte [] body;
+	private final byte[] body;
 
 	private String charset;
 
 	public HttpServletRequestReuseWrapper(HttpServletRequest request) throws IOException {
-		this(request,null);
+		this(request, null);
 	}
 
-	public HttpServletRequestReuseWrapper(HttpServletRequest request,String charset) throws IOException {
+	public HttpServletRequestReuseWrapper(HttpServletRequest request, String charset) throws IOException {
 		super(request);
-		if(StringUtils.isNotBlank(charset)) {
+		if (StringUtils.isNotBlank(charset)) {
 			this.charset = charset;
 			request.setCharacterEncoding(charset);
 		}
 		body = readerBody(request);
 	}
 
-	@Override		
+	@Override
 	public BufferedReader getReader() throws IOException {
 		return new BufferedReader(new InputStreamReader(getInputStream()));
 	}
@@ -66,10 +67,10 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 	 * @throws UnsupportedEncodingException
 	 */
 	public String getBodyStr() throws UnsupportedEncodingException {
-		if(StringUtils.isBlank(charset)) {
+		if (StringUtils.isBlank(charset)) {
 			return new String(body);
 		} else {
-			return new String(body,charset);
+			return new String(body, charset);
 		}
 	}
 
@@ -80,7 +81,7 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 	 * @return 消息体
 	 * @throws IOException 读取消息体异常
 	 */
-	public static final byte [] readerBody(HttpServletRequest request) throws IOException {
+	public static final byte[] readerBody(HttpServletRequest request) throws IOException {
 		return readerBody(request, null);
 	}
 
@@ -92,11 +93,11 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 	 * @return 消息体且指定编码
 	 * @throws IOException 读取消息体异常
 	 */
-	public static final byte [] readerBody(HttpServletRequest request,String charset) throws IOException {
-		if(StringUtils.isNotBlank(charset)) {
+	public static final byte[] readerBody(HttpServletRequest request, String charset) throws IOException {
+		if (StringUtils.isNotBlank(charset)) {
 			request.setCharacterEncoding(charset);
 		}
-		if( isHttpServletRequestReuseWrapper(request) ) {
+		if (isHttpServletRequestReuseWrapper(request)) {
 			return getHttpServletRequestReuseWrapper(request).getBody();
 		} else {
 			return HttpServletUtils.readerBody(request);
@@ -123,8 +124,8 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 	 * 
 	 * @throws IOException 消息体读取异常
 	 */
-	public static final String readerBodyStr(HttpServletRequest request,String charset) throws IOException {
-		if( isHttpServletRequestReuseWrapper(request) ) {
+	public static final String readerBodyStr(HttpServletRequest request, String charset) throws IOException {
+		if (isHttpServletRequestReuseWrapper(request)) {
 			return getHttpServletRequestReuseWrapper(request).getBodyStr();
 		} else {
 			return HttpServletUtils.readerBodyStr(request);
@@ -145,7 +146,7 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 			return false;
 		}
 	}
-	
+
 	/**
 	 * 如果request被HttpServletRequestReuseWrapper包装。或者反复包装的HttpServletRequestReuseWrapper对象。
 	 * 
@@ -153,12 +154,13 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 	 * @return HttpServletRequestReuseWrapper obj
 	 * @throws GetHttpServletRequestReuseWrapperException 如果request没有被HttpServletRequestReuseWrapper对象进行包装
 	 */
-	public static HttpServletRequestReuseWrapper getHttpServletRequestReuseWrapper(HttpServletRequest request) throws GetHttpServletRequestReuseWrapperException {
-		while(true) {
-			if( request instanceof HttpServletRequestReuseWrapper ) {
-				return ((HttpServletRequestReuseWrapper)request);
-			} else if( request instanceof HttpServletRequestWrapper) {
-				request = (HttpServletRequest) ((HttpServletRequestWrapper)request).getRequest();
+	public static HttpServletRequestReuseWrapper getHttpServletRequestReuseWrapper(HttpServletRequest request)
+			throws GetHttpServletRequestReuseWrapperException {
+		while (true) {
+			if (request instanceof HttpServletRequestReuseWrapper) {
+				return ((HttpServletRequestReuseWrapper) request);
+			} else if (request instanceof HttpServletRequestWrapper) {
+				request = (HttpServletRequest) ((HttpServletRequestWrapper) request).getRequest();
 				continue;
 			} else {
 				break;
@@ -166,5 +168,5 @@ public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper{
 		}
 		throw new GetHttpServletRequestReuseWrapperException(request);
 	}
-	
+
 }

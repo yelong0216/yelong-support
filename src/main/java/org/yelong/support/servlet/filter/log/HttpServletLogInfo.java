@@ -12,14 +12,14 @@ import java.util.Map;
 public class HttpServletLogInfo {
 
 	private Date startTime;
-	
+
 	private Date endTime;
 
-	private Map<String,String[]> requestParams;
-	
-	private byte [] requestBody;
-	
-	private byte [] responseResult;
+	private Map<String, String[]> requestParams;
+
+	private byte[] requestBody;
+
+	private byte[] responseResult;
 
 	public Date getStartTime() {
 		return startTime;
@@ -37,16 +37,17 @@ public class HttpServletLogInfo {
 		this.endTime = endTime;
 	}
 
-	public byte [] getResponseResult() {
+	public byte[] getResponseResult() {
 		return responseResult;
 	}
 
-	public void setResponseResult(byte [] responseResult) {
+	public void setResponseResult(byte[] responseResult) {
 		this.responseResult = responseResult;
 	}
-	
+
 	/**
 	 * 操作时间
+	 * 
 	 * @return 操作时间 ms
 	 */
 	public long getOperationTime() {
@@ -55,6 +56,7 @@ public class HttpServletLogInfo {
 
 	/**
 	 * 请求消息体
+	 * 
 	 * @return request body
 	 */
 	public byte[] getRequestBody() {
@@ -67,6 +69,7 @@ public class HttpServletLogInfo {
 
 	/**
 	 * 请求参数
+	 * 
 	 * @return request params
 	 */
 	public Map<String, String[]> getRequestParams() {
@@ -76,5 +79,5 @@ public class HttpServletLogInfo {
 	public void setRequestParams(Map<String, String[]> requestParams) {
 		this.requestParams = requestParams;
 	}
-	
+
 }

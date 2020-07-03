@@ -10,10 +10,17 @@ import org.apache.ibatis.session.Configuration;
 import org.yelong.core.model.resolve.ModelAndTable;
 
 /**
+ * {@link ResultMapping} 建造者
+ * 
  * @author PengFei
  */
 public interface ResultMappingBuilder {
 
-	List<ResultMapping> build(ModelAndTable modelAndTable , Configuration configuration);
-	
+	/**
+	 * @param modelAndTable modelAndTable
+	 * @param configuration configuration
+	 * @return ResultMapping List
+	 */
+	List<ResultMapping> build(ModelAndTable modelAndTable, Configuration configuration);
+
 }

@@ -16,12 +16,12 @@ import com.google.gson.JsonParseException;
 /**
  * @author PengFei
  */
-public class ModelFloatJsonDeserializer implements JsonDeserializer<Float>{
-	
+public class ModelFloatJsonDeserializer implements JsonDeserializer<Float> {
+
 	@Override
 	public Float deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 			throws JsonParseException {
-		if( null == json || StringUtils.isBlank(json.getAsString())) {
+		if (null == json || StringUtils.isBlank(json.getAsString())) {
 			return ModelNullProperty.FLOAT_NULL;
 		}
 		return json.getAsFloat();

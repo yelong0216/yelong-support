@@ -30,10 +30,10 @@ import org.yelong.support.spring.jdbc.model.TransactionalModelService;
 /**
  * MyBatis model service 实现
  * 
- * @since 1.0.2 
+ * @since 1.0.2
  * @author PengFei
  */
-public abstract class AbstractMyBatisModelService extends TransactionalModelService implements MyBatisModelService{
+public abstract class AbstractMyBatisModelService extends TransactionalModelService implements MyBatisModelService {
 
 	private MappedStatementBuilder mappedStatementBuilder;
 
@@ -42,21 +42,23 @@ public abstract class AbstractMyBatisModelService extends TransactionalModelServ
 	}
 
 	@Override
-	public <M extends Modelable> List<M> execute(Class<M> modelClass,SelectSqlFragment selectSqlFragment) {
-		if( selectSqlFragment.isPage() ) {
+	public <M extends Modelable> List<M> execute(Class<M> modelClass, SelectSqlFragment selectSqlFragment) {
+		if (selectSqlFragment.isPage()) {
 			throw new ModelServiceException("警告：目前不支持分页查询");
 		}
 		BoundSql boundSql = selectSqlFragment.getBoundSql();
-		Map<String, Object> params = MyBatisMapperParamUtils.getMyBatisMapperParams(boundSql.getSql(), boundSql.getParams());
+		Map<String, Object> params = MyBatisMapperParamUtils.getMyBatisMapperParams(boundSql.getSql(),
+				boundSql.getParams());
 		ModelAndTable modelAndTable = getModelAndTable(modelClass);
 		SqlSession sqlSession = getSqlSession();
 		Configuration configuration = sqlSession.getConfiguration();
 		String statementId = getStatementId(modelClass);
-		if(!configuration.hasStatement(statementId)) {
+		if (!configuration.hasStatement(statementId)) {
 			synchronized (this) {
-				if(!configuration.hasStatement(statementId)) {
+				if (!configuration.hasStatement(statementId)) {
 					SqlSource sqlSource = defaultSelectModelSqlSource(configuration);
-					MappedStatement mappedStatement = getMappedStatementBuilder().buildSelect(statementId, modelAndTable, sqlSource, configuration);
+					MappedStatement mappedStatement = getMappedStatementBuilder().buildSelect(statementId,
+							modelAndTable, sqlSource, configuration);
 					configuration.addMappedStatement(mappedStatement);
 				}
 			}
@@ -73,7 +75,7 @@ public abstract class AbstractMyBatisModelService extends TransactionalModelServ
 	 * @return MappedStatement Builder
 	 */
 	public MappedStatementBuilder getMappedStatementBuilder() {
-		if( null == mappedStatementBuilder ) {
+		if (null == mappedStatementBuilder) {
 			ResultMappingBuilder resultMappingBuilder = new DefaultResultMappingBuilder();
 			ResultMapBuilder resultMapBuilder = new DefaultResultMapBuilder(resultMappingBuilder);
 			mappedStatementBuilder = new DefaultMappedStatementBuilder(resultMapBuilder);
@@ -91,7 +93,7 @@ public abstract class AbstractMyBatisModelService extends TransactionalModelServ
 	/**
 	 * 默认的 sqlSource 这仅针对model的查询操作
 	 * 
-	 * @param configuration myBatis configuration 
+	 * @param configuration myBatis configuration
 	 * @return default sqlSource
 	 */
 	public SqlSource defaultSelectModelSqlSource(Configuration configuration) {
@@ -101,9 +103,9 @@ public abstract class AbstractMyBatisModelService extends TransactionalModelServ
 	}
 
 	public String getStatementId(Class<? extends Modelable> modelClass) {
-		return modelClass.getName()+".Select";
+		return modelClass.getName() + ".Select";
 	}
-	
+
 	@Override
 	public SqlSession getSqlSession() {
 		return getMyBatisBaseDataBaseOperation().getSqlSession();

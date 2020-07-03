@@ -16,7 +16,8 @@ public class OgnlWrapper {
 
 	private OgnlContext ognlContext = new OgnlContext();
 
-	public OgnlWrapper() {}
+	public OgnlWrapper() {
+	}
 
 	public OgnlWrapper(Object root) {
 		setRoot(root);
@@ -25,10 +26,10 @@ public class OgnlWrapper {
 	/**
 	 * 添加对象
 	 * 
-	 * @param key 对象对应的key
+	 * @param key   对象对应的key
 	 * @param value 对象
 	 */
-	public void put(String key,Object value) {
+	public void put(String key, Object value) {
 		ognlContext.put(key, value);
 	}
 
@@ -47,10 +48,10 @@ public class OgnlWrapper {
 	 * 设置表达式的属性值
 	 * 
 	 * @param expression 表达式
-	 * @param value 值
+	 * @param value      值
 	 * @throws OgnlException
 	 */
-	public void setValue(String expression,Object value) throws OgnlException {
+	public void setValue(String expression, Object value) throws OgnlException {
 		Ognl.setValue(expression, ognlContext, ognlContext.getRoot(), value);
 	}
 

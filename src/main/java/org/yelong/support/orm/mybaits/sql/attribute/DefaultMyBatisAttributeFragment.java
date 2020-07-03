@@ -9,12 +9,13 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.yelong.core.jdbc.DataBaseOperationType;
+import org.yelong.core.jdbc.dialect.Dialect;
 import org.yelong.core.jdbc.sql.defaults.DefaultAttributeSqlFragment;
 import org.yelong.support.orm.mybaits.sql.MyBatisBoundSql;
 import org.yelong.support.orm.mybaits.sql.MyBatisParamMap;
 import org.yelong.support.orm.mybaits.util.MyBatisParamTypeUtils;
 
-public class DefaultMyBatisAttributeFragment extends DefaultAttributeSqlFragment implements MyBatisAttributeFragment{
+public class DefaultMyBatisAttributeFragment extends DefaultAttributeSqlFragment implements MyBatisAttributeFragment {
 
 	/**
 	 * mybatis映射文件中取条件的占位符 。${condition}
@@ -25,16 +26,16 @@ public class DefaultMyBatisAttributeFragment extends DefaultAttributeSqlFragment
 
 	private String mybatisParamAlias;
 
-	private final Map<String,MyBatisAttribute> myBatisAttributeMap = new LinkedHashMap<>();
+	private final Map<String, MyBatisAttribute> myBatisAttributeMap = new LinkedHashMap<>();
 
-	public DefaultMyBatisAttributeFragment(DataBaseOperationType dataBaseOperationType) {
-		super(dataBaseOperationType);
+	public DefaultMyBatisAttributeFragment(Dialect dialect) {
+		super(dialect);
 	}
 
-	public DefaultMyBatisAttributeFragment() {
-		
+	public DefaultMyBatisAttributeFragment(Dialect dialect, DataBaseOperationType dataBaseOperationType) {
+		super(dialect, dataBaseOperationType);
 	}
-	
+
 	@Override
 	public void addAttr(String attrName, Object value) {
 		addAttr(attrName, value, MyBatisParamTypeUtils.getParamTypeMappingMyBatisType(value));
@@ -43,12 +44,12 @@ public class DefaultMyBatisAttributeFragment extends DefaultAttributeSqlFragment
 	@Override
 	public void addAttr(String attrName, Object value, String jdbcType) {
 		super.addAttr(attrName, value);
-		myBatisAttributeMap.put(attrName,new MyBatisAttribute(attrName, value, jdbcType));
+		myBatisAttributeMap.put(attrName, new MyBatisAttribute(attrName, value, jdbcType));
 	}
 
 	@Override
 	public boolean addAttrByValueNotNull(String attrName, Object value, String jdbcType) {
-		if( null == value ) {
+		if (null == value) {
 			return false;
 		}
 		addAttr(attrName, value, jdbcType);
@@ -63,12 +64,12 @@ public class DefaultMyBatisAttributeFragment extends DefaultAttributeSqlFragment
 
 	@Override
 	public String[] getMyBatisPlaceholderAll() {
-		return new String[] {ATTRIBUTE_FLAG};
+		return new String[] { ATTRIBUTE_FLAG };
 	}
 
 	@Override
 	public Object getMyBatisPlaceholderValue(String placeholder) {
-		if(placeholder.equalsIgnoreCase(ATTRIBUTE_FLAG)) {
+		if (placeholder.equalsIgnoreCase(ATTRIBUTE_FLAG)) {
 			return getSqlFragment();
 		}
 		return null;
@@ -91,12 +92,12 @@ public class DefaultMyBatisAttributeFragment extends DefaultAttributeSqlFragment
 	}
 
 	protected void flushMyBatisParam() {
-		//每次获取sql时在mybatisParam添加参数。之后清楚，防止remove时mybatisParam中清除不掉的问题
+		// 每次获取sql时在mybatisParam添加参数。之后清楚，防止remove时mybatisParam中清除不掉的问题
 		MYBATISPARAM.clear();
 		for (MyBatisAttribute myBatisAttribute : myBatisAttributeMap.values()) {
-			MYBATISPARAM.addParamMap(myBatisAttribute.getValue(),myBatisAttribute.getJdbcType());
+			MYBATISPARAM.addParamMap(myBatisAttribute.getValue(), myBatisAttribute.getJdbcType());
 		}
-		if(StringUtils.isNotEmpty(mybatisParamAlias)) {
+		if (StringUtils.isNotEmpty(mybatisParamAlias)) {
 			MYBATISPARAM.setParamAlias(this.mybatisParamAlias);
 		}
 	}
@@ -104,12 +105,12 @@ public class DefaultMyBatisAttributeFragment extends DefaultAttributeSqlFragment
 	@Override
 	public MyBatisBoundSql getMyBatisBoundSql() {
 		flushMyBatisParam();
-		//修改生成的占位符？为mybatis占位符
+		// 修改生成的占位符？为mybatis占位符
 		StringBuilder sqlFragment = new StringBuilder(super.getSqlFragment());
 		Set<String> mybatisParamPlaceholderSet = MYBATISPARAM.getPlaceholderParamMap().keySet();
 		for (String paramPlaceholder : mybatisParamPlaceholderSet) {
 			int index = sqlFragment.indexOf("?");
-			sqlFragment.replace(index, index+1, paramPlaceholder);
+			sqlFragment.replace(index, index + 1, paramPlaceholder);
 		}
 		String sql = sqlFragment.toString();
 		return new MyBatisBoundSql(sql, MYBATISPARAM);

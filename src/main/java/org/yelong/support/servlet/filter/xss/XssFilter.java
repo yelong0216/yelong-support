@@ -17,12 +17,12 @@ import javax.servlet.http.HttpServletRequest;
  * 
  * @author PengFei
  */
-public class XssFilter implements Filter{
+public class XssFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		HttpServletRequest req = (HttpServletRequest)request;
+		HttpServletRequest req = (HttpServletRequest) request;
 		XssHttpServletRequestWrapper xssRequest = new XssHttpServletRequestWrapper(req);
 		chain.doFilter(xssRequest, response);
 	}

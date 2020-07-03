@@ -17,8 +17,13 @@ import org.yelong.core.jdbc.sql.executable.UpdateSqlFragment;
 import org.yelong.core.jdbc.sql.sort.SortSqlFragment;
 import org.yelong.core.model.ModelConfiguration;
 import org.yelong.core.model.Modelable;
+import org.yelong.core.model.collector.ModelCollector;
 import org.yelong.core.model.service.AbstractSqlModelService;
 import org.yelong.core.model.service.SqlModelService;
+import org.yelong.core.model.service.function.MSConsumer;
+import org.yelong.core.model.service.function.MSFunction;
+import org.yelong.core.model.service.function.MSOperation;
+import org.yelong.core.model.service.function.MSSupplier;
 import org.yelong.core.model.sql.SqlModel;
 
 /**
@@ -29,7 +34,7 @@ import org.yelong.core.model.sql.SqlModel;
  * @author PengFei
  */
 @Transactional
-public abstract class TransactionalModelService extends AbstractSqlModelService{
+public abstract class TransactionalModelService extends AbstractSqlModelService {
 
 	public TransactionalModelService(ModelConfiguration modelConfiguration) {
 		super(modelConfiguration);
@@ -225,6 +230,7 @@ public abstract class TransactionalModelService extends AbstractSqlModelService{
 			SortSqlFragment sort) {
 		return super.findByConditionSort(modelClass, condition, sort);
 	}
+
 	@Override
 	public <M extends Modelable> List<M> findPage(Class<M> modelClass, Integer pageNum, Integer pageSize) {
 		return super.findPage(modelClass, pageNum, pageSize);
@@ -252,6 +258,7 @@ public abstract class TransactionalModelService extends AbstractSqlModelService{
 	public <M extends Modelable> List<M> findBySQL(Class<M> modelClass, String sql, Object[] params) {
 		return super.findBySQL(modelClass, sql, params);
 	}
+
 	@Override
 	public <M extends Modelable> M findFirstBySQL(Class<M> modelClass, String sql, Object[] params) {
 		return super.findFirstBySQL(modelClass, sql, params);
@@ -287,6 +294,7 @@ public abstract class TransactionalModelService extends AbstractSqlModelService{
 	public <M extends Modelable, S extends SqlModel> Integer modifySelectiveBySqlModel(M model, S sqlModel) {
 		return super.modifySelectiveBySqlModel(model, sqlModel);
 	}
+
 	@Override
 	public <M extends Modelable, S extends SqlModel> Integer modifyBySqlModel(String sql, Object[] params, S sqlModel) {
 		return super.modifyBySqlModel(sql, params, sqlModel);
@@ -344,6 +352,68 @@ public abstract class TransactionalModelService extends AbstractSqlModelService{
 	public <M extends Modelable, S extends SqlModel> List<M> findPageBySqlModel(Class<M> modelClass, String sql,
 			S sqlModel, int pageNum, int pageSize) {
 		return super.findPageBySqlModel(modelClass, sql, sqlModel, pageNum, pageSize);
+	}
+
+	@Override
+	public <M extends Modelable, T> List<T> findSingleColumn(Class<M> modelClass, String selectColumn,
+			ConditionSqlFragment condition, SortSqlFragment sort) {
+		return super.findSingleColumn(modelClass, selectColumn, condition, sort);
+	}
+
+	@Override
+	public <M extends Modelable, T> List<T> findSingleColumnByOnlyPrimaryKey(Class<M> modelClass, String selectColumn,
+			Object primaryKeyValue) {
+		return super.findSingleColumnByOnlyPrimaryKey(modelClass, selectColumn, primaryKeyValue);
+	}
+
+	@Override
+	public <M extends Modelable, T> T findFirstSingleColumn(Class<M> modelClass, String selectColumn,
+			ConditionSqlFragment condition, SortSqlFragment sort) {
+		return super.findFirstSingleColumn(modelClass, selectColumn, condition, sort);
+	}
+
+	@Override
+	public <M extends Modelable, T> T findFirstSingleColumnByOnlyPrimaryKey(Class<M> modelClass, String selectColumn,
+			Object primaryKeyValue) {
+		return super.findFirstSingleColumnByOnlyPrimaryKey(modelClass, selectColumn, primaryKeyValue);
+	}
+
+	@Override
+	public <M extends Modelable, S extends SqlModel, T> T findFirstSingleColumnBySqlModel(Class<M> modelClass,
+			String selectColumn, S sqlModel) {
+		return super.findFirstSingleColumnBySqlModel(modelClass, selectColumn, sqlModel);
+	}
+
+	@Override
+	public <M extends Modelable, S extends SqlModel, T> List<T> findSingleColumnBySqlModel(Class<M> modelClass,
+			String selectColumn, S sqlModel) {
+		return super.findSingleColumnBySqlModel(modelClass, selectColumn, sqlModel);
+	}
+
+	@Override
+	public <M extends Modelable, R, T extends ModelCollector<M, R, T>> R collect(
+			ModelCollector<M, R, T> modelCollector) {
+		return super.collect(modelCollector);
+	}
+
+	@Override
+	public <R> R doFunction(MSFunction<R> function) {
+		return super.doFunction(function);
+	}
+
+	@Override
+	public void doConsumer(MSConsumer consumer) {
+		super.doConsumer(consumer);
+	}
+
+	@Override
+	public void doOperation(MSOperation operation) {
+		super.doOperation(operation);
+	}
+
+	@Override
+	public <R> R doSupplier(MSSupplier<R> supplier) {
+		return super.doSupplier(supplier);
 	}
 
 }

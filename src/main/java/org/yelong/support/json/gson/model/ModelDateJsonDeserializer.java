@@ -20,26 +20,26 @@ import com.google.gson.JsonParseException;
 /**
  * @author PengFei
  */
-public class ModelDateJsonDeserializer implements JsonDeserializer<Date>{
+public class ModelDateJsonDeserializer implements JsonDeserializer<Date> {
 
-	private final String [] parsePatterns;
-	
+	private final String[] parsePatterns;
+
 	public ModelDateJsonDeserializer() {
-		this(Dates.YYYY_MM_DD_HH_MM_SS,Dates.YYYY_MM_DD_BAR,Dates.YYYY_MM_DD_SLASH);
+		this(Dates.YYYY_MM_DD_HH_MM_SS, Dates.YYYY_MM_DD_BAR, Dates.YYYY_MM_DD_SLASH);
 	}
-	
-	public ModelDateJsonDeserializer(String ... parsePatterns) {
+
+	public ModelDateJsonDeserializer(String... parsePatterns) {
 		this.parsePatterns = parsePatterns;
 	}
- 	
+
 	@Override
 	public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 			throws JsonParseException {
-		if( null == json || StringUtils.isBlank(json.getAsString())) {
+		if (null == json || StringUtils.isBlank(json.getAsString())) {
 			return ModelNullProperty.DATE_NULL;
 		}
 		try {
-			return DateUtils.parseDate(json.getAsString(),parsePatterns);
+			return DateUtils.parseDate(json.getAsString(), parsePatterns);
 		} catch (ParseException e) {
 			throw new JsonParseException(e);
 		}

@@ -13,13 +13,13 @@ import org.yelong.support.servlet.wrapper.HttpServletResponseReuseWrapper;
 /**
  * @author PengFei
  */
-public class XssHttpServletResponseWrapper extends HttpServletResponseReuseWrapper{
-	
+public class XssHttpServletResponseWrapper extends HttpServletResponseReuseWrapper {
+
 	public XssHttpServletResponseWrapper(HttpServletResponse response) {
 		super(response);
 	}
 
-	public String encodeURL(String url){
+	public String encodeURL(String url) {
 		String result = url != null ? url.toString() : "";
 		try {
 			result = URLEncoder.encode(result, "UTF-8");

@@ -20,20 +20,20 @@ import org.yelong.support.spring.mvc.HandlerResponseWay;
  * 
  * @author PengFei
  */
-public abstract class AbstractHandlerExceptionResolverByResponseWay extends AbstractHandlerExceptionResolver{
+public abstract class AbstractHandlerExceptionResolverByResponseWay extends AbstractHandlerExceptionResolver {
 
 	@Override
 	protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
 			Exception ex) {
 		ModelAndView modelAndView = null;
-		if( handler instanceof HandlerMethod ) {
-			HandlerMethod handlerMethod = (HandlerMethod)handler;
+		if (handler instanceof HandlerMethod) {
+			HandlerMethod handlerMethod = (HandlerMethod) handler;
 			HandlerResponseWay handlerResponseWay = HandlerResponseWay.handlerResponseWayResolver(handlerMethod);
-			if(handlerResponseWay == HandlerResponseWay.JSON ) {
-				response.setStatus(HttpStatus.OK.value()); //设置状态码
-				response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE); //设置ContentType
-				response.setCharacterEncoding("UTF-8"); //避免乱码
-				//response.setCharacterEncoding("GBK"); //避免乱码
+			if (handlerResponseWay == HandlerResponseWay.JSON) {
+				response.setStatus(HttpStatus.OK.value()); // 设置状态码
+				response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE); // 设置ContentType
+				response.setCharacterEncoding("UTF-8"); // 避免乱码
+				// response.setCharacterEncoding("GBK"); //避免乱码
 				response.setHeader("Cache-Control", "no-cache, must-revalidate");
 				String json = handlerExceptionResponseJson(request, response, handlerResponseWay, ex);
 				try {
@@ -42,11 +42,11 @@ public abstract class AbstractHandlerExceptionResolverByResponseWay extends Abst
 					json = e.getMessage();
 					e.printStackTrace();
 				}
-				//LOGGER.info("exception:"+handlerMethod.toString()+"---response:"+json);
+				// LOGGER.info("exception:"+handlerMethod.toString()+"---response:"+json);
 				modelAndView = new ModelAndView();
-			} else if ( handlerResponseWay == HandlerResponseWay.MODEL_AND_VIEW) {
+			} else if (handlerResponseWay == HandlerResponseWay.MODEL_AND_VIEW) {
 				modelAndView = handlerExceptionResponseModelAndView(request, response, handlerResponseWay, ex);
-			} 
+			}
 		}
 		return modelAndView;
 	}
@@ -56,15 +56,15 @@ public abstract class AbstractHandlerExceptionResolverByResponseWay extends Abst
 	 * 
 	 * @return json
 	 */
-	protected abstract String handlerExceptionResponseJson(HttpServletRequest request, HttpServletResponse response, Object handler,
-			Exception ex);
-	
+	protected abstract String handlerExceptionResponseJson(HttpServletRequest request, HttpServletResponse response,
+			Object handler, Exception ex);
+
 	/**
 	 * 异常信息响应返回视图
 	 * 
 	 * @return 视图
 	 */
-	protected abstract ModelAndView handlerExceptionResponseModelAndView(HttpServletRequest request, HttpServletResponse response, Object handler,
-			Exception ex);
-	
+	protected abstract ModelAndView handlerExceptionResponseModelAndView(HttpServletRequest request,
+			HttpServletResponse response, Object handler, Exception ex);
+
 }

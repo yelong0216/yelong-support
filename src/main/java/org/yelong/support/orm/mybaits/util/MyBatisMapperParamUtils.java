@@ -17,28 +17,28 @@ import org.yelong.support.orm.mybaits.sql.MyBatisParamMap;
 public class MyBatisMapperParamUtils {
 
 	/**
-	 * 将原生sql(select * from USER where username like ?)转换为mybatis使用的sql(select * from USER where username like #{username})
-	 * 并将参数一并封装到map中。
+	 * 将原生sql(select * from USER where username like ?)转换为mybatis使用的sql(select *
+	 * from USER where username like #{username}) 并将参数一并封装到map中。
 	 * Mapper映射器中的参数仅传入一个Map。且sql语句为${sql}进行声明即可
 	 * 
-	 * @param sql sql
+	 * @param sql    sql
 	 * @param params 参数
 	 * @return sql、以及sql的参数映射
 	 */
-	public static Map<String,Object> getMyBatisMapperParams(String sql ,@Nullable Object [] params){
-		Map<String,Object> mybatisParams = new HashMap<String,Object>();
+	public static Map<String, Object> getMyBatisMapperParams(String sql, @Nullable Object[] params) {
+		Map<String, Object> mybatisParams = new HashMap<String, Object>();
 		StringBuilder sb = new StringBuilder(sql);
-		if( null != params && params.length > 0 ) {
+		if (null != params && params.length > 0) {
 			for (int i = 0; i < params.length; i++) {
 				int index = sb.indexOf("?");
 				String paramName = generateParamName();
 				mybatisParams.put(paramName, params[i]);
 				String mybatisType = MyBatisParamTypeUtils.getParamTypeMappingMyBatisType(params[i]);
-				//设置字段类型
-				if(StringUtils.isNotEmpty(mybatisType)) {
-					paramName += ",jdbcType = "+mybatisType;
+				// 设置字段类型
+				if (StringUtils.isNotEmpty(mybatisType)) {
+					paramName += ",jdbcType = " + mybatisType;
 				}
-				sb.replace(index, index+1, " #{"+paramName+"} ");
+				sb.replace(index, index + 1, " #{" + paramName + "} ");
 			}
 		}
 		mybatisParams.put("sql", sb.toString());
@@ -48,14 +48,14 @@ public class MyBatisMapperParamUtils {
 	public static String generateParamName() {
 		return UUID.randomUUID().toString().replace("-", "").toLowerCase();
 	}
-	
-	public static Map<String,Object> getMyBatisMapperParams(String sql ,@Nullable MyBatisParamMap mybatisParamMap){
-		Map<String,Object> params = new HashMap<String, Object>(2);
+
+	public static Map<String, Object> getMyBatisMapperParams(String sql, @Nullable MyBatisParamMap mybatisParamMap) {
+		Map<String, Object> params = new HashMap<String, Object>(2);
 		params.put("sql", sql);
-		if( null != mybatisParamMap ) {
+		if (null != mybatisParamMap) {
 			params.put(mybatisParamMap.getMybatisParamMapPropertyName(), mybatisParamMap);
 		}
 		return params;
 	}
-	
+
 }

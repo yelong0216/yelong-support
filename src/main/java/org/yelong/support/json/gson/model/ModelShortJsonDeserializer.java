@@ -16,12 +16,12 @@ import com.google.gson.JsonParseException;
 /**
  * @author PengFei
  */
-public class ModelShortJsonDeserializer implements JsonDeserializer<Short>{
-	
+public class ModelShortJsonDeserializer implements JsonDeserializer<Short> {
+
 	@Override
 	public Short deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 			throws JsonParseException {
-		if( null == json || StringUtils.isBlank(json.getAsString())) {
+		if (null == json || StringUtils.isBlank(json.getAsString())) {
 			return ModelNullProperty.SHORT_NULL;
 		}
 		return json.getAsShort();

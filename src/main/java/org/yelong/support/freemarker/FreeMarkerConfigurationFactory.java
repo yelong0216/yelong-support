@@ -14,34 +14,40 @@ import freemarker.template.Configuration;
  * @since 1.0.5
  */
 public final class FreeMarkerConfigurationFactory {
-	
-	private FreeMarkerConfigurationFactory() {}
-	
+
+	private FreeMarkerConfigurationFactory() {
+	}
+
 	/**
-	 * private static final Configuration configuration = FreeMarkerConfigurationFactory.createConfigurationByClass(DictTemplate.class);
+	 * private static final Configuration configuration =
+	 * FreeMarkerConfigurationFactory.createConfigurationByClass(DictTemplate.class);
 	 * 
-	 * 创建模板在 c 类同包下的  {@link Configuration}
+	 * 创建模板在 c 类同包下的 {@link Configuration}
+	 * 
 	 * @param c 与模板在同一包的类
 	 * @return {@link Configuration}
 	 */
 	public static final Configuration createConfigurationByClass(Class<?> c) {
 		return createConfigurationByPackage(c.getPackage());
 	}
-	
+
 	/**
 	 * 创建模板在 p 包下的 {@link Configuration}
+	 * 
 	 * @param p 存放模板的包
 	 * @return {@link Configuration}
 	 */
 	public static final Configuration createConfigurationByPackage(Package p) {
 		return createConfigurationByPackageName(p.getName());
 	}
-	
+
 	/**
 	 * 
-	 * private static final Configuration configuration = FreeMarkerConfigurationFactory.createConfigurationByPackageName("org.yelong.dict.tpl");
+	 * private static final Configuration configuration =
+	 * FreeMarkerConfigurationFactory.createConfigurationByPackageName("org.yelong.dict.tpl");
 	 * 
 	 * 创建模板在 packageName 包下的 {@link Configuration}
+	 * 
 	 * @param packageName 存放模板的包
 	 * @return {@link Configuration}
 	 */
@@ -54,5 +60,5 @@ public final class FreeMarkerConfigurationFactory {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 }

@@ -19,12 +19,12 @@ import org.yelong.support.orm.mybaits.model.mapping.ResultMappingBuilder;
 /**
  * @author PengFei
  */
-public class DefaultResultMapBuilder implements ResultMapBuilder{
+public class DefaultResultMapBuilder implements ResultMapBuilder {
 
 	private static final AtomicInteger NUMBER_COUNTER = new AtomicInteger(0);
-	
+
 	private final ResultMappingBuilder resultMappingBuilder;
-	
+
 	public DefaultResultMapBuilder(final ResultMappingBuilder resultMappingBuilder) {
 		this.resultMappingBuilder = resultMappingBuilder;
 	}
@@ -34,7 +34,7 @@ public class DefaultResultMapBuilder implements ResultMapBuilder{
 		Class<?> type = modelAndTable.getModelClass();
 		String resource = type.getName().replace('.', '/') + ".java (best guess)";
 		MapperBuilderAssistant assistant = new MapperBuilderAssistant(configuration, resource);
-		return build(modelAndTable,assistant);
+		return build(modelAndTable, assistant);
 	}
 
 	@Override
@@ -42,14 +42,16 @@ public class DefaultResultMapBuilder implements ResultMapBuilder{
 		Class<?> type = modelAndTable.getModelClass();
 		List<ResultMapping> resultMappings = resultMappingBuilder.build(modelAndTable, assistant.getConfiguration());
 		String id = getCustomIdentifier(type);
-		ResultMapResolver resultMapResolver = new ResultMapResolver(assistant, id, type, null, null, resultMappings, null);
+		ResultMapResolver resultMapResolver = new ResultMapResolver(assistant, id, type, null, null, resultMappings,
+				null);
 		List<ResultMap> resultMaps = new ArrayList<ResultMap>();
 		resultMaps.add(resultMapResolver.resolve());
 		return resultMaps;
 	}
-	
+
 	/**
 	 * 自定义标识符
+	 * 
 	 * @param type
 	 * @return
 	 */
@@ -61,5 +63,5 @@ public class DefaultResultMapBuilder implements ResultMapBuilder{
 		idBuilder.append(NUMBER_COUNTER.getAndIncrement());
 		return idBuilder.toString();
 	}
-	
+
 }

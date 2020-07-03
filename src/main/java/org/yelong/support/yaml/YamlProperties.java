@@ -23,47 +23,47 @@ public interface YamlProperties {
 	 */
 	@Nullable
 	String getProperty(String key);
-	
+
 	/**
 	 * 获取属性值
 	 * 
-	 * @param key key
+	 * @param key          key
 	 * @param defaultValue 默认值
 	 * @return 如果key值不存在则返回defaultValue，否则返回对应值
 	 */
-	String getProperty(String key,String defaultValue);
-	
+	String getProperty(String key, String defaultValue);
+
 	/**
 	 * 将配置装配为对象
 	 * 
-	 * @param <T> class type
+	 * @param <T>    class type
 	 * @param prefix 前缀
-	 * @param type 类型
+	 * @param type   类型
 	 * @return 装配的对象
 	 */
-	<T> T as(String prefix,Class<T> type);
-	
+	<T> T as(String prefix, Class<T> type);
+
 	/**
 	 * 获取源映射
 	 * 
 	 * @return yaml直接转换的map
 	 */
-	Map<String,Object> getSourceMap();
-	
+	Map<String, Object> getSourceMap();
+
 	/**
 	 * @return 源映射全部转换为键值对的映射
 	 */
-	Map<String,String> getMap();
-	
+	Map<String, String> getMap();
+
 	/**
 	 * @return 所有的键值
 	 */
 	Collection<String> getKeys();
-	
+
 	/**
 	 * @return yaml文件名称
 	 */
 	@Nullable
 	String getName();
-	
+
 }

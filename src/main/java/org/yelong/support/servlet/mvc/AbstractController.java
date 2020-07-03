@@ -24,7 +24,7 @@ public abstract class AbstractController implements Controller{
 	
 	@Override
 	public void responseFile(File file) throws IOException {
-		if( !file.exists() ) {
+		if (!file.exists()) {
 			throw new FileNotFoundException(file.getAbsolutePath()+"文件不存在！");
 		}
 		responseFile(file, file.getName());

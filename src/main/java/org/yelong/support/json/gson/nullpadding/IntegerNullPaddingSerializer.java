@@ -17,7 +17,7 @@ import com.google.gson.JsonSerializer;
  * @author PengFei
  * @see IntegerTypeAdapter
  */
-public class IntegerNullPaddingSerializer implements JsonSerializer<Integer>{
+public class IntegerNullPaddingSerializer implements JsonSerializer<Integer> {
 
 	private final String nullPaddingValue;
 
@@ -31,14 +31,14 @@ public class IntegerNullPaddingSerializer implements JsonSerializer<Integer>{
 
 	@Override
 	public JsonElement serialize(Integer src, Type typeOfSrc, JsonSerializationContext context) {
-		if( null == src ) {
-			if( nullPaddingValue == null ) {
+		if (null == src) {
+			if (nullPaddingValue == null) {
 				return JsonNull.INSTANCE;
 			} else {
 				return new JsonPrimitive(nullPaddingValue);
 			}
 		}
-		return  new JsonPrimitive(src);
+		return new JsonPrimitive(src);
 	}
 
 }

@@ -7,20 +7,21 @@ import java.util.Set;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.yelong.core.annotation.Nullable;
+import org.yelong.core.jdbc.dialect.Dialect;
 import org.yelong.core.jdbc.sql.defaults.DefaultSimpleConditionSqlFragment;
 import org.yelong.support.orm.mybaits.sql.MyBatisBoundSql;
 import org.yelong.support.orm.mybaits.sql.MyBatisParamMap;
 import org.yelong.support.orm.mybaits.sql.MyBatisSqlFragment;
 
-public class MyBatisSimpleConditionFragment extends DefaultSimpleConditionSqlFragment implements MyBatisSqlFragment{
+public class MyBatisSimpleConditionFragment extends DefaultSimpleConditionSqlFragment implements MyBatisSqlFragment {
 
 	private final String myBatisConditionFragment;
-	
+
 	private MyBatisParamMap MYBATISPARAM = new MyBatisParamMap("MYBATISPARAM");
-	
-	public MyBatisSimpleConditionFragment(String conditionFragment,@Nullable Object[] params) {
-		super(conditionFragment, params);
-		if( !ArrayUtils.isEmpty(params)) {
+
+	public MyBatisSimpleConditionFragment(Dialect dialect, String conditionFragment, @Nullable Object[] params) {
+		super(dialect, conditionFragment, params);
+		if (!ArrayUtils.isEmpty(params)) {
 			for (Object obj : params) {
 				MYBATISPARAM.addParamMap(obj);
 			}
@@ -28,15 +29,15 @@ public class MyBatisSimpleConditionFragment extends DefaultSimpleConditionSqlFra
 			Set<String> mybatisParamPlaceholderSet = MYBATISPARAM.getPlaceholderParamMap().keySet();
 			for (String paramPlaceholder : mybatisParamPlaceholderSet) {
 				int index = conditionSqlFragment.indexOf("?");
-				conditionSqlFragment.replace(index, index+1, paramPlaceholder);
+				conditionSqlFragment.replace(index, index + 1, paramPlaceholder);
 			}
 			this.myBatisConditionFragment = conditionSqlFragment.toString();
 		} else {
 			this.myBatisConditionFragment = conditionFragment;
 		}
-		
+
 	}
-	
+
 	@Override
 	public void setParamAlias(String paramAlias) {
 		throw new RuntimeException("暂未实现！");

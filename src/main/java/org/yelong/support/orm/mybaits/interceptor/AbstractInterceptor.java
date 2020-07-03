@@ -17,8 +17,8 @@ import org.apache.ibatis.plugin.Plugin;
  * 
  * @author PengFei
  */
-public abstract class AbstractInterceptor implements Interceptor{
-	
+public abstract class AbstractInterceptor implements Interceptor {
+
 	/**
 	 * 获取MappedStatement对应的接口中的方法，且这个方法不应被重载，如果对应的方法出现重载，则会抛出异常
 	 * 
@@ -27,29 +27,29 @@ public abstract class AbstractInterceptor implements Interceptor{
 	 * @throws Exception 如果这个方法被重载了
 	 */
 	public Method getMapperMethod(MappedStatement mappedStatement) throws Exception {
-		//当前执行的完全命名空间
+		// 当前执行的完全命名空间
 		String namespace = mappedStatement.getId();
-		//映射的接口
-		String className = namespace.substring(0 , namespace.lastIndexOf("."));
-		//映射的执行的方法名称
-		String methodName = namespace.substring(namespace.lastIndexOf(".")+1);
-		Method [] methods = Class.forName(className).getMethods();
+		// 映射的接口
+		String className = namespace.substring(0, namespace.lastIndexOf("."));
+		// 映射的执行的方法名称
+		String methodName = namespace.substring(namespace.lastIndexOf(".") + 1);
+		Method[] methods = Class.forName(className).getMethods();
 		List<Method> methodList = new ArrayList<Method>();
 		for (Method method : methods) {
-			//获取执行的方法{Method}
-			if( methodName.equals(method.getName())) {
+			// 获取执行的方法{Method}
+			if (methodName.equals(method.getName())) {
 				methodList.add(method);
 			}
 		}
-		if( methodList.isEmpty() ) {
+		if (methodList.isEmpty()) {
 			return null;
-		} else if( methodList.size() > 1 ) {
+		} else if (methodList.size() > 1) {
 			throw new Exception("获取映射器方法时，映射的mapper对象中的方法不应该重载。且mapper中的方法重载是不符合逻辑的，这会导致与xml的映射出现问题。");
 		} else {
 			return methodList.get(0);
 		}
 	}
-	
+
 	@Override
 	public Object plugin(Object target) {
 		return Plugin.wrap(target, this);

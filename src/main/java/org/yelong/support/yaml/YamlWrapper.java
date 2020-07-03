@@ -32,13 +32,13 @@ public class YamlWrapper {
 	public YamlProperties load(File file) throws FileNotFoundException {
 		return new DefaultYamlProperties(file.getName(), yaml.load(new FileInputStream(file)));
 	}
-	
+
 	public YamlProperties load(InputStream is) {
-		return new DefaultYamlProperties( yaml.load(is)) ;
+		return new DefaultYamlProperties(yaml.load(is));
 	}
 
 	public Yaml getYaml() {
 		return yaml;
 	}
-	
+
 }

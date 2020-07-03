@@ -11,23 +11,23 @@ import java.util.Properties;
  * 
  * @author PengFei
  */
-public class PropertiesUTF8 extends Properties{
-	
+public class PropertiesUTF8 extends Properties {
+
 	private static final long serialVersionUID = -3925335530308637498L;
 
 	private static final String ENCODING = "UTF-8";
-	
+
 	@Override
 	public String getProperty(String key) {
 		String value = super.getProperty(key);
-		if( null == value ) {
+		if (null == value) {
 			return null;
 		}
 		try {
-			return new String(value.getBytes("ISO-8859-1"),ENCODING);
+			return new String(value.getBytes("ISO-8859-1"), ENCODING);
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
 	}
-	
+
 }

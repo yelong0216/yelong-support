@@ -12,7 +12,7 @@ import java.util.Date;
  * @author PengFei
  */
 public class MyBatisParamTypeUtils {
-	
+
 	/**
 	 * 获取参数映射的MyBatis类型<br/>
 	 * 默认是oracle<br/>
@@ -23,14 +23,14 @@ public class MyBatisParamTypeUtils {
 	 */
 	public static String getParamTypeMappingMyBatisType(Object param) {
 		String dbType = "oracle";
-		if("oracle".equals(dbType)) {
-			if( null == param || param instanceof CharSequence ) {
+		if ("oracle".equals(dbType)) {
+			if (null == param || param instanceof CharSequence) {
 				return "VARCHAR";
-			} else if ( param instanceof Date) {
+			} else if (param instanceof Date) {
 				return "TIMESTAMP";
-			} else if ( param instanceof Number || param instanceof BigDecimal) {
+			} else if (param instanceof Number || param instanceof BigDecimal) {
 				return "DECIMAL";
-			} 
+			}
 		}
 		return "";
 	}

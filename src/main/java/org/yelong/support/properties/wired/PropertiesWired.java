@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
 public @interface PropertiesWired {
 
 	String propertiesName() default "";
-	
+
 	String prefix() default "";
-	
+
 }

@@ -16,17 +16,18 @@ import org.springframework.web.method.HandlerMethod;
  * @author PengFei
  */
 public enum HandlerResponseWay {
-	
-	/**json格式*/
+
+	/** json格式 */
 	JSON,
-	/**视图*/
+	/** 视图 */
 	MODEL_AND_VIEW;
-	
+
 	/**
 	 * 解析处理器响应方式<br/>
-	 * 满足一下条件视为JSON格式。非JSON均视为视图<br/>
-	 * 1、处理器方法存在{@link ResponseBody}注解
-	 * 2、处理器方法类上存在{@link ResponseBody}注解
+	 * 
+	 * 满足以下条件视为JSON格式。非JSON均视为视图<br/>
+	 * 1、处理器方法存在{@link ResponseBody}注解<br/>
+	 * 2、处理器方法类上存在{@link ResponseBody}注解<br/>
 	 * 3、响应结果为{@link ResponseEntity}
 	 * 
 	 * @param handlerMethod 处理器方法
@@ -35,18 +36,19 @@ public enum HandlerResponseWay {
 	public static HandlerResponseWay handlerResponseWayResolver(HandlerMethod handlerMethod) {
 		Method method = handlerMethod.getMethod();
 		HandlerResponseWay handlerResponseWay = null;
-		if(method.isAnnotationPresent(ResponseBody.class)) {
+		if (method.isAnnotationPresent(ResponseBody.class)) {
 			handlerResponseWay = JSON;
-		} else if( method.getDeclaringClass().isAnnotationPresent(ResponseBody.class)) {
-			handlerResponseWay =  JSON;
-		} else if( method.getDeclaringClass().isAnnotationPresent(RestController.class)) {
-			handlerResponseWay =  JSON;
-		} else if( method.getReturnType() == ResponseEntity.class){
-			handlerResponseWay =  JSON;;
+		} else if (method.getDeclaringClass().isAnnotationPresent(ResponseBody.class)) {
+			handlerResponseWay = JSON;
+		} else if (method.getDeclaringClass().isAnnotationPresent(RestController.class)) {
+			handlerResponseWay = JSON;
+		} else if (method.getReturnType() == ResponseEntity.class) {
+			handlerResponseWay = JSON;
+			;
 		} else {
-			handlerResponseWay =  MODEL_AND_VIEW;
+			handlerResponseWay = MODEL_AND_VIEW;
 		}
 		return handlerResponseWay;
 	}
-	
+
 }

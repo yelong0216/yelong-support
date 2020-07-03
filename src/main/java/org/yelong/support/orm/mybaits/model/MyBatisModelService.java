@@ -12,16 +12,16 @@ import org.yelong.support.orm.mybaits.mapper.MyBatisBaseDataBaseOperation;
  * 
  * @author PengFei
  */
-public interface MyBatisModelService extends ModelService{
+public interface MyBatisModelService extends ModelService {
 
 	/**
 	 * @return sql session
 	 */
 	SqlSession getSqlSession();
-	
+
 	/**
 	 * @return mybatis 数据库操作对象
 	 */
 	MyBatisBaseDataBaseOperation getMyBatisBaseDataBaseOperation();
-	
+
 }

@@ -12,19 +12,19 @@ import javax.servlet.ServletInputStream;
 /**
  * @author PengFei
  */
-public class BufferedServletInputStream extends ServletInputStream{
+public class BufferedServletInputStream extends ServletInputStream {
 
 	private ByteArrayInputStream inputStream;
-	
-	public BufferedServletInputStream(byte [] buffer) {
+
+	public BufferedServletInputStream(byte[] buffer) {
 		this.inputStream = new ByteArrayInputStream(buffer);
 	}
-	
+
 	@Override
 	public int available() throws IOException {
 		return inputStream.available();
 	}
-	
+
 	@Override
 	public boolean isFinished() {
 		return inputStream.available() == 0;
@@ -37,7 +37,7 @@ public class BufferedServletInputStream extends ServletInputStream{
 
 	@Override
 	public void setReadListener(ReadListener readListener) {
-		
+
 	}
 
 	@Override

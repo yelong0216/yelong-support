@@ -13,7 +13,7 @@ import org.apache.commons.beanutils.BeanUtils;
 /**
  * @author PengFei
  */
-public abstract class AbstractRequestUserInfo implements RequestUserInfo{
+public abstract class AbstractRequestUserInfo implements RequestUserInfo {
 
 	private String token;
 
@@ -34,18 +34,20 @@ public abstract class AbstractRequestUserInfo implements RequestUserInfo{
 			return null;
 		}
 	}
-	
+
 	@Override
 	public String[] getKeys() {
 		List<String> fieldNameList = new ArrayList<String>();
 		Class<?> c = getClass();
-		fieldNameList.addAll(Arrays.asList(c.getDeclaredFields()).stream().map(x->x.getName()).collect(Collectors.toList()));
+		fieldNameList.addAll(
+				Arrays.asList(c.getDeclaredFields()).stream().map(x -> x.getName()).collect(Collectors.toList()));
 		Class<?> superClass = c.getSuperclass();
-		while(true) {
-			if( superClass == AbstractRequestUserInfo.class ) {
+		while (true) {
+			if (superClass == AbstractRequestUserInfo.class) {
 				break;
 			}
-			fieldNameList.addAll(Arrays.asList(superClass.getDeclaredFields()).stream().map(x->x.getName()).collect(Collectors.toList()));
+			fieldNameList.addAll(Arrays.asList(superClass.getDeclaredFields()).stream().map(x -> x.getName())
+					.collect(Collectors.toList()));
 			superClass = superClass.getSuperclass();
 		}
 		fieldNameList.add("token");

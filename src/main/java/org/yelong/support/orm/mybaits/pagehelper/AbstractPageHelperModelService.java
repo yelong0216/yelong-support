@@ -24,33 +24,35 @@ import com.github.pagehelper.PageHelper;
  * @since 1.0.2
  * @author PengFei
  */
-public abstract class AbstractPageHelperModelService extends AbstractExtendMyBatisModelService{
+public abstract class AbstractPageHelperModelService extends AbstractExtendMyBatisModelService {
 
 	public AbstractPageHelperModelService(ModelConfiguration modelConfiguration) {
 		super(modelConfiguration);
 	}
-	
+
 	@Override
 	public <M extends Modelable> List<M> execute(Class<M> modelClass, SelectSqlFragment selectSqlFragment) {
-		if( selectSqlFragment.isPage() ) {
+		if (selectSqlFragment.isPage()) {
 			PageHelper.startPage(selectSqlFragment.getPageNum(), selectSqlFragment.getPageSize());
 		}
 		BoundSql boundSql = selectSqlFragment.getBoundSql();
-		Map<String, Object> params = MyBatisMapperParamUtils.getMyBatisMapperParams(boundSql.getSql(), boundSql.getParams());
+		Map<String, Object> params = MyBatisMapperParamUtils.getMyBatisMapperParams(boundSql.getSql(),
+				boundSql.getParams());
 		ModelAndTable modelAndTable = getModelAndTable(modelClass);
 		SqlSession sqlSession = getSqlSession();
 		Configuration configuration = sqlSession.getConfiguration();
 		String statementId = getStatementId(modelClass);
-		if(!configuration.hasStatement(statementId)) {
+		if (!configuration.hasStatement(statementId)) {
 			synchronized (this) {
-				if(!configuration.hasStatement(statementId)) {
+				if (!configuration.hasStatement(statementId)) {
 					SqlSource sqlSource = defaultSelectModelSqlSource(configuration);
-					MappedStatement mappedStatement = getMappedStatementBuilder().buildSelect(statementId, modelAndTable, sqlSource, configuration);
+					MappedStatement mappedStatement = getMappedStatementBuilder().buildSelect(statementId,
+							modelAndTable, sqlSource, configuration);
 					configuration.addMappedStatement(mappedStatement);
 				}
 			}
 		}
 		return sqlSession.selectList(statementId, params);
 	}
-	
+
 }

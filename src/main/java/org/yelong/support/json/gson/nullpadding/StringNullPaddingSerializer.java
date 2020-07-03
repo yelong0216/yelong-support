@@ -20,19 +20,19 @@ import com.google.gson.JsonSerializer;
 public class StringNullPaddingSerializer implements JsonSerializer<String> {
 
 	private final String nullPaddingValue;
-	
+
 	public StringNullPaddingSerializer(String nullPaddingValue) {
 		this.nullPaddingValue = nullPaddingValue;
 	}
-	
+
 	public StringNullPaddingSerializer() {
 		this(null);
 	}
-	
+
 	@Override
 	public JsonElement serialize(String src, Type typeOfSrc, JsonSerializationContext context) {
-		if( null == src ) {
-			if( nullPaddingValue == null ) {
+		if (null == src) {
+			if (nullPaddingValue == null) {
 				return JsonNull.INSTANCE;
 			} else {
 				return new JsonPrimitive(nullPaddingValue);
@@ -40,5 +40,5 @@ public class StringNullPaddingSerializer implements JsonSerializer<String> {
 		}
 		return new JsonPrimitive(src);
 	}
-	
+
 }

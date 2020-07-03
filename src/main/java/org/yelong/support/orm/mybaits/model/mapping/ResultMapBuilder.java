@@ -11,13 +11,24 @@ import org.apache.ibatis.session.Configuration;
 import org.yelong.core.model.resolve.ModelAndTable;
 
 /**
+ * {@link ResultMap} 建造者
+ * 
  * @author PengFei
- *
  */
 public interface ResultMapBuilder {
-	
-	List<ResultMap> build(ModelAndTable modelAndTable , Configuration configuration);
-	
-	List<ResultMap> build(ModelAndTable modelAndTable , MapperBuilderAssistant assistant);
-	
+
+	/**
+	 * @param modelAndTable modelAndTable
+	 * @param configuration configuration
+	 * @return ResultMap List
+	 */
+	List<ResultMap> build(ModelAndTable modelAndTable, Configuration configuration);
+
+	/**
+	 * @param modelAndTable modelAndTable
+	 * @param assistant     assistant
+	 * @return ResultMap List
+	 */
+	List<ResultMap> build(ModelAndTable modelAndTable, MapperBuilderAssistant assistant);
+
 }

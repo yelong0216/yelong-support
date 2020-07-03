@@ -14,55 +14,57 @@ import org.yelong.support.ognl.OgnlWrapper;
 import ognl.OgnlException;
 
 /**
- * 实体映射。
- * 用于存储实体对象
+ * 实体映射<br/>
+ * 
+ * 用于存储实体对象<br/>
+ * 
  * 可以设置属性获取时的默认值，防止freemarker解析错误问题
  * 
  * @author PengFei
  */
-public class EntityMap<T> extends HashMap<String,Object>{
+public class EntityMap<T> extends HashMap<String, Object> {
 
 	private static final long serialVersionUID = 5207534605453355713L;
 
 	private T entity;
-	
+
 	private String defaultValue;
-	
+
 	private OgnlWrapper ognlWrapper = new OgnlWrapper();
-	
+
 	public EntityMap(T entity) {
 		Objects.requireNonNull(entity);
 		this.entity = entity;
 		ognlWrapper.setRoot(entity);
 	}
-	
+
 	public T getEntity() {
 		return entity;
 	}
-	
+
 	@Override
 	public Object get(Object key) {
 		Object value = super.get(key);
-		if( null == value ) {
+		if (null == value) {
 			try {
 				value = ognlWrapper.getValue(key.toString());
 			} catch (OgnlException e) {
-				
+
 			}
 		}
 		return value != null ? value : defaultValue;
 	}
-	
+
 	public EntityMap<T> setDefaultValue(String defaultValue) {
 		this.defaultValue = defaultValue;
 		return this;
 	}
-	
+
 	@Override
 	public Object clone() {
 		return this;
 	}
-	
+
 	@Override
 	public int size() {
 		throw new UnsupportedOperationException();

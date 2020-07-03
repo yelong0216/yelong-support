@@ -11,15 +11,15 @@ import java.util.Map;
  * 
  * @author PengFei
  */
-public interface HttpServletRequestSecurity{
+public interface HttpServletRequestSecurity {
 
 	/**
 	 * 获取源参数映射
 	 * 
 	 * @return 源参数映射
 	 */
-	Map<String,String []> getSourceParameterMap();
-	
+	Map<String, String[]> getSourceParameterMap();
+
 	/**
 	 * 获取源参数值
 	 * 
@@ -27,7 +27,7 @@ public interface HttpServletRequestSecurity{
 	 * @return 源参数值
 	 */
 	String getSourceParameter(String name);
-	
+
 	/**
 	 * 获取源参数值
 	 * 
@@ -35,19 +35,19 @@ public interface HttpServletRequestSecurity{
 	 * @return 源参数值
 	 */
 	String[] getSourceParameterValues(String name);
-	
+
 	/**
 	 * 获取源请求消息体
 	 * 
 	 * @return request body
 	 */
 	byte[] getSourceBody();
-	
+
 	/**
 	 * 获取源所有参数名称
 	 * 
 	 * @return 源所有参数名称
 	 */
 	Enumeration<String> getSourceParameterNames();
-	
+
 }

@@ -16,12 +16,12 @@ import com.google.gson.JsonParseException;
 /**
  * @author PengFei
  */
-public class ModelDoubleJsonDeserializer implements JsonDeserializer<Double>{
+public class ModelDoubleJsonDeserializer implements JsonDeserializer<Double> {
 
 	@Override
 	public Double deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 			throws JsonParseException {
-		if( null == json || StringUtils.isBlank(json.getAsString())) {
+		if (null == json || StringUtils.isBlank(json.getAsString())) {
 			return ModelNullProperty.DOUBLE_NULL;
 		}
 		return json.getAsDouble();

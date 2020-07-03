@@ -16,7 +16,7 @@ import org.yelong.support.servlet.wrapper.HttpServletRequestReuseWrapper;
  * 
  * @author PengFei
  */
-public class XssHttpServletRequestWrapper extends HttpServletRequestReuseWrapper{
+public class XssHttpServletRequestWrapper extends HttpServletRequestReuseWrapper {
 
 	private HttpServletRequest orgRequest = null;
 
@@ -38,7 +38,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestReuseWrapper
 	public Map<String, String[]> getParameterMap() {
 		Map<String, String[]> paramMap = new HashMap<>(super.getParameterMap());
 		for (Map.Entry<String, String[]> entry : paramMap.entrySet()) {
-			entry.setValue(xssEncode((String[])entry.getValue()));
+			entry.setValue(xssEncode((String[]) entry.getValue()));
 		}
 		return paramMap;
 	}
@@ -51,12 +51,13 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestReuseWrapper
 		}
 		return value;
 	}
+
 	/**
 	 * @param ss
 	 * @return
 	 */
 	private static String[] xssEncode(String[] ss) {
-		if (ss == null) 
+		if (ss == null)
 			return ss;
 		for (int i = 0; i < ss.length; i++) {
 			ss[i] = xssEncode(ss[i]);

@@ -27,10 +27,10 @@ public @interface RecordLog {
 	 * @return <tt>true</tt> 记录日志
 	 */
 	boolean isRecordLog() default true;
-	
+
 	/**
 	 * @return 操作备注
 	 */
 	String remark() default "";
-	
+
 }
