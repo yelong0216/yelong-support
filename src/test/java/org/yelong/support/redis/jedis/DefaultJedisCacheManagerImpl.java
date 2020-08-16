@@ -11,8 +11,7 @@ import redis.clients.jedis.JedisPool;
 /**
  * 默认的Jedis缓存管理器实现
  * 
- * @author PengFei
- * @since 1.3.0
+ * @since 1.3
  */
 public class DefaultJedisCacheManagerImpl extends BaseJedisCacheManager {
 

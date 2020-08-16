@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.yelong.support.json.gson.test;
+package org.yelong.support.test.json.gson;
 
 import org.yelong.support.json.gson.model.sql.SqlModelExclusionStrategy;
 

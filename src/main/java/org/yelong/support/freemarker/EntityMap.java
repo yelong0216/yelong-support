@@ -3,11 +3,8 @@
  */
 package org.yelong.support.freemarker;
 
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 import org.yelong.support.ognl.OgnlWrapper;
 
@@ -19,16 +16,16 @@ import ognl.OgnlException;
  * 用于存储实体对象<br/>
  * 
  * 可以设置属性获取时的默认值，防止freemarker解析错误问题
- * 
- * @author PengFei
  */
-public class EntityMap<T> extends HashMap<String, Object> {
+public class EntityMap<T> extends HashMap<String, Object> {//必须继承 HashMap，且clone返回本身
 
-	private static final long serialVersionUID = 5207534605453355713L;
+	private static final long serialVersionUID = -1313237965432896603L;
+
+	public static final String DEFAULT_VALUE = "";
 
 	private T entity;
 
-	private String defaultValue;
+	private String defaultValue = DEFAULT_VALUE;
 
 	private OgnlWrapper ognlWrapper = new OgnlWrapper();
 
@@ -60,31 +57,6 @@ public class EntityMap<T> extends HashMap<String, Object> {
 		return this;
 	}
 
-	@Override
-	public Object clone() {
-		return this;
-	}
-
-	@Override
-	public int size() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public boolean isEmpty() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public boolean containsKey(Object key) {
-		return super.containsKey(key);
-	}
-
-	@Override
-	public boolean containsValue(Object value) {
-		throw new UnsupportedOperationException();
-	}
-
 	/**
 	 * 如果设置的值与 entity 中属性冲突，已 put 值为准
 	 */
@@ -93,33 +65,9 @@ public class EntityMap<T> extends HashMap<String, Object> {
 	}
 
 	@Override
-	public Object remove(Object key) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void putAll(Map<? extends String, ? extends Object> m) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public void clear() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public Set<String> keySet() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public Collection<Object> values() {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public Set<Entry<String, Object>> entrySet() {
-		throw new UnsupportedOperationException();
+	public Object clone() {
+		// freemarker 会调用 HashMap 的 clone 方法。这里直接返回自己
+		return this;
 	}
 
 }

@@ -7,8 +7,6 @@ import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Oracle条件运算符
- * 
- * @author PengFei
  */
 public enum OracleConditionOperator {
 

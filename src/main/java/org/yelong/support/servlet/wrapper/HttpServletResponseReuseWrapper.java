@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
  * 
  * 用此对象替换response后，必须在doFilter之后调用{@link #anewWriteContent(byte[])}进行重新输入响应结果
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class HttpServletResponseReuseWrapper extends HttpServletResponseWrapper {
 

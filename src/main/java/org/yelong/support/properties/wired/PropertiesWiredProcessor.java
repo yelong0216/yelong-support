@@ -17,8 +17,8 @@ import ognl.OgnlException;
 /**
  * 属性装配处理器
  * 
- * @author PengFei
  * @param <T> bean type
+ * @since 1.0
  */
 public final class PropertiesWiredProcessor<T> {
 

@@ -17,7 +17,7 @@ import org.yelong.support.spring.mvc.token.TokenValidate.TokenLocation;
 /**
  * 抽象token拦截器实现
  * 
- * @author PengFei
+ * @since 1.0
  */
 public abstract class AbstractTokenHandlerInterceptor extends AbstractHandlerInterceptor {
 

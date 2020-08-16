@@ -9,7 +9,7 @@ import java.util.Properties;
 import org.yelong.commons.util.PropertiesUtils;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public class PropertiesWrapper {
 

@@ -14,7 +14,7 @@ import org.yelong.support.servlet.wrapper.HttpServletRequestReuseWrapper;
 /**
  * Xss request包装器
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestReuseWrapper {
 

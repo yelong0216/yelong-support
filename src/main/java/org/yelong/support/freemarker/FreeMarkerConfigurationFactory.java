@@ -10,8 +10,7 @@ import freemarker.template.Configuration;
 /**
  * 配置工厂
  * 
- * @author PengFei
- * @since 1.0.5
+ * @since 1.1
  */
 public final class FreeMarkerConfigurationFactory {
 

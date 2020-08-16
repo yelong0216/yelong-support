@@ -14,7 +14,6 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 /**
- * @author PengFei
  * @see StringTypeAdapter
  */
 public class StringNullPaddingSerializer implements JsonSerializer<String> {

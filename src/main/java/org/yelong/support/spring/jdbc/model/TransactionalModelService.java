@@ -12,7 +12,6 @@ import org.yelong.core.jdbc.sql.executable.CountSqlFragment;
 import org.yelong.core.jdbc.sql.executable.DeleteSqlFragment;
 import org.yelong.core.jdbc.sql.executable.InsertSqlFragment;
 import org.yelong.core.jdbc.sql.executable.SelectSqlFragment;
-import org.yelong.core.jdbc.sql.executable.SqlFragmentExecutable;
 import org.yelong.core.jdbc.sql.executable.UpdateSqlFragment;
 import org.yelong.core.jdbc.sql.sort.SortSqlFragment;
 import org.yelong.core.model.ModelConfiguration;
@@ -40,10 +39,7 @@ public abstract class TransactionalModelService extends AbstractSqlModelService 
 		super(modelConfiguration);
 	}
 
-	@Override
-	public <R> R execute(SqlFragmentExecutable sqlFragment) {
-		return super.execute(sqlFragment);
-	}
+	// ==================================================SqlFragmentExecutor==================================================
 
 	@Override
 	public Integer execute(InsertSqlFragment insertSqlFragment) {
@@ -70,193 +66,76 @@ public abstract class TransactionalModelService extends AbstractSqlModelService 
 		return super.execute(selectSqlFragment);
 	}
 
+	// ==================================================ModelSqlFragmentExecutor==================================================
+
+	// ==================================================ModelService==================================================
+
 	@Override
-	public <M extends Modelable> boolean save(M model) {
+	public boolean save(Modelable model) {
 		return super.save(model);
 	}
 
 	@Override
-	public <M extends Modelable> boolean saveSelective(M model) {
+	public boolean saveSelective(Modelable model) {
 		return super.saveSelective(model);
 	}
 
 	@Override
-	public <M extends Modelable> Integer removeAll(Class<M> modelClass) {
-		return super.removeAll(modelClass);
+	public Integer removeBySqlFragment(Class<? extends Modelable> modelClass,
+			ConditionSqlFragment conditionSqlFragment) {
+		return super.removeBySqlFragment(modelClass, conditionSqlFragment);
 	}
 
 	@Override
-	public <M extends Modelable> boolean removeById(Class<M> modelClass, Object id) {
-		return super.removeById(modelClass, id);
+	public Integer modifyBySqlFragment(Modelable model, ConditionSqlFragment conditionSqlFragment) {
+		return super.modifyBySqlFragment(model, conditionSqlFragment);
 	}
 
 	@Override
-	public <M extends Modelable> Integer removeByIds(Class<M> modelClass, Object[] ids) {
-		return super.removeByIds(modelClass, ids);
+	public Integer modifySelectiveBySqlFragment(Modelable model, ConditionSqlFragment conditionSqlFragment) {
+		return super.modifySelectiveBySqlFragment(model, conditionSqlFragment);
 	}
 
 	@Override
-	public <M extends Modelable> boolean removeByOnlyPrimaryKey(Class<M> modelClass, Object primaryKeyValue) {
-		return super.removeByOnlyPrimaryKey(modelClass, primaryKeyValue);
+	public Long countBySqlFragment(Class<? extends Modelable> modelClass, ConditionSqlFragment conditionSqlFragment) {
+		return super.countBySqlFragment(modelClass, conditionSqlFragment);
 	}
 
 	@Override
-	public <M extends Modelable> Integer removeByOnlyPrimaryKey(Class<M> modelClass, Object[] primaryKeyValues) {
-		return super.removeByOnlyPrimaryKey(modelClass, primaryKeyValues);
+	public Long countBySqlFragment(String countSql, Object[] countSqlParams,
+			ConditionSqlFragment conditionSqlFragment) {
+		return super.countBySqlFragment(countSql, countSqlParams, conditionSqlFragment);
 	}
 
 	@Override
-	public <M extends Modelable> Integer removeByCondition(Class<M> modelClass, ConditionSqlFragment condition) {
-		return super.removeByCondition(modelClass, condition);
+	public <M extends Modelable> List<M> findBySqlFragment(Class<M> modelClass,
+			ConditionSqlFragment conditionSqlFragment, SortSqlFragment sortSqlFragment) {
+		return super.findBySqlFragment(modelClass, conditionSqlFragment, sortSqlFragment);
 	}
 
 	@Override
-	public <M extends Modelable> boolean modifyById(M model) {
-		return super.modifyById(model);
+	public <M extends Modelable> List<M> findBySqlFragment(Class<M> modelClass, String selectSql,
+			Object[] selectSqlParams, ConditionSqlFragment conditionSqlFragment, SortSqlFragment sortSqlFragment) {
+		return super.findBySqlFragment(modelClass, selectSql, selectSqlParams, conditionSqlFragment, sortSqlFragment);
 	}
 
 	@Override
-	public <M extends Modelable> boolean modifyByOnlyPrimaryKey(M model) {
-		return super.modifyByOnlyPrimaryKey(model);
+	public <M extends Modelable> List<M> findBySQL(Class<M> modelClass, String selectSql, Object[] params) {
+		return super.findBySQL(modelClass, selectSql, params);
 	}
 
 	@Override
-	public <M extends Modelable> boolean modifySelectiveById(M model) {
-		return super.modifySelectiveById(model);
+	public <M extends Modelable> M findFirstBySqlFragment(Class<M> modelClass,
+			ConditionSqlFragment conditionSqlFragment, SortSqlFragment sortSqlFragment) {
+		return super.findFirstBySqlFragment(modelClass, conditionSqlFragment, sortSqlFragment);
 	}
 
 	@Override
-	public <M extends Modelable> boolean modifySelectiveByOnlyPrimaryKey(M model) {
-		return super.modifySelectiveByOnlyPrimaryKey(model);
-	}
-
-	@Override
-	public <M extends Modelable> Integer modifyByCondition(M model, ConditionSqlFragment conditionFragment) {
-		return super.modifyByCondition(model, conditionFragment);
-	}
-
-	@Override
-	public <M extends Modelable> Integer modifySelectiveByCondition(M model, ConditionSqlFragment conditionFragment) {
-		return super.modifySelectiveByCondition(model, conditionFragment);
-	}
-
-	@Override
-	public <M extends Modelable> Long countAll(Class<M> modelClass) {
-		return super.countAll(modelClass);
-	}
-
-	@Override
-	public <M extends Modelable> Long countById(Class<M> modelClass, Object id) {
-		return super.countById(modelClass, id);
-	}
-
-	@Override
-	public <M extends Modelable> Long countByOnlyPrimaryKey(Class<M> modelClass, Object primaryKeyValue) {
-		return super.countByOnlyPrimaryKey(modelClass, primaryKeyValue);
-	}
-
-	@Override
-	public <M extends Modelable> Long countByIds(Class<M> modelClass, Object[] ids) {
-		return super.countByIds(modelClass, ids);
-	}
-
-	@Override
-	public <M extends Modelable> Long countByOnlyPrimaryKey(Class<M> modelClass, Object[] primaryKeyValues) {
-		return super.countByOnlyPrimaryKey(modelClass, primaryKeyValues);
-	}
-
-	@Override
-	public <M extends Modelable> Long countByCondition(Class<M> modelClass, ConditionSqlFragment conditionFragment) {
-		return super.countByCondition(modelClass, conditionFragment);
-	}
-
-	@Override
-	public <M extends Modelable> boolean existById(Class<M> modelClass, Object id) {
-		return super.existById(modelClass, id);
-	}
-
-	@Override
-	public <M extends Modelable> boolean existByOnlyPrimaryKey(Class<M> modelClass, Object primaryKeyValue) {
-		return super.existByOnlyPrimaryKey(modelClass, primaryKeyValue);
-	}
-
-	@Override
-	public <M extends Modelable> boolean existByIds(Class<M> modelClass, Object[] ids) {
-		return super.existByIds(modelClass, ids);
-	}
-
-	@Override
-	public <M extends Modelable> boolean existByOnlyPrimaryKey(Class<M> modelClass, Object[] primaryKeyValues) {
-		return super.existByOnlyPrimaryKey(modelClass, primaryKeyValues);
-	}
-
-	@Override
-	public <M extends Modelable> boolean existByCondition(Class<M> modelClass, ConditionSqlFragment condition) {
-		return super.existByCondition(modelClass, condition);
-	}
-
-	@Override
-	public <M extends Modelable> List<M> findAll(Class<M> modelClass) {
-		return super.findAll(modelClass);
-	}
-
-	@Override
-	public <M extends Modelable> M findById(Class<M> modelClass, Object id) {
-		return super.findById(modelClass, id);
-	}
-
-	@Override
-	public <M extends Modelable> M findByOnlyPrimaryKey(Class<M> modelClass, Object primaryKeyValue) {
-		return super.findByOnlyPrimaryKey(modelClass, primaryKeyValue);
-	}
-
-	@Override
-	public <M extends Modelable> List<M> findByCondition(Class<M> modelClass, ConditionSqlFragment condition) {
-		return super.findByCondition(modelClass, condition);
-	}
-
-	@Override
-	public <M extends Modelable> M findFirstByCondition(Class<M> modelClass, ConditionSqlFragment condition) {
-		return super.findFirstByCondition(modelClass, condition);
-	}
-
-	@Override
-	public <M extends Modelable> List<M> findBySort(Class<M> modelClass, SortSqlFragment sort) {
-		return super.findBySort(modelClass, sort);
-	}
-
-	@Override
-	public <M extends Modelable> List<M> findByConditionSort(Class<M> modelClass, ConditionSqlFragment condition,
-			SortSqlFragment sort) {
-		return super.findByConditionSort(modelClass, condition, sort);
-	}
-
-	@Override
-	public <M extends Modelable> List<M> findPage(Class<M> modelClass, Integer pageNum, Integer pageSize) {
-		return super.findPage(modelClass, pageNum, pageSize);
-	}
-
-	@Override
-	public <M extends Modelable> List<M> findPageByCondition(Class<M> modelClass, ConditionSqlFragment condition,
-			Integer pageNum, Integer pageSize) {
-		return super.findPageByCondition(modelClass, condition, pageNum, pageSize);
-	}
-
-	@Override
-	public <M extends Modelable> List<M> findPageBySort(Class<M> modelClass, SortSqlFragment sort, Integer pageNum,
-			Integer pageSize) {
-		return super.findPageBySort(modelClass, sort, pageNum, pageSize);
-	}
-
-	@Override
-	public <M extends Modelable> List<M> findPageByConditionSort(Class<M> modelClass, ConditionSqlFragment condition,
-			SortSqlFragment sort, Integer pageNum, Integer pageSize) {
-		return super.findPageByConditionSort(modelClass, condition, sort, pageNum, pageSize);
-	}
-
-	@Override
-	public <M extends Modelable> List<M> findBySQL(Class<M> modelClass, String sql, Object[] params) {
-		return super.findBySQL(modelClass, sql, params);
+	public <M extends Modelable> M findFirstBySqlFragment(Class<M> modelClass, String selectSql,
+			Object[] selectSqlParams, ConditionSqlFragment conditionSqlFragment, SortSqlFragment sortSqlFragment) {
+		// TODO Auto-generated method stub
+		return super.findFirstBySqlFragment(modelClass, selectSql, selectSqlParams, conditionSqlFragment,
+				sortSqlFragment);
 	}
 
 	@Override
@@ -265,129 +144,135 @@ public abstract class TransactionalModelService extends AbstractSqlModelService 
 	}
 
 	@Override
-	public <M extends Modelable> List<M> findPageBySQL(Class<M> modelClass, String sql, Object[] params,
-			Integer pageNum, Integer pageSize) {
-		return super.findPageBySQL(modelClass, sql, params, pageNum, pageSize);
+	public <T> List<T> findSingleColumnBySqlFragment(Class<? extends Modelable> modelClass, String selectColumn,
+			ConditionSqlFragment conditionSqlFragment, SortSqlFragment sortSqlFragment) {
+		return super.findSingleColumnBySqlFragment(modelClass, selectColumn, conditionSqlFragment, sortSqlFragment);
 	}
 
 	@Override
-	public ModelConfiguration getModelConfiguration() {
-		return super.getModelConfiguration();
+	public <T> List<T> findSingleColumnBySqlFragment(String selectSql, Object[] selectSqlParams,
+			ConditionSqlFragment conditionSqlFragment, SortSqlFragment sortSqlFragment) {
+		return super.findSingleColumnBySqlFragment(selectSql, selectSqlParams, conditionSqlFragment, sortSqlFragment);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> Integer removeBySqlModel(Class<M> modelClass, S sqlModel) {
+	public <T> T findFirstSingleColumnBySqlFragment(Class<? extends Modelable> modelClass, String selectColumn,
+			ConditionSqlFragment conditionSqlFragment, SortSqlFragment sortSqlFragment) {
+		return super.findFirstSingleColumnBySqlFragment(modelClass, selectColumn, conditionSqlFragment,
+				sortSqlFragment);
+	}
+
+	@Override
+	public <T> T findFirstSingleColumnBySqlFragment(String selectSql, Object[] selectSqlParams,
+			ConditionSqlFragment conditionSqlFragment, SortSqlFragment sortSqlFragment) {
+		return super.findFirstSingleColumnBySqlFragment(selectSql, selectSqlParams, conditionSqlFragment,
+				sortSqlFragment);
+	}
+
+	@Override
+	public <M extends Modelable> List<M> findPageBySqlFragment(Class<M> modelClass,
+			ConditionSqlFragment conditionSqlFragment, SortSqlFragment sortSqlFragment, int pageNum, int pageSize) {
+		return super.findPageBySqlFragment(modelClass, conditionSqlFragment, sortSqlFragment, pageNum, pageSize);
+	}
+
+	@Override
+	public <M extends Modelable> List<M> findPageBySqlFragment(Class<M> modelClass, String selectSql,
+			Object[] selectSqlParams, ConditionSqlFragment conditionSqlFragment, SortSqlFragment sortSqlFragment,
+			int pageNum, int pageSize) {
+		// TODO Auto-generated method stub
+		return super.findPageBySqlFragment(modelClass, selectSql, selectSqlParams, conditionSqlFragment,
+				sortSqlFragment, pageNum, pageSize);
+	}
+
+	@Override
+	public <M extends Modelable> List<M> findPageBySQL(Class<M> modelClass, String selectSql, Object[] params,
+			int pageNum, int pageSize) {
+		return super.findPageBySQL(modelClass, selectSql, params, pageNum, pageSize);
+	}
+
+	// ==================================================SqlModelService==================================================
+
+	@Override
+	public Integer removeBySqlModel(Class<? extends Modelable> modelClass, SqlModel<? extends Modelable> sqlModel) {
 		return super.removeBySqlModel(modelClass, sqlModel);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> Integer removeBySqlModel(String sql, S sqlModel) {
-		return super.removeBySqlModel(sql, sqlModel);
-	}
-
-	@Override
-	public <M extends Modelable, S extends SqlModel> Integer modifyBySqlModel(M model, S sqlModel) {
+	public Integer modifyBySqlModel(Modelable model, SqlModel<? extends Modelable> sqlModel) {
 		return super.modifyBySqlModel(model, sqlModel);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> Integer modifySelectiveBySqlModel(M model, S sqlModel) {
+	public Integer modifySelectiveBySqlModel(Modelable model, SqlModel<? extends Modelable> sqlModel) {
 		return super.modifySelectiveBySqlModel(model, sqlModel);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> Integer modifyBySqlModel(String sql, Object[] params, S sqlModel) {
-		return super.modifyBySqlModel(sql, params, sqlModel);
-	}
-
-	@Override
-	public <M extends Modelable, S extends SqlModel> Long countBySqlModel(Class<M> modelClass, S sqlModel) {
+	public Long countBySqlModel(Class<? extends Modelable> modelClass, SqlModel<? extends Modelable> sqlModel) {
 		return super.countBySqlModel(modelClass, sqlModel);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> boolean existBySqlModel(Class<M> modelClass, S sqlModel) {
-		return super.existBySqlModel(modelClass, sqlModel);
+	public Long countBySqlModel(String countSql, Object[] countSqlParams, SqlModel<? extends Modelable> sqlModel) {
+		return super.countBySqlModel(countSql, countSqlParams, sqlModel);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> Long countBySqlModel(String sql, S sqlModel) {
-		return super.countBySqlModel(sql, sqlModel);
-	}
-
-	@Override
-	public <M extends Modelable, S extends SqlModel> boolean existBySqlModel(String sql, S sqlModel) {
-		return super.existBySqlModel(sql, sqlModel);
-	}
-
-	@Override
-	public <M extends Modelable, S extends SqlModel> List<M> findBySqlModel(Class<M> modelClass, S sqlModel) {
+	public <M extends Modelable> List<M> findBySqlModel(Class<M> modelClass, SqlModel<? extends Modelable> sqlModel) {
 		return super.findBySqlModel(modelClass, sqlModel);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> M findFirstBySqlModel(Class<M> modelClass, S sqlModel) {
+	public <M extends Modelable> List<M> findBySqlModel(Class<M> modelClass, String selectSql, Object[] selectSqlParams,
+			SqlModel<? extends Modelable> sqlModel) {
+		return super.findBySqlModel(modelClass, selectSql, selectSqlParams, sqlModel);
+	}
+
+	@Override
+	public <M extends Modelable> M findFirstBySqlModel(Class<M> modelClass, SqlModel<? extends Modelable> sqlModel) {
 		return super.findFirstBySqlModel(modelClass, sqlModel);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> List<M> findBySqlModel(Class<M> modelClass, String sql,
-			S sqlModel) {
-		return super.findBySqlModel(modelClass, sql, sqlModel);
+	public <M extends Modelable> M findFirstBySqlModel(Class<M> modelClass, String selectSql, Object[] selectSqlParams,
+			SqlModel<? extends Modelable> sqlModel) {
+		return super.findFirstBySqlModel(modelClass, selectSql, selectSqlParams, sqlModel);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> M findFirstBySqlModel(Class<M> modelClass, String sql,
-			S sqlModel) {
-		return super.findFirstBySqlModel(modelClass, sql, sqlModel);
+	public <T> List<T> findSingleColumnBySqlModel(Class<? extends Modelable> modelClass, String selectColumn,
+			SqlModel<? extends Modelable> sqlModel) {
+		return super.findSingleColumnBySqlModel(modelClass, selectColumn, sqlModel);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> List<M> findPageBySqlModel(Class<M> modelClass, S sqlModel,
+	public <T> List<T> findSingleColumnBySqlModel(String selectSql, Object[] selectSqlParams,
+			SqlModel<? extends Modelable> sqlModel) {
+		return super.findSingleColumnBySqlModel(selectSql, selectSqlParams, sqlModel);
+	}
+
+	@Override
+	public <T> T findFirstSingleColumnBySqlModel(Class<? extends Modelable> modelClass, String selectColumn,
+			SqlModel<? extends Modelable> sqlModel) {
+		return super.findFirstSingleColumnBySqlModel(modelClass, selectColumn, sqlModel);
+	}
+
+	@Override
+	public <T> T findFirstSingleColumnBySqlModel(String selectSql, Object[] selectSqlParams,
+			SqlModel<? extends Modelable> sqlModel) {
+		return super.findFirstSingleColumnBySqlModel(selectSql, selectSqlParams, sqlModel);
+	}
+
+	@Override
+	public <M extends Modelable> List<M> findPageBySqlModel(Class<M> modelClass, SqlModel<? extends Modelable> sqlModel,
 			int pageNum, int pageSize) {
 		return super.findPageBySqlModel(modelClass, sqlModel, pageNum, pageSize);
 	}
 
 	@Override
-	public <M extends Modelable, S extends SqlModel> List<M> findPageBySqlModel(Class<M> modelClass, String sql,
-			S sqlModel, int pageNum, int pageSize) {
-		return super.findPageBySqlModel(modelClass, sql, sqlModel, pageNum, pageSize);
-	}
-
-	@Override
-	public <M extends Modelable, T> List<T> findSingleColumn(Class<M> modelClass, String selectColumn,
-			ConditionSqlFragment condition, SortSqlFragment sort) {
-		return super.findSingleColumn(modelClass, selectColumn, condition, sort);
-	}
-
-	@Override
-	public <M extends Modelable, T> List<T> findSingleColumnByOnlyPrimaryKey(Class<M> modelClass, String selectColumn,
-			Object primaryKeyValue) {
-		return super.findSingleColumnByOnlyPrimaryKey(modelClass, selectColumn, primaryKeyValue);
-	}
-
-	@Override
-	public <M extends Modelable, T> T findFirstSingleColumn(Class<M> modelClass, String selectColumn,
-			ConditionSqlFragment condition, SortSqlFragment sort) {
-		return super.findFirstSingleColumn(modelClass, selectColumn, condition, sort);
-	}
-
-	@Override
-	public <M extends Modelable, T> T findFirstSingleColumnByOnlyPrimaryKey(Class<M> modelClass, String selectColumn,
-			Object primaryKeyValue) {
-		return super.findFirstSingleColumnByOnlyPrimaryKey(modelClass, selectColumn, primaryKeyValue);
-	}
-
-	@Override
-	public <M extends Modelable, S extends SqlModel, T> T findFirstSingleColumnBySqlModel(Class<M> modelClass,
-			String selectColumn, S sqlModel) {
-		return super.findFirstSingleColumnBySqlModel(modelClass, selectColumn, sqlModel);
-	}
-
-	@Override
-	public <M extends Modelable, S extends SqlModel, T> List<T> findSingleColumnBySqlModel(Class<M> modelClass,
-			String selectColumn, S sqlModel) {
-		return super.findSingleColumnBySqlModel(modelClass, selectColumn, sqlModel);
+	public <M extends Modelable> List<M> findPageBySqlModel(Class<M> modelClass, String selectSql,
+			Object[] selectSqlParams, SqlModel<? extends Modelable> sqlModel, int pageNum, int pageSize) {
+		return super.findPageBySqlModel(modelClass, selectSql, selectSqlParams, sqlModel, pageNum, pageSize);
 	}
 
 	@Override

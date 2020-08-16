@@ -17,8 +17,7 @@ import org.apache.tools.ant.types.FileSet;
 /**
  * 压缩、解压文件工具类
  * 
- * @author PengFei
- * @since 1.0.3
+ * @since 1.1
  */
 public class ZipUtils {
 

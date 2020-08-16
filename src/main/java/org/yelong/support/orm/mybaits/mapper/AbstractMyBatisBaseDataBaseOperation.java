@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.yelong.commons.util.ListUtilsE;
 import org.yelong.support.orm.mybaits.sql.MyBatisParamMap;
 import org.yelong.support.orm.mybaits.util.MyBatisMapperParamUtils;
 
@@ -18,7 +19,7 @@ import org.yelong.support.orm.mybaits.util.MyBatisMapperParamUtils;
  * 
  * 这里的操作将通过mybatis来执行
  * 
- * @author PengFei
+ * @since 1.0
  */
 public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBaseDataBaseOperation {
 
@@ -32,11 +33,7 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 
 	@Override
 	public Map<String, Object> selectRow(String sql, Object... params) {
-		List<Map<String, Object>> list = select(sql, params);
-		if (list == null || list.isEmpty()) {
-			return Collections.emptyMap();
-		}
-		return list.get(0);
+		return ListUtilsE.get(select(sql, params), 0, Collections.emptyMap());
 	}
 
 	@Override
@@ -47,11 +44,7 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 
 	@Override
 	public <T> T selectSingleObject(String sql, Object... params) {
-		List<T> list = selectColumn(sql, params);
-		if (null == list || list.isEmpty()) {
-			return null;
-		}
-		return list.get(0);
+		return ListUtilsE.get(selectColumn(sql, params), 0);
 	}
 
 	@Override
@@ -97,11 +90,7 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 
 	@Override
 	public Map<String, Object> selectRow(String sql, MyBatisParamMap mybatisParamMap) {
-		List<Map<String, Object>> list = select(sql, mybatisParamMap);
-		if (list == null || list.isEmpty()) {
-			return Collections.emptyMap();
-		}
-		return list.get(0);
+		return ListUtilsE.get(select(sql, mybatisParamMap), 0, Collections.emptyMap());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -112,11 +101,7 @@ public abstract class AbstractMyBatisBaseDataBaseOperation implements MyBatisBas
 
 	@Override
 	public <T> T selectSingleObject(String sql, MyBatisParamMap mybatisParamMap) {
-		List<T> list = selectColumn(sql, mybatisParamMap);
-		if (null == list || list.isEmpty()) {
-			return null;
-		}
-		return list.get(0);
+		return ListUtilsE.get(selectColumn(sql, mybatisParamMap), 0);
 	}
 
 	@Override

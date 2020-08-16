@@ -10,7 +10,7 @@ import ognl.OgnlException;
 /**
  * Ognl包装器
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class OgnlWrapper {
 

@@ -17,7 +17,7 @@ import org.yelong.support.orm.mybaits.util.MyBatisParamTypeUtils;
  * 它应该用在成员变量中<br/>
  * 让其ognl表达式来获取参数值
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class MyBatisParamMap extends LinkedHashMap<String, Object> implements MyBatisParamAliasable {
 

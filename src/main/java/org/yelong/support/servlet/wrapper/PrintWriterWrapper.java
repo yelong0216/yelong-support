@@ -11,7 +11,7 @@ import java.io.PrintWriter;
  * 
  * 内部使用 {@link StringBuilder}来存储数据
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class PrintWriterWrapper extends PrintWriter {
 

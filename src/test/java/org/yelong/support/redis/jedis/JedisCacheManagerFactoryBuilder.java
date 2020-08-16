@@ -10,8 +10,7 @@ import redis.clients.jedis.JedisPool;
 /**
  * jedis 缓存管理器工厂建造者
  * 
- * @author PengFei
- * @since 1.3.0
+ * @since 1.3
  */
 public class JedisCacheManagerFactoryBuilder {
 

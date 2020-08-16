@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Update;
 /**
  * mybatis基础操作映射类
  * 
- * @author PengFei
+ * @since 1.0
  */
 public interface MyBatisDBOperationMapper {
 

@@ -11,12 +11,12 @@ import org.apache.ibatis.mapping.ResultMap;
 import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.mapping.SqlSource;
 import org.apache.ibatis.session.Configuration;
-import org.yelong.core.model.resolve.ModelAndTable;
+import org.yelong.core.model.manage.ModelAndTable;
 import org.yelong.support.orm.mybaits.model.mapping.MappedStatementBuilder;
 import org.yelong.support.orm.mybaits.model.mapping.ResultMapBuilder;
 
 /**
- * @author PengFei
+ * @since 1.1
  */
 public class DefaultMappedStatementBuilder implements MappedStatementBuilder {
 

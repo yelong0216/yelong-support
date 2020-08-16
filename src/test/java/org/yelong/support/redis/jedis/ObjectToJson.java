@@ -6,8 +6,7 @@ package org.yelong.support.redis.jedis;
 /**
  * 对象转换为json的转换器
  * 
- * @author PengFei
- * @since 1.3.0
+ * @since 1.3
  */
 @FunctionalInterface
 public interface ObjectToJson {

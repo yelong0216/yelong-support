@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Param;
  * 
  * 此别名会修改参数的key值，以适应ognl表达式<br/>
  * 
- * @author PengFei
+ * @since 1.0
  */
 public interface MyBatisParamAliasable {
 

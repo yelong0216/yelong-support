@@ -12,7 +12,7 @@ import org.yelong.core.annotation.Nullable;
 /**
  * 构建属性装配执行器
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class PropertiesWiredProcessorBuilder {
 

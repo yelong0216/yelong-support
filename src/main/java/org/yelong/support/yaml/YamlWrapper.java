@@ -11,7 +11,7 @@ import java.io.InputStream;
 import org.yaml.snakeyaml.Yaml;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public class YamlWrapper {
 

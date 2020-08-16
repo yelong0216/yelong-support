@@ -20,7 +20,7 @@ import org.yelong.support.servlet.HttpServletUtils;
  * 
  * 重复使用包含：请求消息体
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class HttpServletRequestReuseWrapper extends HttpServletRequestWrapper {
 

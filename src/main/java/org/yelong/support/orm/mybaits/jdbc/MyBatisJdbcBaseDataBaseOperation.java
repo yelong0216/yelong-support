@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
  * 
  * 通过sqlSession获取connection对象进行操作
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class MyBatisJdbcBaseDataBaseOperation extends AbstractMyBatisJdbcBaseDataBaseOperation {
 

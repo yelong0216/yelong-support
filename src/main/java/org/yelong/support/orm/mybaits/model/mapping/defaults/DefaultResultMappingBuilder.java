@@ -14,20 +14,21 @@ import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.apache.ibatis.type.UnknownTypeHandler;
-import org.yelong.core.model.resolve.FieldAndColumn;
-import org.yelong.core.model.resolve.ModelAndTable;
+import org.yelong.commons.lang.EnumUtilsE;
+import org.yelong.core.model.manage.FieldAndColumn;
+import org.yelong.core.model.manage.FieldAndColumnType;
+import org.yelong.core.model.manage.ModelAndTable;
 import org.yelong.support.orm.mybaits.model.mapping.ResultMappingBuilder;
 
 /**
- * @author PengFei
+ * @since 1.1
  */
 public class DefaultResultMappingBuilder implements ResultMappingBuilder {
 
 	@Override
 	public List<ResultMapping> build(ModelAndTable modelAndTable, Configuration configuration) {
 		List<ResultMapping> resultMappings = new ArrayList<>();
-		// modelAndTable.getFieldAndColumns().stream().filter(x->!x.isExtend())//过滤拓展字段-->我当初为啥要过滤我都忘了
-		modelAndTable.getFieldAndColumns().stream().filter(FieldAndColumn::isSelectMapping).forEach(x -> {
+		modelAndTable.getFieldAndColumns(FieldAndColumnType.ORDINARY,FieldAndColumnType.PRIMARYKEY,FieldAndColumnType.EXTEND).stream().filter(FieldAndColumn::isSelect).forEach(x -> {
 			List<ResultFlag> flags = new ArrayList<>();
 			// String columnName = x.getColumn();
 			String selectColumnName = x.getSelectColumn();
@@ -37,10 +38,12 @@ public class DefaultResultMappingBuilder implements ResultMappingBuilder {
 				flags.add(ResultFlag.ID);
 			}
 			TypeHandler<?> typeHandler = resolveTypeHandler(x.getFieldType(), null, configuration);
-			JdbcType jdbcType = StringUtils.isEmpty(x.getJdbcType()) ? null : JdbcType.valueOf(x.getJdbcType());
+			String jdbcTypeStr = x.getJdbcType();
+			JdbcType jdbcType = StringUtils.isEmpty(jdbcTypeStr) ? null
+					: EnumUtilsE.valueOf(JdbcType.class, jdbcTypeStr);// 如果jdbcType没有映射的枚举则返回null
 			ResultMapping resultMapping = new ResultMapping.Builder(configuration, propertyName, selectColumnName,
 					x.getFieldType()).flags(flags).jdbcType(jdbcType).nestedResultMapId(nestedResultMapId)
-							.typeHandler(typeHandler).build();
+					.typeHandler(typeHandler).build();
 			resultMappings.add(resultMapping);
 		});
 		return resultMappings;

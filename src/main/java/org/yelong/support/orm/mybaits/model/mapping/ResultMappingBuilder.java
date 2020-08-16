@@ -7,12 +7,12 @@ import java.util.List;
 
 import org.apache.ibatis.mapping.ResultMapping;
 import org.apache.ibatis.session.Configuration;
-import org.yelong.core.model.resolve.ModelAndTable;
+import org.yelong.core.model.manage.ModelAndTable;
 
 /**
  * {@link ResultMapping} 建造者
  * 
- * @author PengFei
+ * @since 1.1
  */
 public interface ResultMappingBuilder {
 

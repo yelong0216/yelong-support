@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.yelong.support.spring.ApplicationContextDecorator;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public final class SpringMvcUtils {
 

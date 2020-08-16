@@ -15,7 +15,7 @@ import org.apache.ibatis.plugin.Plugin;
 /**
  * 抽象的拦截器实现
  * 
- * @author PengFei
+ * @since 1.0
  */
 public abstract class AbstractInterceptor implements Interceptor {
 

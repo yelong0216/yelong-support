@@ -12,7 +12,7 @@ import java.net.URLEncoder;
 import javax.servlet.ServletOutputStream;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public abstract class AbstractController implements Controller{
 	

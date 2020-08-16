@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.yelong.support.servlet.wrapper.HttpServletResponseReuseWrapper;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public class XssHttpServletResponseWrapper extends HttpServletResponseReuseWrapper {
 

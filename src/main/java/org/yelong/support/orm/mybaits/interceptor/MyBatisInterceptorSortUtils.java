@@ -14,7 +14,7 @@ import org.apache.ibatis.session.Configuration;
 /**
  * mybatis拦截器排序
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class MyBatisInterceptorSortUtils {
 

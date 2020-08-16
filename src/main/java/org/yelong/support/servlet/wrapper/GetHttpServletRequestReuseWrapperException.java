@@ -6,7 +6,7 @@ package org.yelong.support.servlet.wrapper;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public class GetHttpServletRequestReuseWrapperException extends RuntimeException {
 

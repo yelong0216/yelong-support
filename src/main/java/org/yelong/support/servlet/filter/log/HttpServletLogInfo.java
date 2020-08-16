@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public class HttpServletLogInfo {
 

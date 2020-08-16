@@ -9,7 +9,7 @@ import java.util.Properties;
 /**
  * 重写获取proeprty方法。获取的所有值将进行转换为utf-8格式
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class PropertiesUTF8 extends Properties {
 

@@ -18,7 +18,7 @@ import org.yelong.support.spring.mvc.HandlerResponseWay;
 /**
  * 根据相应结果方式来响应异常信息<br/>
  * 
- * @author PengFei
+ * @since 1.0
  */
 public abstract class AbstractHandlerExceptionResolverByResponseWay extends AbstractHandlerExceptionResolver {
 

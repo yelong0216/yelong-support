@@ -19,8 +19,7 @@ import redis.clients.jedis.Jedis;
  * 
  * 默认存储为Json
  * 
- * @author PengFei
- * @since 1.3.0
+ * @since 1.3
  */
 public abstract class AbstractJedisCacheManager implements JedisCacheManager {
 

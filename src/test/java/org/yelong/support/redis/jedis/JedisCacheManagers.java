@@ -6,8 +6,7 @@ package org.yelong.support.redis.jedis;
 /**
  * jedis 缓存管理器工具类
  * 
- * @author PengFei
- *
+ * @since 1.3
  */
 public final class JedisCacheManagers {
 

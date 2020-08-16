@@ -14,7 +14,6 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 /**
- * @author PengFei
  * @see IntegerTypeAdapter
  */
 public class IntegerNullPaddingSerializer implements JsonSerializer<Integer> {

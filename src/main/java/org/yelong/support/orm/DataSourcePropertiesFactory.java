@@ -10,7 +10,7 @@ import org.yelong.support.properties.wired.PropertiesWiredProcessorBuilder;
 /**
  * 读取自定义的配置创建DataSource
  * 
- * @author PengFei
+ * @since 1.1
  */
 public final class DataSourcePropertiesFactory {
 

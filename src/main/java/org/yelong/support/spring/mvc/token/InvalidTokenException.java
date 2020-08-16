@@ -4,7 +4,7 @@
 package org.yelong.support.spring.mvc.token;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public class InvalidTokenException extends Exception {
 

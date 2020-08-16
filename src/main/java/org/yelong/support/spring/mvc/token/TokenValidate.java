@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
  * 被标注的请求方法根据指定的规则验证token<br/>
  * 验证通过后，可以通过RequetUserInfoHolder来获取当前请求的用户信息
  * 
- * @author PengFei
+ * @since 1.0
  */
 public @interface TokenValidate {
 

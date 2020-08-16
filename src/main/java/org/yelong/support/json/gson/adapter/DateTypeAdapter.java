@@ -22,8 +22,7 @@ import com.google.gson.stream.JsonWriter;
  * 
  * 可以设置序列化时Date的格式与反序列化时如果解析这个字符串为Date<br/>
  * 
- * @author PengFei
- * @since 1.0.5
+ * @since 1.1
  */
 public class DateTypeAdapter extends TypeAdapter<Date> {
 

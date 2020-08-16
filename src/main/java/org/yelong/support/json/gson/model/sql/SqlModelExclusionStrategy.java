@@ -15,8 +15,7 @@ import com.google.gson.FieldAttributes;
 /**
  * 对于SqlModel进行转换json时，去除多余的字段
  * 
- * @author PengFei
- * @since 1.0.3
+ * @since 1.1
  */
 public class SqlModelExclusionStrategy implements ExclusionStrategy {
 

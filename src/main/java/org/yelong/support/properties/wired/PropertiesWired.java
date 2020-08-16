@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @Target({ TYPE })
 /**
- * @author PengFei
+ * @since 1.0
  */
 public @interface PropertiesWired {
 

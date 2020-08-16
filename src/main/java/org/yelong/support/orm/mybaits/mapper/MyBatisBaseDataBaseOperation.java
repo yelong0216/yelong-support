@@ -13,7 +13,7 @@ import org.yelong.support.orm.mybaits.sql.MyBatisParamMap;
 /**
  * mybatis 基础数据库操作
  * 
- * @author PengFei
+ * @since 1.0
  */
 public interface MyBatisBaseDataBaseOperation extends BaseDataBaseOperation {
 

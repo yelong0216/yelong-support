@@ -23,7 +23,7 @@ import org.yelong.support.servlet.wrapper.HttpServletResponseReuseWrapper;
  * 
  * 实现对请求参数、消息体、响应消息体进行加解密及数据完整性验证功能。
  * 
- * @author PengFei
+ * @since 1.0
  */
 public abstract class AbstractSecurityFilter implements Filter {
 

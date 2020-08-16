@@ -15,8 +15,6 @@ import com.google.gson.stream.JsonWriter;
 
 /**
  * 类适配器
- * 
- * @author PengFei
  */
 public class ClassTypeAdapter extends TypeAdapter<Class<?>> {
 
@@ -38,7 +36,6 @@ public class ClassTypeAdapter extends TypeAdapter<Class<?>> {
 		try {
 			return ClassUtils.getClass(str);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 			in.nextNull();
 			return null;
 		}

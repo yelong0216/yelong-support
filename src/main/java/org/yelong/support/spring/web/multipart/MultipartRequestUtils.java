@@ -3,7 +3,9 @@
  */
 package org.yelong.support.spring.web.multipart;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
@@ -15,8 +17,7 @@ import org.yelong.support.spring.ApplicationContextDecorator;
  * 
  * 可以更方便的获取上传的文件
  * 
- * @author PengFei
- * @since 1.3.0
+ * @since 1.3
  */
 public final class MultipartRequestUtils {
 
@@ -63,9 +64,20 @@ public final class MultipartRequestUtils {
 	 */
 	public static MultipartRequest getMultipartRequest(HttpServletRequest request,
 			MultipartResolver multipartResolver) {
+		// 将解析过的 request 放入线程变量再次发送请求如果线程是同一个线程则会出现变量已经存在的现象
+		// 如果线程变量中已经存在 解析过的 request 判断解析过的request与需要解析的request是否是同一个request
 		MultipartRequest multipartRequest = MULTIPART_REQUEST_HOLDER.get();
 		if (multipartRequest != null) {
-			return multipartRequest;
+			if (!(multipartRequest instanceof HttpServletRequestWrapper)) {
+				throw new UnsupportedOperationException("判断线程变量中存储的 request 失败");
+			}
+			HttpServletRequestWrapper requestWrapper = (HttpServletRequestWrapper) multipartRequest;
+			ServletRequest firstRequest = requestWrapper.getRequest();
+			if (firstRequest.equals(request)) {
+				return multipartRequest;
+			} else {
+				MULTIPART_REQUEST_HOLDER.remove();
+			}
 		}
 		if (!multipartResolver.isMultipart(request)) {
 			return null;

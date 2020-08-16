@@ -13,7 +13,7 @@ import org.springframework.web.method.HandlerMethod;
 /**
  * 处理器响应方式
  * 
- * @author PengFei
+ * @since 1.0
  */
 public enum HandlerResponseWay {
 

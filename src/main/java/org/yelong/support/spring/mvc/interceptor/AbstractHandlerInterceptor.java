@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.yelong.commons.annotation.AnnotationUtils;
+import org.yelong.commons.lang.annotation.AnnotationUtilsE;
 
 /**
  * 抽象mvc拦截器。 提供一些拦截器常用的方法
  * 
  * 可以在拦截器中抛出异常，由异常处理器来处理这些异常
  * 
- * @author PengFei
+ * @since 1.0
  */
 public abstract class AbstractHandlerInterceptor extends HandlerInterceptorAdapter {
 
@@ -86,7 +86,7 @@ public abstract class AbstractHandlerInterceptor extends HandlerInterceptorAdapt
 			return null;
 		}
 		Class<?> c = handler.getBeanType();
-		return AnnotationUtils.getAnnotation(c, annotation, true);
+		return AnnotationUtilsE.getAnnotation(c, annotation, true);
 	}
 
 }

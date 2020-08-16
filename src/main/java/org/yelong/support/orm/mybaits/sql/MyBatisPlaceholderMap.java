@@ -8,7 +8,7 @@ import org.yelong.core.annotation.Nullable;
 /**
  * MyBatis动态sql片段
  * 
- * @author PengFei
+ * @since 1.0
  */
 public interface MyBatisPlaceholderMap extends MyBatisSqlFragment {
 

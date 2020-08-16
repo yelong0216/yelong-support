@@ -9,8 +9,7 @@ import org.yelong.core.annotation.Nullable;
 /**
  * 基础的Jedis缓存管理器
  * 
- * @author PengFei
- * @since 1.3.0
+ * @since 1.3
  */
 public abstract class BaseJedisCacheManager extends AbstractJedisCacheManager {
 
@@ -22,6 +21,12 @@ public abstract class BaseJedisCacheManager extends AbstractJedisCacheManager {
 
 	private final JsonToObject jsonToObject;
 
+	/**
+	 * @param keyPrefix 键值前缀
+	 * @param name 名称
+	 * @param objectToJson
+	 * @param jsonToObject
+	 */
 	protected BaseJedisCacheManager(@Nullable String keyPrefix, @Nullable String name, ObjectToJson objectToJson,
 			JsonToObject jsonToObject) {
 		this.name = name;
@@ -34,6 +39,11 @@ public abstract class BaseJedisCacheManager extends AbstractJedisCacheManager {
 		return name;
 	}
 
+	/**
+	 * key 前缀最终为 前缀 + name。<br/>
+	 * keyPrefix可以对多个项目进行区分<br/>
+	 * name可以对项目中的不同管理器进行区分
+	 */
 	protected String getKeyPrefix() {
 		if (StringUtils.isBlank(keyPrefix)) {
 			if (StringUtils.isBlank(name)) {

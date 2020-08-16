@@ -17,7 +17,7 @@ import org.yelong.support.servlet.wrapper.HttpServletRequestReuseWrapper;
 /**
  * 解密的request包装器
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class SecurityHttpServletRequestWrapper extends HttpServletRequestReuseWrapper
 		implements HttpServletRequestSecurity {

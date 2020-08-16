@@ -12,7 +12,7 @@ import org.yelong.core.annotation.Nullable;
 import org.yelong.support.orm.mybaits.sql.MyBatisParamMap;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public class MyBatisMapperParamUtils {
 

@@ -13,7 +13,7 @@ import org.yelong.support.ognl.OgnlWrapper;
 import ognl.OgnlException;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public class DefaultYamlProperties implements YamlProperties {
 

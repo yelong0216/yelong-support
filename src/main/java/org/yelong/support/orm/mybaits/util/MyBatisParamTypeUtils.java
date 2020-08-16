@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * MyBatis参数类型工具<br/>
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class MyBatisParamTypeUtils {
 

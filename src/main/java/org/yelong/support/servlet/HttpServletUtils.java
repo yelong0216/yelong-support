@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public class HttpServletUtils {
 

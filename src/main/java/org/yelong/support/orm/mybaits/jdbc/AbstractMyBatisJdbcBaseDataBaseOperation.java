@@ -17,7 +17,7 @@ import org.yelong.core.jdbc.DataBaseOperationType;
  * 
  * 这个不会经过mybatis的框架
  * 
- * @author PengFei
+ * @since 1.0
  */
 public abstract class AbstractMyBatisJdbcBaseDataBaseOperation extends AbstractBaseDataBaseOperation {
 

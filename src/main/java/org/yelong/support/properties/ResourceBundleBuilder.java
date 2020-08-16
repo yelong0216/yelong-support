@@ -6,7 +6,7 @@ package org.yelong.support.properties;
 import java.util.ResourceBundle;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public class ResourceBundleBuilder {
 

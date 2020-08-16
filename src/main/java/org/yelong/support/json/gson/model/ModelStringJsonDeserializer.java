@@ -13,7 +13,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
 /**
- * @author PengFei
+ * @since 1.1
  */
 public class ModelStringJsonDeserializer implements JsonDeserializer<String> {
 

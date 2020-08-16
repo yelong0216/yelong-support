@@ -1,9 +1,10 @@
-package org.yelong.support.json.gson.test;
+package org.yelong.support.test.json.gson;
 
+import org.yelong.core.model.Modelable;
 import org.yelong.core.model.sql.SqlModel;
 
 
-public class User extends SqlModel{
+public class User extends SqlModel<User> implements Modelable{
 
 	private static final long serialVersionUID = 1982504135145414804L;
 

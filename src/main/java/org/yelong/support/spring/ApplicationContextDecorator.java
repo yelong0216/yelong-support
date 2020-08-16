@@ -27,7 +27,7 @@ import org.springframework.core.io.Resource;
  * 
  * 这个类不应该在属于Spring容器的对象中使用（导致该类未初始化的错误）
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class ApplicationContextDecorator implements ApplicationContextAware {
 

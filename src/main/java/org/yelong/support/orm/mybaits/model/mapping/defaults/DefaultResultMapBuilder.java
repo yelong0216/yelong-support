@@ -12,12 +12,12 @@ import org.apache.ibatis.builder.ResultMapResolver;
 import org.apache.ibatis.mapping.ResultMap;
 import org.apache.ibatis.mapping.ResultMapping;
 import org.apache.ibatis.session.Configuration;
-import org.yelong.core.model.resolve.ModelAndTable;
+import org.yelong.core.model.manage.ModelAndTable;
 import org.yelong.support.orm.mybaits.model.mapping.ResultMapBuilder;
 import org.yelong.support.orm.mybaits.model.mapping.ResultMappingBuilder;
 
 /**
- * @author PengFei
+ * @since 1.1
  */
 public class DefaultResultMapBuilder implements ResultMapBuilder {
 

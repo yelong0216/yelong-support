@@ -7,6 +7,8 @@ import org.yelong.core.jdbc.sql.SqlFragment;
 
 /**
  * mybatis sql片段
+ * 
+ * @since 1.0
  */
 public interface MyBatisSqlFragment extends SqlFragment, MyBatisParamAliasable {
 

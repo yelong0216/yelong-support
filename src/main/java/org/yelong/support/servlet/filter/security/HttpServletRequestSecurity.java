@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 支持参数解密的request<br/>
  * 
- * @author PengFei
+ * @since 1.0
  */
 public interface HttpServletRequestSecurity {
 

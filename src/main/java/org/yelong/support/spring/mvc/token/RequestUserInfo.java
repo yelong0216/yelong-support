@@ -6,7 +6,7 @@ package org.yelong.support.spring.mvc.token;
 /**
  * 请求的用户信息
  * 
- * @author PengFei
+ * @since 1.0
  */
 public interface RequestUserInfo {
 

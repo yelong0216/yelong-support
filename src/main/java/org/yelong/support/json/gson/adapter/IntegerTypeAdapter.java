@@ -15,8 +15,7 @@ import com.google.gson.stream.JsonWriter;
  * 
  * 对于Integer的属性在序列化或者反序列化时，遇到“空”值时使用填补值来返回
  * 
- * @author PengFei
- * @since 1.0.5
+ * @since 1.1
  */
 public class IntegerTypeAdapter extends TypeAdapter<Integer> {
 

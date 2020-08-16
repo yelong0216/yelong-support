@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.ibatis.annotations.Param;
+import org.yelong.core.jdbc.sql.SqlFragmentException;
 import org.yelong.core.jdbc.sql.condition.ConditionSqlFragment;
 import org.yelong.core.jdbc.sql.condition.combination.CombinationConditionSqlFragment;
 import org.yelong.core.jdbc.sql.condition.single.SingleConditionSqlFragmentFactory;
@@ -72,7 +73,7 @@ public class MyBatisCombinationConditionFragment extends DefaultCombinationCondi
 						((MyBatisCombinationConditionFragment) conditionFragment).getMyBatisParamMap());
 				myBatisConditionFragmentFragmentList.add((MyBatisCombinationConditionFragment) conditionFragment);
 			} else {
-				throw new MyBatisCombinationConditionFragmentException(
+				throw new SqlFragmentException(
 						"mybatis组合条件中添加组合条件必须为mybatis的组合条件而不应该为其他类型的组合条件，这可能导致解析为mybatis sql时错误。");
 			}
 		} else {

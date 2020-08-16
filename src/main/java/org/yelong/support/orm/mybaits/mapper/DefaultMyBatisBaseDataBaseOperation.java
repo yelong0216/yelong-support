@@ -9,7 +9,7 @@ import org.yelong.support.spring.jdbc.mybatis.TransactionalMyBatisBaseDataBaseOp
 /**
  * 默认的mybatis 基础数据操作
  * 
- * @author PengFei
+ * @since 1.0
  */
 public class DefaultMyBatisBaseDataBaseOperation extends TransactionalMyBatisBaseDataBaseOperation {
 

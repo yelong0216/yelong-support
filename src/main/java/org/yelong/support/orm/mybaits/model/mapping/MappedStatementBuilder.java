@@ -6,12 +6,12 @@ package org.yelong.support.orm.mybaits.model.mapping;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.SqlSource;
 import org.apache.ibatis.session.Configuration;
-import org.yelong.core.model.resolve.ModelAndTable;
+import org.yelong.core.model.manage.ModelAndTable;
 
 /**
  * {@link MappedStatement} 建造者
  * 
- * @author PengFei
+ * @since 1.1
  */
 public interface MappedStatementBuilder {
 

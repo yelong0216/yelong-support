@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.beanutils.BeanUtils;
 
 /**
- * @author PengFei
+ * @since 1.0
  */
 public abstract class AbstractRequestUserInfo implements RequestUserInfo {
 

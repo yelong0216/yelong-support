@@ -11,7 +11,7 @@ import org.yelong.core.annotation.Nullable;
 /**
  * yml配置文件
  * 
- * @author PengFei
+ * @since 1.0
  */
 public interface YamlProperties {
 

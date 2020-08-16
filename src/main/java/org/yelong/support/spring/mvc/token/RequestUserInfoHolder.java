@@ -6,8 +6,8 @@ package org.yelong.support.spring.mvc.token;
 /**
  * 请求用户信息持有者
  * 
- * @author PengFei
  * @see AbstractTokenHandlerInterceptor
+ * @since 1.0
  */
 public abstract class RequestUserInfoHolder {
 

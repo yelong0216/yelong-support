@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
 /**
  * 记录日志
  * 
- * @author PengFei
+ * @since 1.0
  */
 public @interface RecordLog {
 

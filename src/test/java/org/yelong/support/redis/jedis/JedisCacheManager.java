@@ -8,8 +8,7 @@ import org.yelong.core.cache.CacheManager;
 /**
  * jedis缓存管理器
  * 
- * @author PengFei
- * @since 1.3.0
+ * @since 1.3
  */
 public interface JedisCacheManager extends CacheManager {
 

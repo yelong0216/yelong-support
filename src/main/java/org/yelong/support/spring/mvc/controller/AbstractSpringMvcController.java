@@ -18,7 +18,7 @@ import org.yelong.support.spring.web.multipart.MultipartRequestUtils;
  * 
  * 提供一些SpringMvc中常用功能性的方法
  * 
- * @author PengFei
+ * @since 1.0
  */
 public abstract class AbstractSpringMvcController extends AbstractController {
 

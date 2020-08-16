@@ -28,7 +28,7 @@ import org.yelong.support.orm.mybaits.sql.MyBatisPlaceholderMap;
  * 如果需要使用到{@link Param}注解，则需要将该拦截器添加入mybatis中<br/>
  * 如果同pageHelper分页一起使用，则这个拦截器应该在分页拦截器之前执行（mybatis拦截器执行顺序：配置文件中越靠前执行顺序越靠后-如果存在多个拦截器，那么靠前的拦截器会被后面的拦截器进行代理，所以，越靠后的越先执行）<br/>
  * 
- * @author PengFei
+ * @since 1.0
  */
 @Intercepts({
 		@Signature(method = "query", type = Executor.class, args = { MappedStatement.class, Object.class,

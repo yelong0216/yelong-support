@@ -16,8 +16,7 @@ import org.yelong.core.jdbc.sql.BoundSql;
 import org.yelong.core.jdbc.sql.executable.SelectSqlFragment;
 import org.yelong.core.model.ModelConfiguration;
 import org.yelong.core.model.Modelable;
-import org.yelong.core.model.exception.ModelServiceException;
-import org.yelong.core.model.resolve.ModelAndTable;
+import org.yelong.core.model.manage.ModelAndTable;
 import org.yelong.support.orm.mybaits.model.mapping.MappedStatementBuilder;
 import org.yelong.support.orm.mybaits.model.mapping.ResultMapBuilder;
 import org.yelong.support.orm.mybaits.model.mapping.ResultMappingBuilder;
@@ -30,7 +29,7 @@ import org.yelong.support.spring.jdbc.model.TransactionalModelService;
 /**
  * MyBatis model service 实现
  * 
- * @since 1.0.2
+ * @since 1.1
  * @author PengFei
  */
 public abstract class AbstractMyBatisModelService extends TransactionalModelService implements MyBatisModelService {
@@ -44,7 +43,7 @@ public abstract class AbstractMyBatisModelService extends TransactionalModelServ
 	@Override
 	public <M extends Modelable> List<M> execute(Class<M> modelClass, SelectSqlFragment selectSqlFragment) {
 		if (selectSqlFragment.isPage()) {
-			throw new ModelServiceException("警告：目前不支持分页查询");
+			selectSqlFragment = pageIntercept(selectSqlFragment);
 		}
 		BoundSql boundSql = selectSqlFragment.getBoundSql();
 		Map<String, Object> params = MyBatisMapperParamUtils.getMyBatisMapperParams(boundSql.getSql(),
@@ -65,6 +64,14 @@ public abstract class AbstractMyBatisModelService extends TransactionalModelServ
 		}
 		return sqlSession.selectList(statementId, params);
 	}
+
+	/**
+	 * 分页拦截。如果 {@link SelectSqlFragment}是一个分页查看的SQL从回调此方法实现分页。
+	 * 
+	 * @param selectSqlFragment 查询SQL片段
+	 * @return 分页后的查询SQL片段
+	 */
+	protected abstract SelectSqlFragment pageIntercept(SelectSqlFragment selectSqlFragment);
 
 	@Override
 	public final BaseDataBaseOperation getBaseDataBaseOperation() {
