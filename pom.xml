@@ -29,7 +29,6 @@
 	</scm>
 	<properties>
 		<maven.test.skip>true</maven.test.skip> 
-		<maven.javadoc.skip>true</maven.javadoc.skip>
 		<yelong.version>[2.0.0,2.1.0)</yelong.version>
 		<yelong-commons.version>${yelong.version}</yelong-commons.version>
 		<yelong-core.version>${yelong.version}</yelong-core.version>
