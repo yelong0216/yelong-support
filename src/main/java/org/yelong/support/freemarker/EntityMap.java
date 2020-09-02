@@ -4,8 +4,8 @@
 package org.yelong.support.freemarker;
 
 import java.util.HashMap;
-import java.util.Objects;
 
+import org.yelong.core.annotation.Nullable;
 import org.yelong.support.ognl.OgnlWrapper;
 
 import ognl.OgnlException;
@@ -17,24 +17,30 @@ import ognl.OgnlException;
  * 
  * 可以设置属性获取时的默认值，防止freemarker解析错误问题
  */
-public class EntityMap<T> extends HashMap<String, Object> {//必须继承 HashMap，且clone返回本身
+public class EntityMap<T> extends HashMap<String, Object> {// 必须继承 HashMap，且clone返回本身
 
 	private static final long serialVersionUID = -1313237965432896603L;
 
 	public static final String DEFAULT_VALUE = "";
 
+	@Nullable
 	private T entity;
 
 	private String defaultValue = DEFAULT_VALUE;
 
 	private OgnlWrapper ognlWrapper = new OgnlWrapper();
 
-	public EntityMap(T entity) {
-		Objects.requireNonNull(entity);
-		this.entity = entity;
-		ognlWrapper.setRoot(entity);
+	public EntityMap() {
 	}
 
+	public EntityMap(@Nullable T entity) {
+		if (null != entity) {
+			this.entity = entity;
+			ognlWrapper.setRoot(entity);
+		}
+	}
+
+	@Nullable
 	public T getEntity() {
 		return entity;
 	}

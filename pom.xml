@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.yelong0216</groupId>
 	<artifactId>yelong-support</artifactId>
-	<version>2.0.0</version>
+	<version>2.1.0</version>
 	<packaging>jar</packaging>
 	<name>yelong-support</name>
 	<url>https://github.com/yelong0216/yelong-support.git</url>
@@ -20,16 +20,16 @@
 	</licenses>
 	<developers>
 		<developer>
-			<name>彭飞</name>
-			<email>17601085125@163.com</email>
+			<name>yelong</name>
+			<email>yelong010216@163.com</email>
 		</developer>
 	</developers>
 	<scm>
 		<url>https://github.com/yelong0216/yelong-support</url>
 	</scm>
 	<properties>
-		<maven.test.skip>true</maven.test.skip> 
-		<yelong.version>[2.0.0,2.1.0)</yelong.version>
+		<maven.test.skip>true</maven.test.skip>
+		<yelong.version>[2.1.0,2.2.0)</yelong.version>
 		<yelong-commons.version>${yelong.version}</yelong-commons.version>
 		<yelong-core.version>${yelong.version}</yelong-core.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
@@ -153,6 +153,13 @@
 			<artifactId>jedis</artifactId>
 			<version>${jedis.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.7.0-M1</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<profiles>

@@ -29,6 +29,7 @@ public class SqlModelExclusionStrategy implements ExclusionStrategy {
 		SQL_MODEL_EXCLUSION_FIELDS.add("conditionOperators");
 		SQL_MODEL_EXCLUSION_FIELDS.add("extendAttributes");
 		SQL_MODEL_EXCLUSION_FIELDS.add("sortFields");
+		SQL_MODEL_EXCLUSION_FIELDS.add("groupColumns");
 		SQL_MODEL_EXCLUSION_FIELDS.add("conditions");
 		SQL_MODEL_EXCLUSION_FIELDS.add("modelClass");
 		SQL_MODEL_EXCLUSION_FIELDS.add("model");
