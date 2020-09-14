@@ -45,7 +45,7 @@
 		<spring-jdbc.version>${spring.version}</spring-jdbc.version>
 		<spring-context-support.version>${spring.version}</spring-context-support.version>
 		<snakeyaml.version>1.23</snakeyaml.version>
-		<ant.version>1.8.4</ant.version>
+		<ant.version>1.9.15</ant.version>
 		<jedis.version>2.8.1</jedis.version>
 	</properties>
 	<dependencies>
