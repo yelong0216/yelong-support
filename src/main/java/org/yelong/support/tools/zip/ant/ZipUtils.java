@@ -66,7 +66,7 @@ public class ZipUtils {
 	 * 解压zipFile文件。解压生成的文件在zipFile同级
 	 * 
 	 * @param zipFile 压缩包文件
-	 * @throws FileNotFoundException 文件不存在异常
+	 * @throws FileNotFoundException 压缩文件不存在
 	 */
 	public static void unZipFile(File zipFile) throws FileNotFoundException {
 		if (null == zipFile) {
@@ -83,7 +83,7 @@ public class ZipUtils {
 	 * 
 	 * @param zipFile    zip文件路径
 	 * @param unFilePath 解压到的路径位置
-	 * @throws FileNotFoundException 如果zipFilePath文件不存在
+	 * @throws FileNotFoundException 压缩文件不存在
 	 */
 	public static void unZipFile(File zipFile, String unFilePath) throws FileNotFoundException {
 		if (null == zipFile || StringUtils.isEmpty(unFilePath)) {
