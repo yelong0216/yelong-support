@@ -11,6 +11,7 @@ import freemarker.template.Configuration;
  * 配置工厂
  * 
  * @since 1.1
+ * @see FreeMarkerConfigurationFactoryBean
  */
 public final class FreeMarkerConfigurationFactory {
 

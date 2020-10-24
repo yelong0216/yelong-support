@@ -35,6 +35,8 @@ import org.yelong.support.spring.jdbc.model.TransactionalModelService;
 public abstract class AbstractMyBatisModelService extends TransactionalModelService implements MyBatisModelService {
 
 	private MappedStatementBuilder mappedStatementBuilder;
+	
+	public static final String statementIdPrefix = "org.yelong.";
 
 	public AbstractMyBatisModelService(ModelConfiguration modelConfiguration) {
 		super(modelConfiguration);
@@ -109,8 +111,15 @@ public abstract class AbstractMyBatisModelService extends TransactionalModelServ
 		return sqlSource;
 	}
 
+	/**
+	 * 获取生成的ID。这个ID为mybatis中获取SQL唯一的标识。且这个标识也应用到了日志中。
+	 * 
+	 * @param modelClass 模型类型
+	 * @return statementId
+	 */
 	public String getStatementId(Class<? extends Modelable> modelClass) {
-		return modelClass.getName() + ".Select";
+		// 以org.yelong开头在日志设置mapper包目录时设置为 org.yelong 即可
+		return statementIdPrefix + modelClass.getName() + ".select";
 	}
 
 	@Override
