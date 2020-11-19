@@ -77,3 +77,13 @@
 2020-10-24 -> 2.1.2
 
 	添加XML
+	
+2020-11-19 -> 2.2.0
+
+	新增org.yelong.support.resource包
+	新增org.yelong.support.servlet.resource包
+	新增org.yelong.support.spring.boot.servlet.resource包
+	
+	---项目统计---
+	总计代码行数：7470
+	总文件数：156

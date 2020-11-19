@@ -16,9 +16,10 @@ import org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver;
 import org.yelong.support.spring.mvc.HandlerResponseWay;
 
 /**
- * 根据相应结果方式来响应异常信息<br/>
+ * 根据响应结果方式来响应异常信息<br/>
  * 
  * @since 1.0
+ * @see AbstractHandlerMethodExceptionResolverByResponseWay
  */
 public abstract class AbstractHandlerExceptionResolverByResponseWay extends AbstractHandlerExceptionResolver {
 
@@ -33,16 +34,13 @@ public abstract class AbstractHandlerExceptionResolverByResponseWay extends Abst
 				response.setStatus(HttpStatus.OK.value()); // 设置状态码
 				response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE); // 设置ContentType
 				response.setCharacterEncoding("UTF-8"); // 避免乱码
-				// response.setCharacterEncoding("GBK"); //避免乱码
 				response.setHeader("Cache-Control", "no-cache, must-revalidate");
 				String json = handlerExceptionResponseJson(request, response, handlerResponseWay, ex);
 				try {
 					response.getWriter().write(json);
 				} catch (IOException e) {
-					json = e.getMessage();
-					e.printStackTrace();
+					logger.error("处理器异常解析器响应JSON异常", e);
 				}
-				// LOGGER.info("exception:"+handlerMethod.toString()+"---response:"+json);
 				modelAndView = new ModelAndView();
 			} else if (handlerResponseWay == HandlerResponseWay.MODEL_AND_VIEW) {
 				modelAndView = handlerExceptionResponseModelAndView(request, response, handlerResponseWay, ex);

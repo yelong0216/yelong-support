@@ -6,6 +6,7 @@ package org.yelong.support.spring.mvc;
 import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -15,6 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerExecutionChain;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+import org.yelong.core.annotation.Nullable;
 import org.yelong.support.spring.ApplicationContextDecorator;
 
 /**
@@ -57,17 +59,28 @@ public final class SpringMvcUtils {
 	/**
 	 * 获取当前线程的 request
 	 * 
-	 * @return request request
+	 * @return request
 	 */
 	public static HttpServletRequest getRequest() {
 		return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 	}
 
 	/**
+	 * 获取当前线程的 response
+	 * 
+	 * @return response
+	 * @since 2.2
+	 */
+	@Nullable
+	public static HttpServletResponse getResponse() {
+		return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+	}
+
+	/**
 	 * 注册Controller到Spring容器中
 	 * 
-	 * @param beanName bean name
-	 * @param beanClass bean class
+	 * @param beanName           bean name
+	 * @param beanClass          bean class
 	 * @param applicationContext application context
 	 * @throws Exception registry exception
 	 */
